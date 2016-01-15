@@ -1,0 +1,37 @@
+User Stories
+
+Role-goal benefit:
+As a user I want to be able login to the comic website so that I can access the application
+
+Definitions of done:
+- Type in a username and password, then click login 
+- An incorrect username or password will provide an error
+- A correct username/password allows you access to the website
+
+Role-goal benefit:
+As a contributor I want to be able to submit a comic so that it can be displayed on my "profile/feed"
+
+Definitions of done:
+- Press upload button, select a comic then click submit
+- Once submitted comic will appear on contributor's profile
+- Have an error window appear if user attempts to submit a non-comic
+
+Role-goal benefit:
+As a contributer I want to have a profile so that I can display my preferences and comic strips link.
+
+Definitions of done:
+- Profile displays multiple fields with user's information.
+- Link to uploaded comic strips.
+
+Role-goal benefit:
+As a user I want to be able to access all comic strips so that I can view them.
+
+Definitions of done:
+- Once user successfuly logs in, they will be directed to the comic strips page containing all comic strips.
+
+Role-goal benefit:
+As a contributor I want to be able to delete my own comic strips so that they are no longer displayed on the website
+
+Definitions of done:
+- When you access your own comics, click on specific comic and hit the delete button 
+- 

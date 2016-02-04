@@ -9,7 +9,7 @@ var ComicSchema = new mongoose.Schema({
     favorites: {type: Number, default: 0},
     timeStamp: Integer, //when created, associate time of creation with comic
     contributors: [listSchema], //populate with a list of strings of Contributors
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+    // comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }] // do i need this???
 });
 
 mongoose.model('Comic', ComicSchema);

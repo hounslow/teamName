@@ -12,4 +12,9 @@ var ComicSchema = new mongoose.Schema({
     // comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }] // do i need this???
 });
 
+var listSchema = new mongoose.Schema({
+   // TODO SCHEMA FOR A LIST OF CONTRIBUTORS
+
+});
+
 mongoose.model('Comic', ComicSchema);

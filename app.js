@@ -16,6 +16,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+var Factory = require("./module.factory.js");
+
+
 
 require('./models/Comics');
 
@@ -23,6 +28,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -72,3 +78,10 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+// comic factory to create and add comics
+
+var comicFactory = module.exports = function ComicFactory(options){
+
+
+}

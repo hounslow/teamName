@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 
-var ComicSchema = new mongoose.Schema({
+export var ComicSchema = new mongoose.Schema({
     title: String,
     link: String,
     favorites: {type: Number, default: 0},

@@ -1,10 +1,10 @@
 
 
 
-var mongoose = require('mongoose');
-var crypto = require('crypto');
+import mongoose = require('mongoose');
+import crypto = require('crypto');
 
-var UserSchema = new mongoose.Schema({
+export var UserSchema = new mongoose.Schema({
       name: String,
       hash: String,
   	  salt: String,

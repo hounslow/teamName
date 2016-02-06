@@ -10,6 +10,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var Factory = require("./module.factory.js");
@@ -72,6 +73,7 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
 
 // comic factory to create and add comics
 

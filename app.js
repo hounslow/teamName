@@ -15,14 +15,14 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var Factory = require("./module.factory.js");
 
-
+var app = express();
 
 require('./models/Comics');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
+
 
 
 // view engine setup
@@ -77,7 +77,7 @@ module.exports = app;
 
 // comic factory to create and add comics
 
-var comicFactory = module.exports = function ComicFactory(options){
+//var comicFactory = module.exports = function ComicFactory(options){
 
 
-}
+//}

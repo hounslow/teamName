@@ -9,24 +9,36 @@ interface Error {
 
 }
 
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.ObjectId;
-var Factory = require("./module.factory.js");
-
+import express = require('express');
+import path = require('path');
+//Matt edit below
+import http = require('http');
+import favicon = require('serve-favicon');
+import logger = require('morgan');
+import cookieParser = require('cookie-parser');
+import bodyParser = require('body-parser');
+import Schema = mongoose.Schema;
+import ObjectId = Schema.ObjectId;
+import Factory = require("./module.factory.js");
+import mongoose = require('mongoose');
 
 
 require('./models/Comics');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+import routes = require('./routes/index');
+import users = require('./routes/userRoutes');
+//Matt edit
 
+
+/*
+The link in this mongoose.connect below, is this supposed to be 3000?
+*/
+mongoose.connect('mongodb://localhost/mean-type-dev');
 var app = express();
+
+export var userSchema = new mongoose.Schema({
+  name: String
+});
 
 class Application {
   constructor() {

@@ -7,12 +7,12 @@ export var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
 export var ComicSchema = new mongoose.Schema({
-    title: String,
-    link: String,
-    favorites: {type: Number, default: 0},
+    title: string,
+    link: string,
+    favorites: {type: number, default: 0},
     timeStamp: Date, //when created, associate time of creation with comic
     comicId: ObjectId, // unique identifier of the comic object
-    contributors: [{Users: String}] //populate with a list of strings of Contributors
+    contributors: [{Users: string}] //populate with a list of strings of Contributors
     // comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }] // do i need this???
 });
 

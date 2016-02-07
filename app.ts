@@ -6,63 +6,42 @@
 ///<reference path='types/node/node.d.ts'/>
 ///<reference path='types/express/express.d.ts'/>
 
-interface Error {
-
-    status?: number;
-
-}
-
-import express = require('express');
-import path = require('path');
-import http = require('http');
+var express = require('express');
+var path = require('path');
+var http = require('http');
 var favicon = require('serve-favicon');
-import logger = require('morgan');
-import cookieParser = require('cookie-parser');
-import bodyParser = require('body-parser');
-import Schema = mongoose.Schema;
-import ObjectId = Schema.ObjectId;
-import Factory = require("./module.factory.js");
-import mongoose = require('mongoose');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+var Factory = require("./module.factory.js");
+var mongoose = require('mongoose');
+var routes = require('./routes/index');
+var users = require('./routes/userRoutes');
+var comicModel = require('./models/Comics');
 
-var app = express();
-
-mongoose.connect('mongodb://localhost/news', function(err, db) {
-  if (!err) {
-    console.log('Connected to monngoose!');
-  } else {
-    console.dir(err); //failed to connecte
-  }
-});
-
-require('./models/Comics');
-
-import routes = require('./routes/index');
-import users = require('./routes/userRoutes');
-//Matt edit
-
-
-/*
-The link in this mongoose.connect below, is this supposed to be 3000?
-*/
-
-
-export var userSchema = new mongoose.Schema({
-  name: String
-});
+interface Error {
+  status?: number;
+}
 
 class Application {
   constructor() {
+    var app = express();
+
+    app.use('/', routes.index);
+    app.use('/user.list');
+    app.use('/users/:name', user.read);
+    app.use('/users/:name', user.create);
 
     // view engine setup
-    //MATT CHANGES BELOW
-    app.get('/', routes.index);
-    app.get('/user.list');
-    app.get('/users/:name', user.read);
-    app.post('/users/:name', user.create);
-
-    //MATT CHANGES END
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'ejs');
+
+    app.set('port', process.env.PORT || 3000);
+
+    app.use(express.static(path.join(__dirname, 'public')));
+
 
     // uncomment after placing your favicon in /public
     //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -81,8 +60,6 @@ class Application {
       err.status = 404;
       next(err);
     });
-
-    // error handlers
 
     // development error handler
     // will print stacktrace
@@ -105,14 +82,24 @@ class Application {
         error: {}
       });
     });
-    module.exports = app;
+
+
+    http.createServer(app).listen(app.get('port'),function(){
+      console.log("Express server listening on port "+app.get('port'));
+
+    });
+
+    mongoose.connect('mongodb://localhost/news', function(err, db) {  //TODO THIS PROBABLY NEEDS WORK
+      if (!err) {
+        console.log('Connected to monngoose!');
+      } else {
+        console.dir(err); //failed to connect
+      }
+    });
+
+    module.exports=app;
+
   }
 }
 
-var appTwo = new Application();
-// comic factory to create and add comics
-
-var comicFactory = module.exports = function ComicFactory(options){
-
-
-}
+var application = new Application();

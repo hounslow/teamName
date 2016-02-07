@@ -1,30 +1,27 @@
-/* Needs to be referenced, but this is the basic outline for the login page, style will come later
-*/
+<!-- Needs to be referenced, but this is the basic outline for the login page, style will come later -->
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HTML5 Login</title>
-	<link rel="stylesheet" href="normalize.css">
-	<link rel="stylesheet" href="style.css">
+	  <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
 </head>
+
 <body>
-	<section class="loginform cf">
-		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+	<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+		<div>
 			<ul>
 				<li>
-					<label for="usermail">Email</label>
-					<input type="email" name="usermail" placeholder="yourname@email.com" required>
+					<label for="usermail">Username</label>
+					<input type="login" name="usermail" placeholder="Username" required>
 				</li>
 				<li>
 					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="password" required></li>
+					<input type="login" name="password" placeholder="Password" required></li>
 				<li>
-					<input type="submit" value="Login">
+					<input type="submit" value="Log in" style="width:100px; height:30px;">
 				</li>
 			</ul>
-		</form>
-	</section>
+	</form>
 </body>
 </html>
 					

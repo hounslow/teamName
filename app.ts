@@ -54,9 +54,9 @@ class Application {
     // view engine setup
     //MATT CHANGES BELOW
     app.get('/', routes.index);
-    app.get('./users', users.list);
-    app.get('./users/:name', users.read);
-    app.post('./users/:name', users.create);
+    app.get('./users', user.list);
+    app.get('./users/:name', user.read);
+    app.post('./users/:name', user.create);
 
     //MATT CHANGES END
     app.set('/views', path.join(__dirname, '/views'));

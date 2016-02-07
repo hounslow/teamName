@@ -1,8 +1,11 @@
 /**
  * Created by BryanC on 2016-01-31.
  */
+///<reference path='types/node/node.d.ts'/>
+///<reference path='types/express/express.d.ts'/>
 var express = require('express');
 var path = require('path');
+var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');

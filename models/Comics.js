@@ -12,4 +12,3 @@ exports.ComicSchema = new mongoose.Schema({
     contributors: [{ Users: String }] //populate with a list of strings of Contributors
 });
 mongoose.model('Comic', exports.ComicSchema);
-//# sourceMappingURL=Comics.js.map

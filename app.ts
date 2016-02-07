@@ -4,9 +4,7 @@
 
 
 interface Error {
-
     status?: number;
-
 }
 
 import express = require('express');
@@ -31,7 +29,7 @@ mongoose.connect('mongodb://localhost/news', function(err, db) {
   }
 });
 
-require('./models/Comics');
+//require('./models/Comics');
 
 import routes = require('./routes/index');
 import users = require('./routes/userRoutes');
@@ -53,12 +51,12 @@ class Application {
     // view engine setup
     //MATT CHANGES BELOW
     app.get('/', routes.index);
-    app.get('/user.list');
+    app.get('/users', user.list);
     app.get('/users/:name', user.read);
     app.post('/users/:name', user.create);
 
     //MATT CHANGES END
-    app.set('views', path.join(__dirname, 'views'));
+    app.set('views', path.join(__dirname, '/views'));
     app.set('view engine', 'ejs');
 
     // uncomment after placing your favicon in /public
@@ -101,15 +99,16 @@ class Application {
         message: err.message,
         error: {}
       });
-    });
+    }); 
     module.exports = app;
   }
 }
 
 var appTwo = new Application();
+
 // comic factory to create and add comics
 
-var comicFactory = module.exports = function ComicFactory(options){
+//var comicFactory = module.exports = function ComicFactory(options){
 
 
-}
+//}

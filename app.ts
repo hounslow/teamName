@@ -51,6 +51,13 @@ class Application {
   constructor() {
 
     // view engine setup
+    //MATT CHANGES BELOW
+    app.get('/', routes.index);
+    app.get('/useruuser.list');
+    app.get('/users/:nameuuser.read');
+    app.post('/users/:nameser.create');
+
+    //MATT CHANGES END
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'ejs');
 
@@ -95,12 +102,11 @@ class Application {
         error: {}
       });
     });
-
+    module.exports = app;
   }
 }
 
-module.exports = app;
-
+var appTwo = new Application();
 // comic factory to create and add comics
 
 var comicFactory = module.exports = function ComicFactory(options){

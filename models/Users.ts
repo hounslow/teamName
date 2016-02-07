@@ -17,7 +17,7 @@ export interface IUser extends mongoose.Document {
 	name: String;
 }
 
-export var repository = mongoose.model("UserSchema", UserSchema);
+export var repository = mongoose.model<IUser>("UserSchema", UserSchema);
 
 UserSchema.methods.setPassword = function(password){ //for setting up password
   this.salt = crypto.randomBytes(16).toString('hex');

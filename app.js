@@ -3,17 +3,29 @@
  */
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.ObjectId;
-var Factory = require("./module.factory.js");
+var mongoose = require('mongoose');
+var app = express();
+mongoose.connect('mongodb://localhost/news', function (err, db) {
+    if (!err) {
+        console.log('Connected to monngoose!');
+    }
+    else {
+        console.dir(err); //failed to connecte
+    }
+});
 require('./models/Comics');
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var app = express();
+var users = require('./routes/userRoutes');
+//Matt edit
+/*
+The link in this mongoose.connect below, is this supposed to be 3000?
+*/
+exports.userSchema = new mongoose.Schema({
+    name: String
+});
 var Application = (function () {
     function Application() {
         // view engine setup
@@ -62,3 +74,4 @@ module.exports = app;
 // comic factory to create and add comics
 var comicFactory = module.exports = function ComicFactory(options) {
 };
+//# sourceMappingURL=app.js.map

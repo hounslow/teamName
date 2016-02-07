@@ -5,7 +5,7 @@ import mongoose = require("mongoose");
 import crypto = require('crypto');
 
 export var UserSchema = new mongoose.Schema({
-      name: string,
+      name: String,
       //hash: string,
   	  //salt: string,
       Contributer: {type: Boolean, default: false},
@@ -17,7 +17,7 @@ data validation, type casting etc. This extension is
 also not "ideal" right now. 
 */
 export interface IUser extends mongoose.Document {
-	name: string;
+	name: String;
 }
 
 export var repository = mongoose.model<IUser>('Username', UserSchema);

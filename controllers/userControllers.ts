@@ -13,7 +13,7 @@ export function createUser(req: express.Request, res: express.Response) {
 		if (error) {
 			res.send(400);
 		} else {
-			res.send("userName +created");
+			res.send("useruserName: " + userName);
 		}
 	});
 }

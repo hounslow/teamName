@@ -11,7 +11,6 @@ interface Error {
 
 import express = require('express');
 import path = require('path');
-//Matt edit below
 import http = require('http');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
@@ -22,6 +21,15 @@ import ObjectId = Schema.ObjectId;
 import Factory = require("./module.factory.js");
 import mongoose = require('mongoose');
 
+var app = express();
+
+mongoose.connect('mongodb://localhost/news', function(err, db) {
+  if (!err) {
+    console.log('Connected to monngoose!');
+  } else {
+    console.dir(err); //failed to connecte
+  }
+});
 
 require('./models/Comics');
 
@@ -33,8 +41,7 @@ import users = require('./routes/userRoutes');
 /*
 The link in this mongoose.connect below, is this supposed to be 3000?
 */
-mongoose.connect('mongodb://localhost/mean-type-dev');
-var app = express();
+
 
 export var userSchema = new mongoose.Schema({
   name: String

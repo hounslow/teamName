@@ -1,6 +1,3 @@
-
-
-
 import mongoose = require("mongoose");
 import crypto = require('crypto');
 
@@ -20,7 +17,7 @@ export interface IUser extends mongoose.Document {
 	name: String;
 }
 
-export var repository = mongoose.model("UserSchema", UserSchema);
+export var repository = mongoose.model("UserSchema", userSchema);
 
 UserSchema.methods.setPassword = function(password){ //for setting up password
   this.salt = crypto.randomBytes(16).toString('hex');

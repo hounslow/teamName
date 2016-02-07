@@ -1,7 +1,6 @@
 var express = require('express');
 var controller = require("../controllers/userControllers");
-var router = express.Router;
-();
+var router = express.Router();
 /*
  * User Routes below (Matt edit) list, create, reads for express
  */

@@ -54,8 +54,8 @@ class Application {
     //MATT CHANGES BELOW
     app.get('/', routes.index);
     app.get('/user.list');
-    app.get('/users/:name' user.read);
-    app.post('/users/:name' user.create);
+    app.get('/users/:name', user.read);
+    app.post('/users/:name', user.create);
 
     //MATT CHANGES END
     app.set('views', path.join(__dirname, 'views'));

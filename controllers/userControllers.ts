@@ -1,6 +1,6 @@
 import express = require("express");
 import mongoose = require("mongoose");
-import userModel = require("../models/Users");
+import Users = require("../models/Users");
 
 import IUser = Users.IUser;
 import repository = Users.repository;

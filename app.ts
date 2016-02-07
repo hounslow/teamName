@@ -3,6 +3,9 @@
  */
 
 
+///<reference path='types/node/node.d.ts'/>
+///<reference path='types/express/express.d.ts'/>
+
 interface Error {
     status?: number;
 }
@@ -10,7 +13,7 @@ interface Error {
 import express = require('express');
 import path = require('path');
 import http = require('http');
-import favicon = require('serve-favicon');
+var favicon = require('serve-favicon');
 import logger = require('morgan');
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');

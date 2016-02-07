@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outDir": "out",
+        "moduleResolution": "classic"
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ]
+}

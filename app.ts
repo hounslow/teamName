@@ -19,16 +19,23 @@ import ObjectId = Schema.ObjectId;
 import Factory = require("./module.factory.js");
 import mongoose = require('mongoose');
 
-var app = express();
 
-mongoose.connect('mongodb://localhost/news', function(err, db) {
-  if (!err) {
-    console.log('Connected to monngoose!');
-  } else {
-    console.dir(err); //failed to connecte
-  }
+
+// mongoose.connect('mongodb://localhost/3000', function(err, db) {
+//   if (!err) {
+//     console.log('Connected to monngoose!');
+//   } else {
+//     console.dir(err); //failed to connecte
+//   }
+// });
+var mongoURI = "mongodb://localhost:27017/project'";
+var MongoDB = mongoose.connect(mongoURI).connection;
+MongoDB.on('error', function(err) { console.log(err.message); });
+MongoDB.once('open', function() {
+  console.log("mongodb connection open");
 });
 
+var app = express();
 //require('./models/Comics');
 
 import routes = require('./routes/index');
@@ -47,9 +54,9 @@ class Application {
     // view engine setup
     //MATT CHANGES BELOW
     app.get('/', routes.index);
-    app.get('./users', User.list);
-    app.get('./users/:name', User.read);
-    app.post('./users/:name', User.create);
+    app.get('./users', users.list);
+    app.get('./users/:name', users.read);
+    app.post('./users/:name', users.create);
 
     //MATT CHANGES END
     app.set('/views', path.join(__dirname, '/views'));
@@ -98,7 +105,7 @@ class Application {
     }); 
   }
 }
-module.exports = app;
+export = app;
 
 //var appTwo = new Application();
 

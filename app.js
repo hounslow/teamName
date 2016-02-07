@@ -16,26 +16,23 @@ mongoose.connect('mongodb://localhost/news', function (err, db) {
         console.dir(err); //failed to connecte
     }
 });
-require('./models/Comics');
+//require('./models/Comics');
 var routes = require('./routes/index');
 var users = require('./routes/userRoutes');
 //Matt edit
 /*
 The link in this mongoose.connect below, is this supposed to be 3000?
 */
-exports.userSchema = new mongoose.Schema({
-    name: String
-});
 var Application = (function () {
     function Application() {
         // view engine setup
         //MATT CHANGES BELOW
         app.get('/', routes.index);
-        app.get('/user.list');
-        app.get('/users/:name', user.read);
-        app.post('/users/:name', user.create);
+        app.get('./users', User.list);
+        app.get('./users/:name', User.read);
+        app.post('./users/:name', User.create);
         //MATT CHANGES END
-        app.set('views', path.join(__dirname, 'views'));
+        app.set('/views', path.join(__dirname, '/views'));
         app.set('view engine', 'ejs');
         // uncomment after placing your favicon in /public
         //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -73,11 +70,11 @@ var Application = (function () {
                 error: {}
             });
         });
-        module.exports = app;
     }
     return Application;
 })();
-var appTwo = new Application();
+module.exports = app;
+//var appTwo = new Application();
 // comic factory to create and add comics
-var comicFactory = module.exports = function ComicFactory(options) {
-};
+//var comicFactory = module.exports = function ComicFactory(options){
+//}

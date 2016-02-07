@@ -41,22 +41,18 @@ The link in this mongoose.connect below, is this supposed to be 3000?
 */
 
 
-export var userSchema = new mongoose.Schema({
-  name: String
-});
-
 class Application {
   constructor() {
 
     // view engine setup
     //MATT CHANGES BELOW
     app.get('/', routes.index);
-    app.get('/users', user.list);
-    app.get('/users/:name', user.read);
-    app.post('/users/:name', user.create);
+    app.get('./users', User.list);
+    app.get('./users/:name', User.read);
+    app.post('./users/:name', User.create);
 
     //MATT CHANGES END
-    app.set('views', path.join(__dirname, '/views'));
+    app.set('/views', path.join(__dirname, '/views'));
     app.set('view engine', 'ejs');
 
     // uncomment after placing your favicon in /public
@@ -100,11 +96,11 @@ class Application {
         error: {}
       });
     }); 
-    module.exports = app;
   }
 }
+module.exports = app;
 
-var appTwo = new Application();
+//var appTwo = new Application();
 
 // comic factory to create and add comics
 

@@ -21,8 +21,6 @@
       "ngroute": true,
       "bootstrap": true,
       "uibootstrap": true,
-      "socketio": true,
-      "auth": true,
       "models": true,
       "mongooseModels": true,
       "mongoose": true,

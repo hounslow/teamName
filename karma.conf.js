@@ -13,7 +13,6 @@ module.exports = function(config) {
     files: [
       // bower:js
       // endbower
-      'node_modules/socket.io-client/socket.io.js',
       '.tmp/app/app.js',
       '.tmp/{app,components}/**/*.module.js',
       '.tmp/{app,components}/**/*.js',

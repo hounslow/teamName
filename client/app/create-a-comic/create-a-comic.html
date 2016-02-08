@@ -1,0 +1,81 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="create-a-comic.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+-->
+<body>
+<ul class="menubar">
+  <li class="menubar"><a href="#myprofile">My Profile</a></li>
+  <li class="menubar"><a href="#myfavourites">My Favourites</a></li>
+  <li class="menubar"><a href="#mycocmics">My Comics</a></li>
+  <li class="menubar"><a href="#thefeed">The Comic Feed</a></li>
+  <li class="menubar"><a href="#search">Search</a></li>
+  <li class="menubar"><a href="#createacomic">Create a Comic</a></li>
+  <li class="menubar"><a href="#logout">Log out</a></li>
+</ul>
+
+<div id="headercreateacomic">
+  <h1>Make that Comic!</h1>
+</div>
+
+<form>
+  <p id="buttonscreateacomic">
+    <input class="createacomic" type="file" id = "fileupload" accept="image/*" ></input>  <!--can do multiple="multiple" for multiple-->
+  </p>
+  <p id="buttonscreateacomic">
+    <input class="createacomic" type="button" value = "Upload box"></input>
+  </p>
+  <p id="buttonscreateacomic">
+    <input class="createacomic" type="button"  onclick="myFunction()" value="Publish my masterpiece"></input>
+  </p>
+  <p id="buttonscreateacomic">
+    <input class="createacomic" type="button"  onclick="myFunction()" value="Cancel"></input>
+  </p>
+</form>
+
+<br />
+<p id="dvPreview">
+</p>
+
+<script language="javascript" type="text/javascript">
+$(function () {
+    $("#fileupload").change(function () {
+        $("#dvPreview").html("");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+        if (regex.test($(this).val().toLowerCase())) {
+            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                $("#dvPreview").show();
+                $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+            }
+            else {
+                if (typeof (FileReader) != "undefined") {
+                    $("#dvPreview").show();
+                    $("#dvPreview").append("<img />");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("#dvPreview img").attr("src", e.target.result);
+                    }
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    alert("This browser does not support FileReader.");
+                }
+            }
+        } else {
+            alert("Please upload a valid image file.");
+        }
+    });
+});
+</script>
+
+<!--used for showing image on site, from http://www.aspsnippets.com/Articles/Display-Image-after-selected-selecting-file-name-in-HTML-Input-FileUpload.aspx -->
+
+<script>
+function myFunction() {
+    var x = document.getElementById("signup");
+    x.disabled = true;
+}
+</script>
+</body>

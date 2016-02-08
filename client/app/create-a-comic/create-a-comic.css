@@ -1,0 +1,75 @@
+body {
+  background: #C0C0C0;
+}
+
+ul.menubar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li.menubar {
+    float: left;
+}
+
+li.menubar a {
+    font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.menubar a:hover:not(.active) {
+    background-color: #41A317;
+}
+/*
+.active {
+    background-color: #41A317;
+}
+*/
+#headercreateacomic {
+    margin-top: 30px;
+    font-size: 30px; <!--150% before -->
+    color:black;
+    text-align:center;
+    padding:1px;
+    font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;}
+#sectioncreateacomic {
+    padding:10px;        
+    text-align:center;
+}
+
+div.titlecreateacomic {
+    padding: 15px;
+    text-align: left;
+    font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;}
+
+div.imgcreateacomic {
+    margin: auto;
+<!--    border: 1px solid #ccc; -->
+    float: center;
+    width: 500px;
+    height: 500px;
+}
+
+div.imgcreateacomic img {
+    width: 100%;
+    height: auto;
+}
+
+#buttonscreateacomic{
+    margin-left:0px;
+}
+input.createacomic[type=file]{
+    font-size:100%;
+}
+input.createacomic[type=button]{
+    font-size:100%;
+}

@@ -4,12 +4,6 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 ## Getting Started
 
-### Quick Start
-1. Run 
-2. run
-3. Run
-4. 
-
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
@@ -32,7 +26,7 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 Run `grunt build` for building and `grunt serve` for preview.
 
-### Testing
+## Testing
 
 Running `npm test` will run the unit tests with Karma.
 

@@ -15,7 +15,7 @@
           <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
         <li if-user ng-class="{active: isActive('/myprofile')}">
-          <a ng-href="myprofile">My Profile</a>
+          <a ng-href="profile">My Profile</a>
         </li>
         <li if-user ng-class="{active: isActive('/mycomics')}">
           <a ng-href="mycomics">My Comics</a>
@@ -30,7 +30,7 @@
           <a ng-href="create-a-comic">Create A Comic</a>
         </li>
         <li if-user ng-class="{active: isActive('/login')}">
-          <a ng-href="/login">Login</a>
+          <a href="login">Login</a>
         </li>
       </ul>
     </div>

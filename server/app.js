@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import config from './config/environment';
 import http from 'http';
+var path = require('path');
 
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);

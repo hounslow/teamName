@@ -39,7 +39,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <!--    <navbar></navbar>  Adds navigation bar to every page-->
+    <navbar></navbar>  <!--    Adds navigation bar to every page-->
     <div ng-view></div>
  <!--   <footer></footer>  Adds the angular full stack line at the bottom of page-->
 
@@ -75,15 +75,22 @@
     <!-- build:js({.tmp,client}) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
-
-      <script src="app/the-feed/the-feed.js"></script>
-      <script src="app/create-a-comic/create-a-comic.js"></script>
+      <script src="app/register/register.js"></script>
+      <script src="app/create-a-comic/create-a-comic.controller.js"></script>
+      <script src="app/login/login.controller.js"></script>
+      <script src="app/login/login.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
+      <script src="app/my-comics/my-comics.controller.js"></script>
+      <script src="app/my-comics/my-comics.js"></script>
+      <script src="app/profile/profile.controller.js"></script>
       <script src="app/profile/profile.js"></script>
       <script src="app/register/register.controller.js"></script>
-      <script src="app/register/register.js"></script>
-      <script src="app/login/login.js"></script>
+      <script src="app/create-a-comic/create-a-comic.js"></script>
+      <script src="app/search/search.controller.js"></script>
+      <script src="app/search/search.js"></script>
+      <script src="app/the-feed/the-feed.controller.js"></script>
+      <script src="app/the-feed/the-feed.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>

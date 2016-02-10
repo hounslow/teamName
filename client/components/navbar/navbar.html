@@ -14,32 +14,23 @@
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
           <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
-        <li if-user ng-class="{active: isActive('/profile')}">
-          <a ui-sref="profile">Profile</a>
+        <li if-user ng-class="{active: isActive('/myprofile')}">
+          <a ui-sref="myprofile">My Profile</a>
         </li>
-        <li if-not-user ng-class="{active: isActive('/register')}">
-          <a ui-sref="register">Register</a>
-        </li>
-        <li if-not-user ng-class="{active: isActive('/login')}">
-          <a ui-sref="login">Login</a>
-        </li>
-        <li if-user ng-class="{active: isActive('/logout')}">
-          <a ui-sref="main" sp-logout>Logout</a>
+        <li if-user ng-class="{active: isActive('/mycomics')}">
+          <a ui-sref="mycomics">My Comics</a>
         </li>
         <li if-user ng-class="{active: isActive('/the-feed')}">
-          <a ui-sref="the-feed">The Feed</a>
+          <a ng-href="the-feed">The Feed</a>
+        </li>
+        <li if-user ng-class="{active: isActive('/search')}">
+          <a ui-sref="search">Search</a>
         </li>
         <li if-user ng-class="{active: isActive('/create-a-comic')}">
           <a ui-sref="create-a-comic">Create A Comic</a>
         </li>
-        <li if-user ng-class="{active: isActive('/MyFavorites')}">
-          <a ui-sref="MyFavorites">My Favorites</a>
-        </li>
-        <li if-user ng-class="{active: isActive('/MyComics')}">
-          <a ui-sref="MyComics">My Comics</a>
-        </li>
-        <li if-user ng-class="{active: isActive('/search')}">
-          <a ui-sref="search">Search</a>
+        <li if-user ng-class="{active: isActive('/login')}">
+          <a ng-href="/login">Login</a>
         </li>
       </ul>
     </div>

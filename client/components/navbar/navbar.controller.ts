@@ -4,8 +4,9 @@ class NavbarController {
   //start-non-standard
   menu = [{
     'title': 'Home',
-    'link': '/'
-  }];
+    'link': '/'},
+    {'title': 'Login',
+    'link': '/login'}];
 
   isCollapsed = true;
   //end-non-standard

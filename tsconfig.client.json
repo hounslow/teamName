@@ -10,8 +10,13 @@
     ],
     "files": [
         "client/app/app.ts",
+        "client/app/create-a-comic/create-a-comic.ts",
+        "client/app/login/login.ts",
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
+        "client/app/profile/profile.ts",
+        "client/app/register/register.ts",
+        "client/app/the-feed/the-feed.ts",
         "client/components/footer/footer.directive.ts",
         "client/components/modal/modal.service.ts",
         "client/components/navbar/navbar.controller.ts",

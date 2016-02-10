@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">team-name</a>
+<!-- Displays "teamname" on left     <a href="/" class="navbar-brand">team-name</a>   -->
     </div>
     <div collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
@@ -18,7 +18,7 @@
           <a ng-href="profile">My Profile</a>
         </li>
         <li if-user ng-class="{active: isActive('/mycomics')}">
-          <a ng-href="mycomics">My Comics</a>
+          <a ng-href="my-comics">My Comics</a>
         </li>
         <li if-user ng-class="{active: isActive('/the-feed')}">
           <a ng-href="the-feed">The Feed</a>
@@ -30,7 +30,7 @@
           <a ng-href="create-a-comic">Create A Comic</a>
         </li>
         <li if-user ng-class="{active: isActive('/login')}">
-          <a href="/#/login">Login</a>
+          <a href="/login">Login</a>
         </li>
       </ul>
     </div>

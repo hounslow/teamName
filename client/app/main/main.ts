@@ -4,7 +4,7 @@ angular.module('teamNameApp')
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/the-feed/the-feed.html',
+        templateUrl: 'app/login/login.html',
         controller: angular.noop
         //controllerAs: 'MainControllerAs'
       });

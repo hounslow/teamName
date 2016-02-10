@@ -22,7 +22,10 @@ module.exports = function(config) {
       'client/bower_components/lodash/dist/lodash.compat.js',
       'client/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.min.js',
       'client/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.min.js',
+<<<<<<< HEAD
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+=======
+>>>>>>> 52350c58d454a255350debbd5e43fd3d239e3e32
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       '.tmp/app/app.js',

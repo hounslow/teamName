@@ -5,8 +5,11 @@ class NavbarController {
   menu = [{
     'title': 'Home',
     'link': '/'
-  }];
+  },
+  { 'title': 'Login',
+    'link': 'localhost:9000/login'
 
+  }];
   isCollapsed = true;
   //end-non-standard
 

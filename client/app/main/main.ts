@@ -4,8 +4,8 @@ angular.module('teamNameApp')
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/the-feed/the-feed.html',
-        controller: 'TheFeedCtrl'//,
+        templateUrl: 'app/register/register.html',
+        controller: angular.noop//,
         //controllerAs: 'MainControllerAs'
       });
   });

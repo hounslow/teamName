@@ -11,7 +11,7 @@ class NavbarController {
     {'title': 'My Profile',
     'link': '/profile'}];
 
-  }];
+
   isCollapsed = true;
   //end-non-standard
 

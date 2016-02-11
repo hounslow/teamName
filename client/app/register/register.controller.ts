@@ -1,6 +1,9 @@
 'use strict';
 
 angular.module('teamNameApp')
-  .controller('RegisterCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+  .controller('SignupCtrl', ['$scope', function($scope, ) {
+    $scope.signup = function() {
+        email: $scope.email,
+        password: $scope.password
+      };
+  }]);

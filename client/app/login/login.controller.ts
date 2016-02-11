@@ -1,9 +1,9 @@
 'use strict';
 
-class LoginCtrl {
+/*class LoginCtrl {
   constructor($scope) {
     $scope.message = 'Hiiiiii';
-  }
+  }*/
   /*
    $scope.getProducts = function() {                 //http://stackoverflow.com/questions/29504962/showing-images-from-different-folders-inside-ng-repeat-loop
    $http.get('api/products').                       //potentially for going through images and showing them
@@ -20,11 +20,17 @@ class LoginCtrl {
    product.images = data;
    });
    };
+   }
    */
-}
 
 angular.module('teamNameApp')
-  .controller('LoginCtrl', LoginCtrl);
+  .controller('LoginCtrl', ['$scope', function($scope) {
+    $scope.login = function() {
+
+        email: $scope.email,
+        password: $scope.password
+      };
+  }]);
 
 /*   Above is equivalent to below
  angular.module('teamNameApp')

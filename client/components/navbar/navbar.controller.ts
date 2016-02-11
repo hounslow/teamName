@@ -21,4 +21,8 @@ class NavbarController {
 }
 
 angular.module('teamNameApp')
-  .controller('NavbarController', NavbarController);
+  .controller('NavbarController', ['$scope', 'Auth', function($scope, Auth) {
+    $scope.logout = function() {
+      Auth.logout();
+    };
+  }]);

@@ -11,31 +11,37 @@
     display: none;
   }
 </style>
-
-<form>
   <!-- 	<div>      testing whether this prints out the word "Hiiii" written in the controller ; it works so this file automatically sees the controller for it
               {{message}}
           </div>
   -->
-  <div class= "login">
-    <ul class= "login">
-      <li class= "login">
-        <label for="username">Username</label>
-        <input class= "login" type="text" name="username" placeholder="Username" required></input>
-      </li>
-      <li class= "login">
-        <label for="password">Password</label>
-        <input class= "login" type="password" name="password" placeholder="Password" required></input>
-      </li >
-      <li class= "login">
-        <input class= "login" type="submit" value="Log in"></input>
-      </li>
-      <li class= "login">
-        <input class= "login" type="button" value="Sign up" onclick="window.location.href='register'"></input>
-      </li>
-    </ul>
+  <div class="container">
+    <div class="row">
+      <div class="center-form panel">
+        <div class="panel-body">
+          <h2 class="text-center">Login</h2>
+
+          <form method="post" ng-submit="login()" name="loginForm">
+
+            <div class="form-group">
+              <input class="form-control input-lg" type="text" name="email"
+                     ng-model="email" placeholder="Email" required autofocus>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control input-lg" type="password" name="password"
+                     ng-model="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" ng-disabled="loginForm.$invalid"
+                    class="btn btn-lg btn-block btn-success">Sign In
+            </button>
+            <input class= "login" type="button" value="Sign up" onclick="window.location.href='register'"></input>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-</form>
 <!--
 </html>
 -->

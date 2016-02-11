@@ -12,6 +12,8 @@
 import _ from 'lodash';
 import Comic from './Comic.model';
 
+
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {

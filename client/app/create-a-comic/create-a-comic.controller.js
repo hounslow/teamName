@@ -2,5 +2,7 @@
 
 angular.module('teamNameApp')
   .controller('CreateAComicCtrl', function ($scope) {
-    $scope.message = 'Hello';
+    $scope.onUploadSelect = function($files) {
+      $scope.newResource.newUploadName = $files[0].name;
+    }
   });

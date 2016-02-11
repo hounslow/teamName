@@ -1,6 +1,8 @@
 'use strict';
 
 var express = require('express');
+var mongoose = require('mongoose');
+var passport = require('passport');
 var controller = require('./User.controller');
 
 var router = express.Router();

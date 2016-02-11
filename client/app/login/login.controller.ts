@@ -24,11 +24,12 @@
    */
 
 angular.module('teamNameApp')
-  .controller('LoginCtrl', ['$scope', function($scope) {
+  .controller('LoginCtrl', ['$scope', 'Auth', function($scope) {
     $scope.login = function() {
-
+      Auth.login({
         email: $scope.email,
         password: $scope.password
+      });
       };
   }]);
 

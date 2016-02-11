@@ -18,4 +18,11 @@ angular.module('teamNameApp', [
     });
     $locationProvider.html5Mode(true);
 });
+
+angular.module('teamNameApp');
+app.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+}]);
+
 //# sourceMappingURL=app.js.map

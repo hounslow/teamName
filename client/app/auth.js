@@ -3,7 +3,7 @@
  */
 
 
-angular.module('MyApp')
+angular.module('teamNameApp')
   .factory('Auth', ['$http', '$location', '$rootScope', '$cookieStore', '$alert',
     function($http, $location, $rootScope, $cookieStore, $alert) {
       $rootScope.currentUser = $cookieStore.get('user');

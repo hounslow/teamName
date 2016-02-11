@@ -16,3 +16,4 @@ angular.module('teamNameApp', [
 
     $locationProvider.html5Mode(true);
   });
+

@@ -4,6 +4,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var controller = require('./User.controller');
+require('./User.model');
+require('./config/passport');
 
 var router = express.Router();
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <form>
   <div class="login">
     <ul class="login">
@@ -33,7 +34,65 @@
     </ul>
   </div>
 </form>
+=======
+<!--
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../login/login.css">
+    <title>Sign up page</title>
+</head>
+<body>
+-->
+<style>
+  .navbar{
+    display: none;
+  }
+</style>
+
+<navbar style="display:none;"></navbar>
+  <form>
+    <div class="login">
+      <ul class="login">
+        <li class="login">
+          <label>Username</label>
+          <input class="login" type="text" name="username" placeholder="Username" required></input>
+        </li>
+        <li class="login">
+          <label>E-mail</label>
+          <input class="login" type="text" name="usermail" placeholder="E-mail    " required></input>
+        </li>
+        <li style="text-align: left; margin-left: 40px;">
+        <label>I would like to:</label>
+        </li>
+        <li class="login" style="text-align: left; margin-left: 160px;">
+          <input class="login" type="radio" name="usertype" value="viewer"> View<br>
+        </li>
+        <li class="login" style="text-align: left; margin-left: 160px;">
+          <input class="login" type="radio" name="usertype" value="contributor" required> Contribute<br>
+        </li>
+        <li class="login">
+          <label>Password</label>
+          <input class="login" type="password" name="password" placeholder="Password" required></input>
+        </li>
+<!--        <li>
+          <label for="password">Confirm password</label>
+          <input type="password" name="confirm password" placeholder="Confirm Password" required></input>
+        </li>onclick="window.location.href='/the-feed'"
+-->
+        <li class="login">
+          <input class="login" type="submit" value="Create Account" onclick="window.location.href='/the-feed'"></input> <!-- need to add funciton for creating new user-->
+        </li>
+      </ul>
+    </div>
+  </form>
+
+
+
+>>>>>>> ddf46243120d152db6785f0884cc65f6b8e20b78
 
 <!--
+</body>
 </html>
 -->

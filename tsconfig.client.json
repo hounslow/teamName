@@ -15,6 +15,7 @@
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
         "client/app/profile/profile.ts",
+        "client/app/register/register.controller.ts",
         "client/app/register/register.ts",
         "client/app/the-feed/the-feed.ts",
         "client/components/footer/footer.directive.ts",

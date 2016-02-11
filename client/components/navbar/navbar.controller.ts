@@ -7,7 +7,6 @@ class NavbarController {
     'link': '/'
   },
   { 'title': 'Login',
-    'link': 'localhost:9000/login'
     'link': '/'},
     {'title': 'My Profile',
     'link': '/profile'}];

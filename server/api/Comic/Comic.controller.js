@@ -63,10 +63,11 @@ function handleError(res, statusCode) {
 
 // Gets a list of Comics
 export function index(req, res) {
-  Comic.findAsync()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-}
+  Comic.loadRecent(function (err, Comics){
+    if(err) {return handleError(res, err);
+    return res.json(200, Comics);};
+  });
+};
 
 // Gets a single Comic from the DB
 export function show(req, res) {
@@ -78,10 +79,12 @@ export function show(req, res) {
 
 // Creates a new Comic in the DB
 export function create(req, res) {
-  Comic.createAsync(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
-}
+  var Comic = new Comic(req.body);
+  Comic.save(function(err,Comic){
+    if(err) {return handleError(res, err);}
+    return res.json(201, Comic);
+  });
+};
 
 // Updates an existing Comic in the DB
 export function update(req, res) {

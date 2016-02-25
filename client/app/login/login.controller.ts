@@ -5,7 +5,7 @@ class LoginCtrl {
     $scope.message = 'Hiiiiii';
   }
   /*
-   $scope.getProducts = function() {                 //http://stackoverflow.com/questions/29504962/showing-images-from-different-folders-inside-ng-repeat-loop
+   $scope.getProducts = function() {
    $http.get('api/products').                       //potentially for going through images and showing them
    success(function(data) {
    $scope.products = data;

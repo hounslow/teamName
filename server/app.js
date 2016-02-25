@@ -5,8 +5,7 @@
 'use strict';
 
 require('babel-core');
-
-var express = require('express');
+require('express');
 
 import express from 'express';
 import mongoose from 'mongoose';

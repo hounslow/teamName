@@ -20,20 +20,29 @@
 <div id="headercreateacomic">
 	<h1 id="headercreateacomic">The Feed</h1>
 </div>
+<!--
+<div>
+  {{message}}
+</div>
+-->
+<ul class="comic-list">
+  <li ng-repeat="Comics in Comics">
+    <header>{{ Comics.name }}</header>
+    <img src={{Comics.content}} alt="Shows up when you hover" width="500" height="500" align="middle">
+  </li>
+</ul>
 
-<div class="imgcreateacomic" ng-init="names=['yeoman','ab']">
-  <!-- add when titles needed  <div class="titlecreateacomic"><span><b>Title will go here </b> </div> -->
+<!--
+<div class="imgcreateacomic" ng-init="names=Comics">
+  <!-- add when titles needed  <div class="titlecreateacomic"><span><b>Title will go here </b> </div>
   <img src="http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg" alt="Shows up when you hover" width="500" height="500">
   <div class="imgcreateacomic" ng-repeat="x in names" >
-    <img ng-src="assets/images/{{x}}.png" alt="">
+    <img ng-src="api/Comics/{{x}}.png" alt="">
     <br>
   </div>
 </div>
-<!-- add when authors needed  <div class="titlecreateacomic">Authors will go here</div> -->
-</div>
 
-
-
-<!--
-</html>
 -->
+
+<!-- add when authors needed  <div class="titlecreateacomic">Authors will go here</div> -->
+

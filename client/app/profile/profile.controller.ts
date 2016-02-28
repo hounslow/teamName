@@ -2,5 +2,5 @@
 
 angular.module('teamNameApp')
   .controller('ProfileCtrl', function ($scope) {
-    $scope.message = 'Hello';
+    $scope.message = 'Hellokjkjkkjbprof';
   });

@@ -6,7 +6,8 @@ angular.module('teamNameApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngFileUpload'
 ])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider

@@ -16,10 +16,10 @@ exports.register = function(socket) {
 }
 
 function onSave(socket, doc, cb) {
-  Comic.populate(doc, 'name', function (err, Comic) {
+  //Comic.populate(doc, 'name', function (err, Comic) {
     socket.emit('Comic:save', Comic);
-  });
-}
+  }
+
 
 function onRemove(socket, doc, cb) {
   socket.emit('Comic:remove', doc);

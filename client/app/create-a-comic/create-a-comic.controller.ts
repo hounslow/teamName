@@ -1,17 +1,28 @@
 'use strict';
 
 angular.module('teamNameApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.onUploadSelect = function($files) {
-      $scope.newComic = $files[0].name;
-    };
-
+  .controller('CreateAComicCtrl', function ($scope, $http) {
+    //$scope.newComment = '';
+    //$scope.data = 'none';
+    $scope.message = 'i am not amused';
+    $scope.addComic = function() {
+      var file    = document.querySelector('input[type=file]').files[0];
+      var name = document.querySelector('input[type=file]').files[0].name;
+      var reader = new FileReader();
+      reader.onloadend = function(e){
+        //$scope.data = e.target.result;
+        $http.post('/api/Comics', {name: name , content:e.target.result} );
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+/*
     // Grab the initial set of available comments
     $http.get('/api/Comics').success(function(Comics) {
       $scope.Comics = Comics;
 
       // Update array with any new or deleted items pushed from the socket
-      socket.syncUpdates('Comic', $scope.Comics, function(event, Comic, Comics) {
+      socket.syncUpdates('Comics', $scope.Comics, function(event, Comic, Comics) {
         // This callback is fired after the comments array is updated by the socket listeners
 
         // sort the array every time its modified
@@ -27,12 +38,22 @@ angular.module('teamNameApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('Comic');
     });
-
-    // Use our rest api to post a new comment
+*/
+    // Use our rest api to post a new comic
+/*
     $scope.addComic = function() {
-      $http.post('/api/Comics', { content: $scope.newComic });
-      $scope.newComic = '';
+      $http.post('/api/Comics', { img: $scope.newComic });
+      $scope.newComic = $files;
     };
-  });
+*/
+
+
+
+
+
+
+
+
+
 
 

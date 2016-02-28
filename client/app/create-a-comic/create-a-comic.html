@@ -1,12 +1,11 @@
+
 <!--
-<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="create-a-comic.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
--->
-<!--
+
 <body>
 <ul class="menubar">
   <li class="menubar"><a href="#myprofile">My Profile</a></li>
@@ -20,28 +19,27 @@
 -->
 
 
+<form>
 <div id="headercreateacomic">
   <h1 id="headercreateacomic">Make that Comic!</h1>
 </div>
 <br>
-<form>
-  <div id="buttonscreateacomic" class="form-group">
-    Upload image <input type="file" data-ng-file-select="onFileSelect($files)" accept="image/png, image/jpeg">
-    <span data-ng-if="uploadInProgress">Upload progress: {{ uploadProgress }}</span>
-    <img data-ng-src="uploadedImage" data-ng-if="uploadedImage">
-  </div>  <!--can do multiple="multiple" for multiple-->
-  </p>
   <p id="buttonscreateacomic">
-    <input class="createacomic" type="button" value = "Upload box"></input>
+    <div ng-controller="CreateAComicCtrl">
+    <input type="file" id="file" name="file"/>
+    <button ng-click="addComic()">Publish</button>
+    </div>
   </p>
+  <!--
   <p id="buttonscreateacomic">
     <input class="createacomic" type="button"  onclick="myFunction()" value="Publish my masterpiece"></input>
   </p>
+  -->
   <p id="buttonscreateacomic">
     <input class="createacomic" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
 </form>
-
+<!--
 <br />
 <p id="dvPreview">
 </p>
@@ -75,6 +73,5 @@ $(function () {
     });
 });
 </script>
-
-<!--used for showing image on site, from http://www.aspsnippets.com/Articles/Display-Image-after-selected-selecting-file-name-in-HTML-Input-FileUpload.aspx -->
+-->
 

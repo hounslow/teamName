@@ -4,7 +4,10 @@
 
 'use strict';
 
-import express from 'express';
+require('babel-core');
+var express = require('express'); //note, can't have both require and import, throws error
+
+//import express from 'express';
 import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import config from './config/environment';

@@ -1,1 +1,59 @@
-<div>Coming soon.</div>
+<div class="container">
+  <form class="form-horizontal" role="form">
+
+  <p class = "container" ng-hide="editorEnabled">
+    <button type="button" class="btn btn-primary pull-right">Change Password</button>
+  </p>
+  <p class = "container" ng-hide="editorEnabled">
+    <button type="button" class="btn btn-primary pull-right" ng-click="enableEditor()">Edit Profile</button>
+  </p>
+  <p class = "container" ng-show="editorEnabled">
+    <button type="button" class="btn btn-primary pull-right" ng-click="disableEditor()">Cancel</button>
+  </p>
+  <p class = "container" ng-show="editorEnabled">
+     <button type="submit" class="btn btn-primary pull-right" ng-click="save()">Save Changes</button>
+  </p>
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="username">Username:</label>
+      <div class="col-sm-10">
+        <div ng-hide="editorEnabled">
+          {{title}}
+        </div>
+        <div class = "container" ng-show="editorEnabled">
+          <input type="text" ng-model="editableTitle" ng-show="editorEnabled"> <!--while editing this shows-->
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="personalWebsite">Personal Website:</label>
+      <div class="col-sm-10">
+        <div class = "container" ng-hide="editorEnabled">
+          {{message}}
+        </div>
+        <div class = "container" ng-show="editorEnabled">
+          <input type="text" ng-model="editableMessage" ng-show="editorEnabled">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="interests">Interests:</label>
+      <div class="col-sm-10">
+        <div class = "container" ng-hide="editorEnabled">
+          {{interests}}
+        </div>
+        <div class = "container" ng-show="editorEnabled">
+          <input type="text" ng-model="editableInterests" ng-show="editorEnabled">
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+  </form>
+</div>
+<!-- http://icelab.com.au/articles/click-to-edit-with-angularjs/ -->

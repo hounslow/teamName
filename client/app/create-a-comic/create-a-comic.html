@@ -20,24 +20,24 @@
 
 
 <form>
-<div id="headercreateacomic">
-  <h1 id="headercreateacomic">Make that Comic!</h1>
-</div>
-<br>
+  <div id="headercreateacomic">
+    <h1 id="headercreateacomic">Make that Comic!</h1>
+  </div>
+  <br>
   <p id="buttonscreateacomic">
-    <div ng-controller="CreateAComicCtrl">
-    <input type="file" id="file" name="file"/>
-    <button ng-click="addComic()">Publish</button>
-    </div>
+    <input type="file" id="file" name="file" accept="image/*" />
+  </p>
+  <p id="buttonscreateacomic">
+    <button class="btn btn-default btn-md" ng-click="addComic()">Publish</button>
+  </p>
+  <p id="buttonscreateacomic">
+    <input class="btn btn-default btn-md" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
   <!--
   <p id="buttonscreateacomic">
     <input class="createacomic" type="button"  onclick="myFunction()" value="Publish my masterpiece"></input>
   </p>
   -->
-  <p id="buttonscreateacomic">
-    <input class="createacomic" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
-  </p>
 </form>
 <!--
 <br />

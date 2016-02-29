@@ -2,14 +2,15 @@
 
 angular.module('teamNameApp')
   .controller('ProfileCtrl', function ($scope) {
-    $scope.message = 'Hello';
-    $scope.title = "Welcome to this demo!";
+    $scope.name = "Welcome to this demo!";
+    $scope.personalWeb = "What/'s you website";
+    $scope.interests = "Something";
     $scope.editorEnabled = false;
 
     $scope.enableEditor = function() {
       $scope.editorEnabled = true;
-      $scope.editableTitle = $scope.title;
-      $scope.editableMessage = $scope.message;
+      $scope.editableName = $scope.name;
+      $scope.editablePersonalWeb = $scope.personalWeb;
       $scope.editableInterests = $scope.interests;
     };
 
@@ -18,8 +19,8 @@ angular.module('teamNameApp')
     };
 
     $scope.save = function() {
-      $scope.message = $scope.editableMessage;
-      $scope.title = $scope.editableTitle;
+      $scope.personalWeb = $scope.editablePersonalWeb;
+      $scope.name = $scope.editableName;
       $scope.interests = $scope.editableInterests;
       $scope.disableEditor();
     };

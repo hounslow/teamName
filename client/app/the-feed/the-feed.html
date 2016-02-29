@@ -25,13 +25,15 @@
   {{message}}
 </div>
 -->
-<ul class="comic-list">
-  <li ng-repeat="Comics in Comics">
+<div class="imgcreateacomic">
+<ul style="list-style-type:none;">
+  <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
     <header>{{ Comics.name }}</header>
     <img src={{Comics.content}} alt="Shows up when you hover" width="500" height="500" align="middle">
   </li>
+  <br>
 </ul>
-
+</div>
 <!--
 <div class="imgcreateacomic" ng-init="names=Comics">
   <!-- add when titles needed  <div class="titlecreateacomic"><span><b>Title will go here </b> </div>

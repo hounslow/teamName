@@ -27,12 +27,12 @@ export function isAuthenticated() {
     })
     // Attach user to request
     .use(function(req, res, next) {
-      User.findByIdAsync(req.User._id)
+      User.findByIdAsync(req.user._id) //not happy with uppercase?
         .then(User => {
           if (!User) {
             return res.status(401).end();
           }
-          req.User = User;
+          req.user = User;
           next();
         })
         .catch(err => next(err));

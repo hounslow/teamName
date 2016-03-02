@@ -132,7 +132,7 @@ export function destroy(req, res) {
  * Change a users password
  */
 export function changePassword(req, res, next) {
-  var userId = req.User._id;
+  var userId = req.user._id;
   var oldPass = String(req.body.oldPassword);
   var newPass = String(req.body.newPassword);
 
@@ -155,13 +155,16 @@ export function changePassword(req, res, next) {
  * Get my info
  */
 export function me(req, res, next) {
-  var userId = req.User._id;
+  console.log('got to before requresting id');
+
+  var userId = req.user._id;
 
   User.findOneAsync({ _id: userId }, '-salt -password')
     .then(User => { // don't ever give out the password or salt
       if (!User) {
         return res.status(401).end();
       }
+  console.log('got here');
       res.json(User);
     })
     .catch(err => next(err));

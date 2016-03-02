@@ -4,6 +4,13 @@ input.login[type=text] {
     margin: 8px 0;
     box-sizing: border-box;
 }
+input.login[type=email] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
 input.login[type=password] {
     width: 60%;
     padding: 12px 20px;

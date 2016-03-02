@@ -14,17 +14,29 @@
   }
 </style>
 
-  <form>
+  <form class="form" name="form" ng-submit="bm.register(form)" novalidate>
     <div class="login well">
       <ul class="login">
-        <li class="login">
+        <li class="login" ng-class="{ 'has-success': form.name.$valid && bm.submitted, 'has-error': form.name.$invalid && bm.submitted }">
           <label>Username</label>
-          <input class="login" type="text" name="username" placeholder="Username" required></input>
+          <input class="login" type="text" name="name" placeholder="Username" ng-model="bm.user.name" required></input>
         </li>
-        <li class="login">
+        <p class="help-block" ng-show="form.name.$error.required && bm.submitted" style = "text-align:right; color: red;">
+            A name is required
+        </p>
+        <li class="login" ng-class="{ 'has-success': form.email.$valid && bm.submitted, 'has-error': form.email.$invalid && bm.submitted }">
           <label>E-mail</label>
-          <input class="login" type="text" name="usermail" placeholder="E-mail    " required></input>
+          <input class="login" type="email" name="email" placeholder="E-mail" ng-model="bm.user.email" required mongoose-error></input>
         </li>
+          <p class="help-block" ng-show="form.email.$error.email && bm.submitted" style = "text-align:right; color: red;">
+            Are you sure that's a valid email?
+          </p>
+          <p class="help-block" ng-show="form.email.$error.required && bm.submitted" style = "text-align:right; color: red;">
+            What is your email address?
+          </p>
+          <p class="help-block" ng-show="form.email.$error.mongoose" style = "text-align:right; color: red;">
+            {{ bm.errors.email }}
+          </p>
         <li style="text-align: left; margin-left: 40px;">
         <label>I would like to:</label>
         </li>
@@ -34,17 +46,23 @@
         <li class="login" style="text-align: left; margin-left: 160px;">
           <input class="login" type="radio" name="usertype" value="contributor" required> Contribute<br>
         </li>
-        <li class="login">
+        <li class="login" ng-class="{ 'has-success': form.password.$valid && bm.submitted, 'has-error': form.password.$invalid && bm.submitted }">
           <label>Password</label>
-          <input class="login" type="password" name="password" placeholder="Password" required></input>
+          <input class="login" placeholder="Password" type="password" name="password" ng-model="bm.user.password" ng-minlength="3" required mongoose-error></input>
         </li>
-<!--        <li>
-          <label for="password">Confirm password</label>
-          <input type="password" name="confirm password" placeholder="Confirm Password" required></input>
-        </li>onclick="window.location.href='/the-feed'"
--->
+        <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && bm.submitted" style = "text-align:right; color: red;">
+            Password must be at least 3 characters long.
+        </p>
+        <li class="login" ng-class="{ 'has-success': form.confirmPassword.$valid && bm.submitted, 'has-error': form.confirmPassword.$invalid && bm.submitted }">
+           <label>Retype Password</label>
+          <input class="login" placeholder="Confirm Password" type="password" name="confirmPassword" ng-model="bm.user.confirmPassword"
+                 match="bm.user.password" ng-minlength="3" required></input>
+        <p class="help-block"
+             ng-show="form.confirmPassword.$error.match && bm.submitted" style = "text-align:right; color: red;">
+            Passwords don't match.
+        </p>
         <li class="login">
-          <input class="login" type="submit" value="Create Account" onclick="window.location.href='/the-feed'"></input> <!-- need to add funciton for creating new user-->
+          <input class="login" type="submit" value="Create Account"></input> 
         </li>
       </ul>
     </div>

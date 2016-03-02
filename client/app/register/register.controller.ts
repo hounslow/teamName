@@ -16,10 +16,11 @@ class RegisterCtrl {
     this.submitted = true;
 
     if (form.$valid) {
-      console.log('GOT HEREEEEEE'+this.user.name);
+      console.log('GOT HEREEEEEE register contr'+this.user.name);
+      console.log('the role is '+this.user.role);
 
       this.Auth.createUser({
-      name: this.user.name,
+        name: this.user.name,
         email: this.user.email,
         password: this.user.password
       })

@@ -12,7 +12,7 @@ import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import config from './config/environment';
 import http from 'http';
-var path = require('path');
+//var path = require('path'); //seems to be here for nothing
 
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);

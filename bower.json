@@ -15,7 +15,8 @@
     "lodash": "~2.4.1",
     "stormpath-sdk-angularjs": "^0.9.0",
     "angular-file-upload": "^2.2.0",
-    "ng-file-upload": "^12.0.1"
+    "ng-file-upload": "^12.0.1",
+    "angular-validation-match": "^1.7.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

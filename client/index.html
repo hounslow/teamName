@@ -22,11 +22,14 @@
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/create-a-comic/create-a-comic.css">
       <link rel="stylesheet" href="app/login/login.css">
+      <link rel="stylesheet" href="app/login3/login3.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/my-comics/my-comics.css">
       <link rel="stylesheet" href="app/profile/profile.css">
       <link rel="stylesheet" href="app/register/register.css">
       <link rel="stylesheet" href="app/search/search.css">
+      <link rel="stylesheet" href="app/settings/settings.css">
+      <link rel="stylesheet" href="app/signup/signup.css">
       <link rel="stylesheet" href="app/the-feed/the-feed.css">
       <link rel="stylesheet" href="components/footer/footer.css">
       <link rel="stylesheet" href="components/modal/modal.css">
@@ -72,15 +75,18 @@
       <script src="bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.min.js"></script>
       <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
       <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+      <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,client}) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
-      <script src="app/register/register.js"></script>
+      <script src="app/settings/settings.js"></script>
       <script src="app/create-a-comic/create-a-comic.controller.js"></script>
       <script src="app/login/login.controller.js"></script>
       <script src="app/login/login.js"></script>
+      <script src="app/login3/login.3controller.js"></script>
+      <script src="app/login3/login3.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
       <script src="app/my-comics/my-comics.controller.js"></script>
@@ -88,13 +94,23 @@
       <script src="app/profile/profile.controller.js"></script>
       <script src="app/profile/profile.js"></script>
       <script src="app/register/register.controller.js"></script>
-      <script src="app/create-a-comic/create-a-comic.js"></script>
+      <script src="app/register/register.js"></script>
       <script src="app/search/search.controller.js"></script>
       <script src="app/search/search.js"></script>
+      <script src="app/settings/settings.controller.js"></script>
+      <script src="app/create-a-comic/create-a-comic.js"></script>
+      <script src="app/signup/signup.controller.js"></script>
+      <script src="app/signup/signup.js"></script>
       <script src="app/the-feed/the-feed.controller.js"></script>
       <script src="app/the-feed/the-feed.js"></script>
+      <script src="components/auth/auth.module.js"></script>
+      <script src="components/auth/auth.service.js"></script>
+      <script src="components/auth/interceptor.service.js"></script>
+      <script src="components/auth/router.decorator.js"></script>
+      <script src="components/auth/user.service.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>
+      <script src="components/mongoose-error/mongoose-error.directive.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
       <script src="components/navbar/navbar.directive.js"></script>
       <script src="components/util/util.module.js"></script>

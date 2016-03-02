@@ -2,18 +2,27 @@
 
 var proxyquire = require('proxyquire').noPreserveCache();
 
-var UserCtrlStub = {
-  index: 'UserCtrl.index',
-  show: 'UserCtrl.show',
-  create: 'UserCtrl.create',
-  update: 'UserCtrl.update',
-  destroy: 'UserCtrl.destroy'
+var userCtrlStub = {
+  index: 'userCtrl.index',
+  destroy: 'userCtrl.destroy',
+  me: 'userCtrl.me',
+  changePassword: 'userCtrl.changePassword',
+  show: 'userCtrl.show',
+  create: 'userCtrl.create'
+};
+
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
 };
 
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
-  patch: sinon.spy(),
   post: sinon.spy(),
   delete: sinon.spy()
 };

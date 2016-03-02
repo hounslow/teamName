@@ -11,6 +11,16 @@
 
 import _ from 'lodash';
 import User from './User.model';
+import passport from 'passport';
+import config from '../../config/environment';
+var jwt = require('jsonwebtoken');
+
+function validationError(res, statusCode) {
+  statusCode = statusCode || 422;
+  return function(err) {
+    res.status(statusCode).json(err);
+  }
+}
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -74,11 +84,28 @@ export function show(req, res) {
     .catch(handleError(res));
 }
 
-// Creates a new User in the DB
+/*// Creates a new User in the DB
 export function create(req, res) {
   User.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
+}*/
+
+/**
+ * Creates a new user
+ */
+export function create(req, res, next) {
+  var newUser = new User(req.body);
+  newUser.provider = 'local';
+  newUser.role = 'user';
+  newUser.saveAsync()
+    .spread(function(User) {
+      var token = jwt.sign({ _id: User._id }, config.secrets.session, {
+        expiresIn: 60 * 60 * 5
+      });
+      res.json({ token });
+    })
+    .catch(validationError(res));
 }
 
 // Updates an existing User in the DB
@@ -99,4 +126,52 @@ export function destroy(req, res) {
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
+}
+
+/**
+ * Change a users password
+ */
+export function changePassword(req, res, next) {
+  var userId = req.User._id;
+  var oldPass = String(req.body.oldPassword);
+  var newPass = String(req.body.newPassword);
+
+  User.findByIdAsync(userId)
+    .then(User => {
+      if (User.authenticate(oldPass)) {
+        User.password = newPass;
+        return User.saveAsync()
+          .then(() => {
+            res.status(204).end();
+          })
+          .catch(validationError(res));
+      } else {
+        return res.status(403).end();
+      }
+    });
+}
+
+/**
+ * Get my info
+ */
+export function me(req, res, next) {
+  var userId = req.User._id;
+
+  User.findOneAsync({ _id: userId }, '-salt -password')
+    .then(User => { // don't ever give out the password or salt
+      if (!User) {
+        return res.status(401).end();
+      }
+      res.json(User);
+    })
+    .catch(err => next(err));
+}
+
+
+
+/**
+ * Authentication callback
+ */
+export function authCallback(req, res, next) {
+  res.redirect('/login'); //I changed to login
 }

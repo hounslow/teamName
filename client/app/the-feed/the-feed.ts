@@ -3,8 +3,9 @@
 angular.module('teamNameApp')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/the-feed', {
-        templateUrl: 'app/the-feed/the-feed.html',
-        controller: 'TheFeedCtrl'
+		.when('/the-feed', {
+			templateUrl: 'app/the-feed/the-feed.html',
+			controller: 'TheFeedCtrl',
+			authenticate: true   //added for needing authentication to access
       });
-  });
+});

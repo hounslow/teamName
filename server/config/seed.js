@@ -5,7 +5,9 @@
 
 'use strict';
 import Thing from '../api/thing/thing.model';
+import User from '../api/User/User.model';
 
+console.log('populating things');
 Thing.find({}).removeAsync()
   .then(() => {
     Thing.create({
@@ -35,6 +37,27 @@ Thing.find({}).removeAsync()
       name: 'Deployment Ready',
       info: 'Easily deploy your app to Heroku or Openshift with the heroku ' +
              'and openshift subgenerators'
+    })
+    .then(() => {
+      console.log('finished populating things');
     });
   });
 
+User.find({}).removeAsync()
+  .then(() => {
+    User.createAsync({
+      provider: 'local',
+      name: 'Test User',
+      email: 'test@example.com',
+      password: 'test'
+    }, {
+      provider: 'local',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@example.com',
+      password: 'admin'
+    })
+    .then(() => {
+      console.log('finished populating users');
+    });
+  });

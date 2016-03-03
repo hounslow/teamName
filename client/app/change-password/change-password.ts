@@ -6,8 +6,8 @@ angular.module('teamNameApp')
       .when('/change-password', {
         templateUrl: 'app/change-password/change-password.html',
         controller: 'ChangePasswordCtrl',
-        controllerAs: 'vm'
-//        authenticate: true
+        controllerAs: 'vm',
+        authenticate: true
       });
   // })
   // .run(function($rootScope) {

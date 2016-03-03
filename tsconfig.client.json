@@ -18,6 +18,8 @@
         "client/app/change-password/change-password.ts",
         "client/app/create-a-comic/create-a-comic.controller.ts",
         "client/app/create-a-comic/create-a-comic.ts",
+        "client/app/login/login.controller.ts",
+        "client/app/login/login.ts",
         "client/app/login2/login2.controller.ts",
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",

@@ -3,27 +3,10 @@
 angular.module('teamNameApp')
   .config(function($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'app/login2/login2.html',
-        controller: 'LoginController',
-        controllerAs: 'vm'
-      })
       .when('/login2', {
         templateUrl: 'app/login2/login2.html',
         controller: 'LoginController',
       controllerAs: 'vm'
-      })
-      .when('/logout', {
-        name: 'logout',
-        referrer: '/login2', //I changed from / to login
-        template: '',
-        controller: function($location, $route, Auth) {
-          var referrer = $route.current.params.referrer ||
-                          $route.current.referrer ||
-                          '/login2';              //I changed from / to login
-          Auth.logout();
-          $location.path(referrer);
-        }
       });
       // .when('/signup', {
       //   templateUrl: 'app/signup/signup.html',

@@ -9,7 +9,6 @@
         "client/typings/**/*.d.ts"
     ],
     "files": [
-        "client/app/account.ts",
         "client/app/admin/admin.controller.ts",
         "client/app/admin/admin.module.ts",
         "client/app/admin/admin.router.ts",
@@ -20,7 +19,6 @@
         "client/app/create-a-comic/create-a-comic.ts",
         "client/app/login/login.controller.ts",
         "client/app/login/login.ts",
-        "client/app/login2/login2.controller.ts",
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
         "client/app/my-comics/my-comics.controller.ts",
@@ -31,7 +29,6 @@
         "client/app/register/register.ts",
         "client/app/search/search.controller.ts",
         "client/app/search/search.ts",
-        "client/app/signup/signup.controller.ts",
         "client/app/the-feed/the-feed.controller.ts",
         "client/app/the-feed/the-feed.ts",
         "client/components/auth/auth.module.ts",

@@ -5,6 +5,7 @@ angular.module('teamNameApp')
     $routeProvider
       .when('/the-feed', {
         templateUrl: 'app/the-feed/the-feed.html',
-        controller: 'TheFeedCtrl'
-      });
+        controller: 'TheFeedCtrl',
+        authenticate: true
+	    });
   });

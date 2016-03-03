@@ -10,7 +10,7 @@ angular.module('teamNameApp')
       })
       .when('/login', {
         templateUrl: 'app/login/login.html',
-        controller: 'LoginController',
+        controller: 'LoginCtrl',
       controllerAs: 'vm'
       })
       .when('/logout', {
@@ -22,7 +22,7 @@ angular.module('teamNameApp')
                           $route.current.referrer ||
                           '/login';              //I changed from / to login
           Auth.logout();
-          $location.path(referrer);
+          $location.path(referrer); //bring to login
         }
       });
   })

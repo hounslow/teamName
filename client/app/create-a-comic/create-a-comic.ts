@@ -5,6 +5,7 @@ angular.module('teamNameApp')
     $routeProvider
       .when('/create-a-comic', {
         templateUrl: 'app/create-a-comic/create-a-comic.html',
-        controller: 'CreateAComicCtrl'
-      });
+        controller: 'CreateAComicCtrl',
+        authenticate: true
+	    });
   });

@@ -4,7 +4,7 @@ import User from './user.model';
 import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
-
+console.log('in index ja in api user controller');
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
   return function(err) {

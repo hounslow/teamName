@@ -1,5 +1,5 @@
 'use strict';
-
+console.log('in index ja in api user integration');
 import app from '../..';
 import User from './user.model';
 import request from 'supertest';

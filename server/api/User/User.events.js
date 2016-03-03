@@ -3,7 +3,7 @@
  */
 
 'use strict';
-
+console.log('in index ja in api user integration');
 import {EventEmitter} from 'events';
 import User from './user.model';
 var UserEvents = new EventEmitter();

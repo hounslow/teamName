@@ -12,7 +12,7 @@ var genUser = function() {
   });
   return user;
 };
-
+console.log('in index ja in api user model');
 describe('User Model', function() {
   before(function() {
     // Clear users before testing

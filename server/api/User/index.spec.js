@@ -1,7 +1,7 @@
 'use strict';
 
 var proxyquire = require('proxyquire').noPreserveCache();
-
+console.log('in index ja in api user index');
 var userCtrlStub = {
   index: 'userCtrl.index',
   destroy: 'userCtrl.destroy',

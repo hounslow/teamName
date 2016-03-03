@@ -3,7 +3,7 @@
 import crypto from 'crypto';
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 import {Schema} from 'mongoose';
-
+console.log('in index ja in api user model');
 var UserSchema = new Schema({
   name: String,
   email: {

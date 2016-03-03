@@ -1,147 +1,65 @@
 'use strict';
 
-var app = require('../..');
+import app from '../..';
+import User from './user.model';
 import request from 'supertest';
 
-var newUser;
-
 describe('User API:', function() {
+  var user;
 
-  describe('GET /api/Users', function() {
-    var Users;
+  // Clear users before testing
+  before(function() {
+    return User.removeAsync().then(function() {
+      user = new User({
+        name: 'Fake User',
+        email: 'test@example.com',
+        password: 'password'
+      });
 
-    beforeEach(function(done) {
-      request(app)
-        .get('/api/Users')
-        .expect(200)
-        .expect('Content-Type', /json/)
-        .end((err, res) => {
-          if (err) {
-            return done(err);
-          }
-          Users = res.body;
-          done();
-        });
+      return user.saveAsync();
     });
-
-    it('should respond with JSON array', function() {
-      Users.should.be.instanceOf(Array);
-    });
-
   });
 
-  describe('POST /api/Users', function() {
-    beforeEach(function(done) {
+  // Clear users after testing
+  after(function() {
+    return User.removeAsync();
+  });
+
+  describe('GET /api/users/me', function() {
+    var token;
+
+    before(function(done) {
       request(app)
-        .post('/api/Users')
+        .post('/auth/local')
         .send({
-          name: 'New User',
-          info: 'This is the brand new User!!!'
-        })
-        .expect(201)
-        .expect('Content-Type', /json/)
-        .end((err, res) => {
-          if (err) {
-            return done(err);
-          }
-          newUser = res.body;
-          done();
-        });
-    });
-
-    it('should respond with the newly created User', function() {
-      newUser.name.should.equal('New User');
-      newUser.info.should.equal('This is the brand new User!!!');
-    });
-
-  });
-
-  describe('GET /api/Users/:id', function() {
-    var User;
-
-    beforeEach(function(done) {
-      request(app)
-        .get('/api/Users/' + newUser._id)
-        .expect(200)
-        .expect('Content-Type', /json/)
-        .end((err, res) => {
-          if (err) {
-            return done(err);
-          }
-          User = res.body;
-          done();
-        });
-    });
-
-    afterEach(function() {
-      User = {};
-    });
-
-    it('should respond with the requested User', function() {
-      User.name.should.equal('New User');
-      User.info.should.equal('This is the brand new User!!!');
-    });
-
-  });
-
-  describe('PUT /api/Users/:id', function() {
-    var updatedUser;
-
-    beforeEach(function(done) {
-      request(app)
-        .put('/api/Users/' + newUser._id)
-        .send({
-          name: 'Updated User',
-          info: 'This is the updated User!!!'
+          email: 'test@example.com',
+          password: 'password'
         })
         .expect(200)
         .expect('Content-Type', /json/)
-        .end(function(err, res) {
-          if (err) {
-            return done(err);
-          }
-          updatedUser = res.body;
-          done();
-        });
-    });
-
-    afterEach(function() {
-      updatedUser = {};
-    });
-
-    it('should respond with the updated User', function() {
-      updatedUser.name.should.equal('Updated User');
-      updatedUser.info.should.equal('This is the updated User!!!');
-    });
-
-  });
-
-  describe('DELETE /api/Users/:id', function() {
-
-    it('should respond with 204 on successful removal', function(done) {
-      request(app)
-        .delete('/api/Users/' + newUser._id)
-        .expect(204)
         .end((err, res) => {
-          if (err) {
-            return done(err);
-          }
+          token = res.body.token;
           done();
         });
     });
 
-    it('should respond with 404 when User does not exist', function(done) {
+    it('should respond with a user profile when authenticated', function(done) {
       request(app)
-        .delete('/api/Users/' + newUser._id)
-        .expect(404)
+        .get('/api/users/me')
+        .set('authorization', 'Bearer ' + token)
+        .expect(200)
+        .expect('Content-Type', /json/)
         .end((err, res) => {
-          if (err) {
-            return done(err);
-          }
+          res.body._id.toString().should.equal(user._id.toString());
           done();
         });
     });
 
+    it('should respond with a 401 when not authenticated', function(done) {
+      request(app)
+        .get('/api/users/me')
+        .expect(401)
+        .end(done);
+    });
   });
-
 });

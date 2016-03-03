@@ -4,7 +4,7 @@
 
 'use strict';
 
-require('babel-core');
+//require('babel-core');
 var express = require('express'); //note, can't have both require and import, throws error
 
 //import express from 'express';
@@ -27,6 +27,11 @@ if (config.seedDB) { require('./config/seed'); }
 // Setup server
 var app = express();
 var server = http.createServer(app);
+var socketio = require('socket.io')(server, {
+  serveClient: config.env !== 'production',
+  path: '/socket.io-client'
+});
+require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
 

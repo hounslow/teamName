@@ -4,38 +4,38 @@ angular.module('teamNameApp')
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/login/login.html',
+        templateUrl: 'app/login2/login2.html',
         controller: 'LoginController',
         controllerAs: 'vm'
       })
-      .when('/login', {
-        templateUrl: 'app/login/login.html',
+      .when('/login2', {
+        templateUrl: 'app/login2/login2.html',
         controller: 'LoginController',
       controllerAs: 'vm'
       })
       .when('/logout', {
         name: 'logout',
-        referrer: '/login', //I changed from / to login
+        referrer: '/login2', //I changed from / to login
         template: '',
         controller: function($location, $route, Auth) {
           var referrer = $route.current.params.referrer ||
                           $route.current.referrer ||
-                          '/login';              //I changed from / to login
+                          '/login2';              //I changed from / to login
           Auth.logout();
           $location.path(referrer);
         }
-      })
+      });
       // .when('/signup', {
       //   templateUrl: 'app/signup/signup.html',
       //   controller: 'SignupController',
       //   controllerAs: 'vm'
       // })
-      .when('/settings', {
-        templateUrl: 'app/settings/settings.html',
-        controller: 'SettingsController',
-        controllerAs: 'vm',
-        authenticate: true
-      });
+      // .when('/settings', {
+      //   templateUrl: 'app/settings/settings.html',
+      //   controller: 'SettingsController',
+      //   controllerAs: 'vm',
+      //   authenticate: true
+      // });
   })
   .run(function($rootScope) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {

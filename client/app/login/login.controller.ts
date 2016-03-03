@@ -20,7 +20,7 @@ class LoginController {
       })
       .then(() => {
         // Logged in, redirect to home
-        this.$location.path('/');
+        this.$location.path('/the-feed');
       })
       .catch(err => {
         this.errors.other = err.message;

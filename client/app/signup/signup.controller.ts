@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 class SignupController {
@@ -41,3 +42,4 @@ class SignupController {
 
 angular.module('teamNameApp')
   .controller('SignupController', SignupController);
+*/

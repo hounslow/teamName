@@ -15,7 +15,7 @@ angular.module('teamNameApp', [
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login' //I changed to login
       });
 
     $locationProvider.html5Mode(true);

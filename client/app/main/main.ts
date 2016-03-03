@@ -3,9 +3,10 @@
 angular.module('teamNameApp')
   .config(function($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/main', {
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        authenticate: true
       });
   });

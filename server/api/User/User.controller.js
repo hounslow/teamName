@@ -155,20 +155,20 @@ export function changePassword(req, res, next) {
  * Get my info
  */
 export function me(req, res, next) {
-  console.log('got to before requresting id');
+
 
   var userId = req.user._id;
 
   User.findOneAsync({ _id: userId }, '-salt -password')
-    .then(User => { // don't ever give out the password or salt
-      if (!User) {
+    .then(user => { // don't ever give out the password or salt
+      if (!user) {
         return res.status(401).end();
       }
-  console.log('got here');
-      res.json(User);
+      res.json(user);
     })
     .catch(err => next(err));
 }
+
 
 
 

@@ -30,6 +30,7 @@
   <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
     <header>{{ Comics.name }}</header>
     <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle">
+    <button class="btn btn-default btn-md" ng-click="deleteComic(Comics)">Delete</button>
   </li>
   <br>
 </ul>

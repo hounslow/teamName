@@ -16,16 +16,22 @@
   <li class="menubar"><a href="#createacomic">Create a Comic</a></li>
   <li class="menubar"><a href="#logout">Log out</a></li>
 </ul>
--->   
+-->
+
+
 
 
 <form>
   <div id="headercreateacomic">
     <h1 id="headercreateacomic">Make that Comic!</h1>
   </div>
+  <p id="buttonscreateacomic">
+  <TD>Title</TD>
+  <TD><input type="text" value="" name="title" ng-model="newTitle" title="Enter Title"/><p>
+  </p>
   <br>
   <p id="buttonscreateacomic">
-    <input type="file" id="file" name="file" accept="image/*" />
+    <input type="file" id="files"  multiple="multiple" accept="image/*" />
   </p>
   <p id="buttonscreateacomic">
     <button class="btn btn-default btn-md" ng-click="addComic()">Publish</button>
@@ -33,6 +39,11 @@
   <p id="buttonscreateacomic">
     <input class="btn btn-default btn-md" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
+
+  <div>
+    {{message}}
+  </div>
+
   <!--
   <p id="buttonscreateacomic">
     <input class="createacomic" type="button"  onclick="myFunction()" value="Publish my masterpiece"></input>

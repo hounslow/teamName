@@ -1,4 +1,4 @@
-// Generated on 2016-02-08 using generator-angular-fullstack 3.3.0
+// Generated on 2016-03-03 using generator-angular-fullstack 3.3.0
 'use strict';
 
 module.exports = function (grunt) {
@@ -606,7 +606,9 @@ module.exports = function (grunt) {
             return '<script src="' + filePath + '"></script>';
           },
           sort: function(a, b) {
-            var module = /\.module\.js$/;
+//            var module = /\.module\.js$/;
+            var module = /[\w/]+.module.ts$/;
+//            var module = /\.module\.{js,ts}$/;
             var aMod = module.test(a);
             var bMod = module.test(b);
             // inject *.module.js first

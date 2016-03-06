@@ -5,6 +5,7 @@ angular.module('teamNameApp')
     $routeProvider
       .when('/my-comics', {
         templateUrl: 'app/my-comics/my-comics.html',
-        controller: 'MyComicsCtrl'
-      });
+        controller: 'MyComicsCtrl',
+        authenticate: true
+	    });
   });

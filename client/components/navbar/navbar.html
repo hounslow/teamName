@@ -14,25 +14,41 @@
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
           <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
-        <li if-user ng-class="{active: isActive('/myprofile')}">
+        <li ng-class="{active: nav.isActive('/profile')}">
           <a ng-href="/profile">My Profile</a>
         </li>
-        <li if-user ng-class="{active: isActive('/mycomics')}">
+        <li ng-class="{active: nav.isActive('/my-comics')}">
           <a ng-href="/my-comics">My Comics</a>
         </li>
-        <li if-user ng-class="{active: isActive('/the-feed')}">
+        <li ng-class="{active: nav.isActive('/the-feed')}">
           <a ng-href="/the-feed">The Feed</a>
         </li>
-        <li if-user ng-class="{active: isActive('/search')}">
+        <li ng-class="{active: nav.isActive('/search')}">
           <a ng-href="/search">Search</a>
         </li>
-        <li if-user ng-class="{active: isActive('/create-a-comic')}">
+        <li ng-class="{active: nav.isActive('/create-a-comic')}">
           <a ng-href="/create-a-comic">Create A Comic</a>
         </li>
-        <li if-user ng-class="{active: isActive('/login')}">
-          <a href="/login">Log out</a>
-        </li>
+        <li ng-show="nav.isLoggedIn()"><a href="/logout">Log out</a></li>
+        <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
       </ul>
     </div>
   </div>
 </div>
+<!--        <li ng-repeat="item in nav.menu" ng-class="{active: nav.isActive(item.link)}">
+            <a ng-href="{{item.link}}">{{item.title}}</a>
+        </li>
+        <li ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a href="/admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a href="/signup">Sign up</a></li>
+        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a href="/login">Login</a></li>
+        <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
+        <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="nav.isLoggedIn()"><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+-->

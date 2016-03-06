@@ -5,6 +5,15 @@ angular.module('teamNameApp')
     $routeProvider
       .when('/register', {
         templateUrl: 'app/register/register.html',
-        controller: 'RegisterCtrl'
+        controller: 'RegisterCtrl',
+        controllerAs: 'vm'
       });
+
+ // })
+ // .run(function($rootScope) {
+ //   $rootScope.$on('$routeChangeStart', function(event, next, current) {
+ //     if (next.name === 'logout' && current && current.originalPath && !current.authenticate) {
+ //       next.referrer = current.originalPath;
+ //     }
+ //   });
   });

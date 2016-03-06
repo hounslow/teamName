@@ -5,6 +5,7 @@ angular.module('teamNameApp')
     $routeProvider
       .when('/search', {
         templateUrl: 'app/search/search.html',
-        controller: 'SearchCtrl'
+        controller: 'SearchCtrl',
+        authenticate: true
       });
   });

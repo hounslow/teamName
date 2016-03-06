@@ -12,18 +12,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
-      'client/bower_components/jquery/dist/jquery.js',
-      'client/bower_components/angular/angular.js',
-      'client/bower_components/angular-resource/angular-resource.js',
-      'client/bower_components/angular-cookies/angular-cookies.js',
-      'client/bower_components/angular-sanitize/angular-sanitize.js',
-      'client/bower_components/angular-route/angular-route.js',
-      'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'client/bower_components/lodash/dist/lodash.compat.js',
-      'client/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.min.js',
-      'client/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.min.js',
-      'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
+      'node_modules/socket.io-client/socket.io.js',
       '.tmp/app/app.js',
       '.tmp/{app,components}/**/*.module.js',
       '.tmp/{app,components}/**/*.js',

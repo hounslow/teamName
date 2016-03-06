@@ -5,6 +5,7 @@ angular.module('teamNameApp')
     $routeProvider
       .when('/profile', {
         templateUrl: 'app/profile/profile.html',
-        controller: 'ProfileCtrl'
-      });
+        controller: 'ProfileCtrl',
+        authenticate: true
+	    });
   });

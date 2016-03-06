@@ -48,6 +48,7 @@
         <p class="help-block" ng-show="form.role.$error.required && vm.submitted" style = "text-align:right; color: red;">
             Pick one!
         </p>
+   <!--     <p>role is {{vm.user.role}}</p> -->
         <li class="login" ng-class="{ 'has-success': form.password.$valid && vm.submitted, 'has-error': form.password.$invalid && vm.submitted }">
           <label>Password</label>
           <input class="login" placeholder="Password" type="password" name="password" ng-model="vm.user.password" ng-minlength="3" required mongoose-error></input>

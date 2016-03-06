@@ -43,7 +43,7 @@ User.find({}).removeAsync()
   .then(() => {
     User.createAsync({
       provider: 'local',
-      name: 'Test User',
+      name: 'Test user',
       email: 'test@example.com',
       password: 'test'
     }, {

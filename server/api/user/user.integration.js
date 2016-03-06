@@ -4,14 +4,14 @@ import app from '../..';
 import User from './user.model';
 import request from 'supertest';
 
-describe('User API:', function() {
+describe('user API:', function() {
   var user;
 
   // Clear users before testing
   before(function() {
     return User.removeAsync().then(function() {
       user = new User({
-        name: 'Fake User',
+        name: 'Fake user',
         email: 'test@example.com',
         password: 'password'
       });

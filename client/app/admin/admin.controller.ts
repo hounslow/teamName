@@ -4,7 +4,7 @@
 
 class AdminController {
   constructor(User) {
-    // Use the User $resource to fetch all users
+    // Use the user $resource to fetch all users
     this.users = User.query();
   }
 

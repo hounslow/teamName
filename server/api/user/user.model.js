@@ -16,6 +16,14 @@ var UserSchema = new Schema({
   },
   password: String,
   provider: String,
+  interestsList: {
+    type: String,
+    default: 'No interests added'
+  },
+  personalWebsite: {
+    type: String,
+    default: 'No personal website added'
+  },
   salt: String
 });
 

@@ -37,7 +37,9 @@ export function index(req, res) {
 export function create(req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'user';
+  newUser.interestsList = 'No interests added';
+  newUser.personalWebsite = 'No personal website added';
+//  newUser.role = 'user';  //not necessary anymore
   newUser.saveAsync()
     .spread(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
@@ -97,6 +99,44 @@ export function changePassword(req, res, next) {
         return res.status(403).end();
       }
     });
+}
+
+/**
+ * Change a user's interests
+ */
+export function changeInterestsList(req, res, next) {
+  console.log('got to change i-l in users controller');
+  var userId = String(req.body.id);
+  var newInterestsList = String(req.body.interestsList);
+
+  User.findByIdAsync(userId)
+    .then(user => {
+    user.interestsList = newInterestsList;
+    return user.saveAsync()
+        .then(() => {
+        res.status(204).end();
+  })
+  .catch(validationError(res));
+});
+}
+
+/**
+ * Change a user's personal website
+ */
+export function changePersonalWebsite(req, res, next) {
+  console.log('got to change personal website in users controller');
+  var userId = String(req.body.id);
+  var newPersonalWebsite = String(req.body.personalWebsite);
+
+  User.findByIdAsync(userId)
+    .then(user => {
+    user.personalWebsite = newPersonalWebsite;
+  return user.saveAsync()
+      .then(() => {
+      res.status(204).end();
+})
+.catch(validationError(res));
+});
 }
 
 /**

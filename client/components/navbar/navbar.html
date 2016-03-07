@@ -26,7 +26,7 @@
         <li ng-class="{active: nav.isActive('/search')}">
           <a ng-href="/search">Search</a>
         </li>
-        <li ng-class="{active: nav.isActive('/create-a-comic')}">
+        <li ng-show="nav.isUser()" ng-class="{active: nav.isActive('/create-a-comic')}">
           <a ng-href="/create-a-comic">Create A Comic</a>
         </li>
         <li ng-show="nav.isLoggedIn()"><a href="/logout">Log out</a></li>

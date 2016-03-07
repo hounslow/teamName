@@ -12,6 +12,18 @@ function UserResource($resource) {
         controller: 'password'
       }
     },
+    //changeInterestsList: {
+    //  method: 'PUT',
+    //  params: {
+    //    controller: 'interests-list'
+    //  }
+    //},
+    //changePersonalWebsite: {
+    //  method: 'PUT',
+    //  params: {
+    //    controller: 'personal-website'
+    //  }
+    //},
     get: {
       method: 'GET',
       params: {

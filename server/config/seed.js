@@ -6,6 +6,7 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
+import Comic from '../api/Comic/Comic.model';
 
 Thing.find({}).removeAsync()
   .then(() => {
@@ -57,3 +58,9 @@ User.find({}).removeAsync()
       console.log('finished populating users');
     });
   });
+
+
+Comic.find({}).removeAsync()
+    .then(() => {
+      console.log('finished deleting feed');
+    });

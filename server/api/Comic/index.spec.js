@@ -74,15 +74,15 @@ describe('Comic API Router:', function() {
 
   });
 
-  describe('PATCH /api/Comics/:id', function() {
-
-    it('should route to Comic.controller.update', function() {
-      routerStub.patch
-        .withArgs('/:id', 'ComicCtrl.update')
-        .should.have.been.calledOnce;
-    });
-
-  });
+  //describe('PATCH /api/Comics/:id', function() {
+  //
+  //  it('should route to Comic.controller.update', function() {
+  //    routerStub.patch
+  //      .withArgs('/:id', 'ComicCtrl.update')
+  //      .should.have.been.calledOnce;
+  //  });
+  //
+  //});
 
   describe('DELETE /api/Comics/:id', function() {
 

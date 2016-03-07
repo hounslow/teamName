@@ -78,7 +78,7 @@ describe('Comic API:', function() {
     });
 
     it('should respond with the requested Comic', function() {
-      Comic.name.should.equal('New Comic');
+      Comic.name.should.equal(newComic._id);
       Comic.info.should.equal('This is the brand new Comic!!!');
     });
 

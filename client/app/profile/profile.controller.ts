@@ -48,7 +48,6 @@ class ProfileCtrl {
   }
   enableEditor() {
     this.$scope.editorEnabled = true;
-    this.$scope.editableName = this.$scope.name;
     this.$scope.editablePersonalWeb = this.$scope.personalWeb;
     this.$scope.editableInterestsList = this.$scope.interestsList;
   };
@@ -59,7 +58,6 @@ class ProfileCtrl {
 
   save() {
     this.$scope.personalWeb = this.$scope.editablePersonalWeb;
-    this.$scope.name = this.$scope.editableName;
     this.$scope.interestsList = this.$scope.editableInterestsList;
 //      User.changeI
     console.log('current user id is ' + this.Auth.getCurrentUser()._id);

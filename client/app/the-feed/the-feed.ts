@@ -7,5 +7,11 @@ angular.module('teamNameApp')
         templateUrl: 'app/the-feed/the-feed.html',
         controller: 'TheFeedCtrl',
         authenticate: true
-	    });
+	    })
+
+    .when('/comic-window', {
+      templateUrl: 'app/the-feed/comic-window.html',
+      controller: 'TheFeedCtrl',
+      authenticate: true
+    });
   });

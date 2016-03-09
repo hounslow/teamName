@@ -29,12 +29,31 @@
 <ul style="list-style-type:none;">
   <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
     <header>{{ Comics.name }}</header>
-    <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle">
+    <ul style="list-style-type:none;">
+      <li ng-repeat="Strings in Comics.content">
+      <img src={{Strings}}  width="500" height="500" align="middle">
+      </li>
+    </ul>
+
     <button class="btn btn-default btn-md" ng-click="deleteComic(Comics)">Delete</button>
+   <!-- <button class="btn btn-default btn-md" ng-click="viewComic(Comics)">View</button> -->
   </li>
   <br>
 </ul>
 </div>
+
+<!--<script language="javascript" type="text/javascript">
+
+function display(){
+  for (var i = 0; i < Comics.content.length; i++){
+    return Comics.content[i];
+  }
+}
+
+
+</script>-->
+
+
 <!--
 <div class="imgcreateacomic" ng-init="names=Comics">
   <!-- add when titles needed  <div class="titlecreateacomic"><span><b>Title will go here </b> </div>

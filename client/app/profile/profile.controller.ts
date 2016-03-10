@@ -33,7 +33,6 @@ angular.module('teamNameApp')
     };
   });
 
-// http://icelab.com.au/articles/click-to-edit-with-angularjs/
 */
 
 class ProfileCtrl {
@@ -41,11 +40,21 @@ class ProfileCtrl {
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
-    this.$scope.name = Auth.getCurrentUser().name;
-    $scope.personalWeb = Auth.getCurrentUser().personalWebsite;
-    $scope.interestsList = Auth.getCurrentUser().interestsList;
-    $scope.editorEnabled = false;
-    $scope.profilePicture = Auth.getCurrentUser().profilePicture;
+    this.me = "";
+    $http.get('/api/users/me').then(response => {
+      this.me = response.data;
+      console.log('meeee in profile controller'+this.me.name);
+      $scope.name = this.me.name;
+      $scope.personalWeb = this.me.personalWebsite;
+      $scope.interestsList = this.me.interestsList;
+      $scope.editorEnabled = false;
+      $scope.profilePicture = this.me.profilePicture;
+    });
+    //$scope.name = Auth.getCurrentUser().name;
+    //$scope.personalWeb = Auth.getCurrentUser().personalWebsite;
+    //$scope.interestsList = Auth.getCurrentUser().interestsList;
+    //$scope.editorEnabled = false;
+    //$scope.profilePicture = Auth.getCurrentUser().profilePicture;
     console.log('in profile controller constructor');
   }
   enableEditor() {
@@ -98,3 +107,5 @@ class ProfileCtrl {
 
 angular.module('teamNameApp')
   .controller('ProfileCtrl', ProfileCtrl);
+
+// http://icelab.com.au/articles/click-to-edit-with-angularjs/

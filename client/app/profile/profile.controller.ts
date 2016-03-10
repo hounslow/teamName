@@ -45,6 +45,8 @@ class ProfileCtrl {
     $scope.personalWeb = Auth.getCurrentUser().personalWebsite;
     $scope.interestsList = Auth.getCurrentUser().interestsList;
     $scope.editorEnabled = false;
+    $scope.profilePicture = Auth.getCurrentUser().profilePicture;
+    console.log('in profile controller constructor');
   }
   enableEditor() {
     this.$scope.editorEnabled = true;
@@ -69,6 +71,24 @@ class ProfileCtrl {
       id: this.Auth.getCurrentUser()._id,
       personalWebsite: this.$scope.personalWeb
     });
+
+ //   var preview = document.querySelector('img');   //for preview
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    var obj = this;
+
+    reader.onloadend = function(e){
+       console.log("in the http of profile pic controller %s", this);
+       obj.$http.put('api/users/' + obj.Auth.getCurrentUser()._id + '/profile-picture', {id: obj.Auth.getCurrentUser()._id, profilePicture: reader.result} );
+    }
+    //reader.addEventListener("load", function () {//for preview
+    //  preview.src = reader.result;
+    //}, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
     this.disableEditor();
 //      Auth.changePassword('test','bbb');  //works to change password
   };

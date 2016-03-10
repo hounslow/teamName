@@ -16,8 +16,6 @@ angular.module('teamNameApp')
 class TheFeedCtrl {
   constructor($scope, $http, Auth){
     this.isContributor = Auth.isUser;
-    console.log('aaaaaaaaaaaaa in isContributor');
-    console.log('isuser       '+Auth.isUser);
     this.$scope = $scope;
     this.$http = $http;
     // Grab the initial set of available comics

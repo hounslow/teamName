@@ -24,6 +24,10 @@ var UserSchema = new Schema({
     type: String,
     default: 'No personal website added'
   },
+  profilePicture: {
+    type: String,
+    default: ''
+  },
   salt: String
 });
 

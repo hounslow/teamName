@@ -13,6 +13,7 @@ router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/interests-list', controller.changeInterestsList); //for interests  auth.isAuthenticated(),
 router.put('/:id/personal-website', controller.changePersonalWebsite); //for personal website auth.isAuthenticated(),
+router.put('/:id/profile-picture', controller.changeProfilePicture); // auth.isAuthenticated(),
 router.get('/:id', controller.show); //auth.isAuthenticated(),
 router.post('/', controller.create);
 

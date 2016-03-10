@@ -80,6 +80,7 @@ class ProfileCtrl {
     reader.onloadend = function(e){
        console.log("in the http of profile pic controller %s", this);
        obj.$http.put('api/users/' + obj.Auth.getCurrentUser()._id + '/profile-picture', {id: obj.Auth.getCurrentUser()._id, profilePicture: reader.result} );
+       obj.$scope.profilePicture = reader.result;
     }
     //reader.addEventListener("load", function () {//for preview
     //  preview.src = reader.result;

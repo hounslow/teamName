@@ -1,56 +1,24 @@
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="../create-a-comic/create-a-comic.css">
-</head>
--->
-<!--
-<body>
-<ul class="menubar">
-  <li class="menubar"><a href="#myprofile">My Profile</a></li>
-  <li class="menubar"><a href="#myfavourites">My Favourites</a></li>
-  <li class="menubar"><a href="#mycocmics">My Comics</a></li>
-  <li class="menubar"><a href="#thefeed">The Comic Feed</a></li>
-  <li class="menubar"><a href="#search">Search</a></li>
-  <li class="menubar"><a href="#createacomic">Create a Comic</a></li>
-  <li class="menubar"><a href="#logout">Log out</a></li>
-</ul>
--->
 <div id="headercreateacomic">
 	<h1 id="headercreateacomic">The Feed</h1>
 </div>
-<!--
-<div>
-  {{message}}
-</div>
--->
+
 <div class="imgcreateacomic">
 <ul style="list-style-type:none;">
   <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
-    <header>{{ Comics.name }}</header>
+    <h2>{{ Comics.name }}</h2>
  <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
     <p ng-repeat="Strings in Comics.content">
       <img src={{Strings}}  width="500" height="500" align="middle">
     </p>
-
-
+    <span class="alignLeft">By:</span>
+    <span class="alignRight"><b><a ng-repeat="c in Comics.contributors">
+      {{c.name}}
+    </a></b>
+    </span>
+    <br>
+    <br>
     <button ng-show="fc.isContributor()" class="btn btn-default btn-md" ng-click="fc.deleteComic(Comics)">Delete</button>
   </li>
   <br>
 </ul>
 </div>
-<!--
-<div class="imgcreateacomic" ng-init="names=Comics">
-  <!-- add when titles needed  <div class="titlecreateacomic"><span><b>Title will go here </b> </div>
-  <img src="http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg" alt="Shows up when you hover" width="500" height="500">
-  <div class="imgcreateacomic" ng-repeat="x in names" >
-    <img ng-src="api/Comics/{{x}}.png" alt="">
-    <br>
-  </div>
-</div>
-
--->
-
-<!-- add when authors needed  <div class="titlecreateacomic">Authors will go here</div> -->
-

@@ -40,6 +40,8 @@ export function create(req, res, next) {
   newUser.interestsList = 'No interests added';
   newUser.personalWebsite = 'No personal website added';
   newUser.profilePciture = '';
+  newUser.myComics = [];
+  newUser.myFavourites = [];
 //  newUser.role = 'user';  //not necessary anymore
   newUser.saveAsync()
     .spread(function(user) {

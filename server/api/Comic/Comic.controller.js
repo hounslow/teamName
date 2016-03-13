@@ -63,7 +63,11 @@ function handleError(res, statusCode) {
 
 // Gets a list of Comics
 export function index(req, res) {
-  Comic.findAsync()
+  //Comic.findAsync()
+  //  .then(respondWithResult(res))
+  //  .catch(handleError(res));
+  Comic.find().populate('contributors') //populates contributors
+    .execAsync()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

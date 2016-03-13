@@ -28,6 +28,8 @@ var UserSchema = new Schema({
     type: String,
     default: ''
   },
+  myComics: [{ type: Schema.Types.ObjectId, ref: 'Comic' }],
+  myFavourites: [{ type: Schema.Types.ObjectId, ref: 'Comic' }],
   salt: String
 });
 

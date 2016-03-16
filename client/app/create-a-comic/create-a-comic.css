@@ -67,6 +67,8 @@ div.imgcreateacomic img {
 
 #buttonscreateacomic{
     margin-left:60px;
+    font-size:15px;
+    font-weight: bold;
 }
 input.createacomic[type=file]{
     font-size:100%;

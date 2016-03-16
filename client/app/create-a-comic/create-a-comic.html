@@ -26,13 +26,14 @@
     <h1 id="headercreateacomic">Make that Comic!</h1>
   </div>
   <br>
-  <p id="buttonscreateacomic">
-  Title for your comic
-  <input type="text" name="title" ng-model="newTitle" title="Enter Title" ng-required="true"/>
-  </p>
   <div id="buttonscreateacomic">
-    Description
-    <input type="text" name="description" ng-model="description" title="Write a description of your comic" ng-required="true"/>
+  Title for your comic:
+  <input type="text" name="title" ng-model="newTitle" title="Enter Title" ng-required="true"/>
+  </div>
+  <div id="buttonscreateacomic">
+    Description:
+    <br>
+    <textarea  cols="40" rows="5" type="text" name="description" ng-model="description" title="Write a description of your comic" ng-required="true"/>
   </div>
   <p id="buttonscreateacomic">
     <input type="file" id="files"  multiple="multiple" accept="image/*" />

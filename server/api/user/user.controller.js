@@ -161,6 +161,45 @@ export function changeProfilePicture(req, res, next) {
 });
 }
 
+/**
+ * Add comic to my comics
+ */
+export function addComicToMyComics(req, res, next) {
+  console.log('got to add comic to my comics in users controller');
+  var userId = String(req.body.id);
+  var newMyComic = String(req.body.myComics);
+
+  User.findByIdAsync(userId)
+    .then(user => {
+    user.myComics.push(newMyComic);
+    return user.saveAsync()
+      .then(() => {
+      res.status(204).end();
+})
+.catch(validationError(res));
+});
+}
+
+/**
+ * Add comic to my favourites
+ */
+export function addComicToMyFavourites(req, res, next) {
+  console.log('got to add comic to my favourites in users controller');
+  var userId = String(req.body.id);
+  var newMyComic = String(req.body.myComics);
+
+  User.findByIdAsync(userId)
+    .then(user => {
+    user.myFavourites.push(newMyComic);
+  return user.saveAsync()
+      .then(() => {
+      res.status(204).end();
+})
+.catch(validationError(res));
+});
+}
+
+
 
 /**
  * Get my info

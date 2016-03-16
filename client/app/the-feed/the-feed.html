@@ -10,14 +10,13 @@
     <p ng-repeat="Strings in Comics.content">
       <img src={{Strings}}  width="500" height="500" align="middle">
     </p>
+    <button ng-show="fc.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="fc.deleteComic(Comics)">Delete</button>
     <span class="alignLeft">By:</span>
     <span class="alignRight"><b><a ng-repeat="c in Comics.contributors">
       {{c.name}}
     </a></b>
     </span>
     <br>
-    <br>
-    <button ng-show="fc.isContributor()" class="btn btn-default btn-md" ng-click="fc.deleteComic(Comics)">Delete</button>
   </li>
   <br>
 </ul>

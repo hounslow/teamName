@@ -20,6 +20,22 @@ angular.module('teamNameApp')
       reader.readAsDataURL(files[i]);
     })(i);}
   });
+
+//    reader.onloadend = function(e){
+//      fileString[i] = e.target.result;
+//      if (i == (files.length - 1)){
+//        $http.post('/api/Comics', {name: name , content: fileString, description: description, contributors: Auth.getCurrentUser()._id } )
+//          .success(function(comic) {
+//            $http.post('api/users/' + Auth.getCurrentUser()._id + '/my-comics', {id: Auth.getCurrentUser()._id, myComics: comic._id});
+//            $window.location.href='/the-feed';
+//      })}
+//    };
+//    reader.readAsDataURL(files[i]);
+//  })(i);}
+//});
+
+
+
 /*
     // Grab the initial set of available comments
     $http.get('/api/Comics').success(function(Comics) {

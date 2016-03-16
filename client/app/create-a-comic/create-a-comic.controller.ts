@@ -12,11 +12,12 @@ angular.module('teamNameApp')
         (function(i){
         var reader = new FileReader();
       reader.onloadend = function(e){
+        if (e.target.readyState == reader.DONE){
         fileString[i] = e.target.result;
         if (i == (files.length - 1)){
           $http.post('/api/Comics', {name: name , content: fileString, description: description, contributors: Auth.getCurrentUser()._id } );
           $window.location.href='/the-feed';}
-      };
+      }};
       reader.readAsDataURL(files[i]);
     })(i);}
   });

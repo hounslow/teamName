@@ -6,6 +6,6 @@ angular.module('teamNameApp')
       .when('/create-a-comic', {
         templateUrl: 'app/create-a-comic/create-a-comic.html',
         controller: 'CreateAComicCtrl',
-        authenticate: true
+        authenticate: 'user'
 	    });
   });

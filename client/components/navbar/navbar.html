@@ -17,7 +17,7 @@
         <li ng-class="{active: nav.isActive('/profile')}">
           <a ng-href="/profile">My Profile</a>
         </li>
-        <li ng-class="{active: nav.isActive('/my-comics')}">
+        <li ng-show="nav.isUser()" ng-class="{active: nav.isActive('/my-comics')}">
           <a ng-href="/my-comics">My Comics</a>
         </li>
         <li ng-class="{active: nav.isActive('/the-feed')}">

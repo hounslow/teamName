@@ -6,6 +6,7 @@ angular.module('teamNameApp')
       .when('/the-feed', {
         templateUrl: 'app/the-feed/the-feed.html',
         controller: 'TheFeedCtrl',
+        controllerAs: 'fc',
         authenticate: true
 	    })
 

@@ -24,6 +24,12 @@ var UserSchema = new Schema({
     type: String,
     default: 'No personal website added'
   },
+  profilePicture: {
+    type: String,
+    default: ''
+  },
+  myComics: [{ type: Schema.Types.ObjectId, ref: 'Comic' }],
+  myFavourites: [{ type: Schema.Types.ObjectId, ref: 'Comic' }],
   salt: String
 });
 

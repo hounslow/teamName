@@ -1,65 +1,71 @@
 
   <form class="form-horizontal" role="form">
-
-    <p class = "container" ng-hide="editorEnabled">
-      <button type="button" class="btn btn-default pull-right" onclick="window.location.href='/change-password'">Change Password</button>
+  <div class = "container-fluid row">
+    <p class="col-lg-5" style="margin-left:100px">
+<!--      <img src="assets/images/bradpitt.jpg" height="160" align="middle"> -->
+<!--      <span><img src="" height="160" alt="Image preview..."></span>  --> <!-- to REMOVE DELETE -->
+      <span><img src={{profilePicture}} height="160" alt="Profile picture"></span>
+      <span class="container" ng-show="editorEnabled">
+      <input type="file" accept="image/*" />
+      </span>
+    </p>
+    <p class="container col-lg-5" ng-hide="editorEnabled">
+      <button type="button" id="files" class="btn btn-default pull-right" onclick="window.location.href='/change-password'">Change Password</button>
     </p>
 <!--    <p class = "container" ng-hide="editorEnabled">
       <button type="button" class="btn btn-default pull-right" ng-click="enableEditor()">Edit Profile</button>
     </p> --> <!-- Note, commented out are if don't have 'class ProfileCtrl' -->
-    <p class = "container" ng-hide="editorEnabled">
+    <p class="container col-lg-5" ng-hide="editorEnabled">
       <button type="button" class="btn btn-default pull-right" ng-click="pc.enableEditor()">Edit Profile</button>
     </p>
 <!-- <p class = "container" ng-show="editorEnabled">
       <button type="button" class="btn btn-default pull-right" ng-click="disableEditor()">Cancel</button>
     </p> -->
-    <p class = "container" ng-show="editorEnabled">
+    <p class="container col-lg-5" ng-show="editorEnabled">
       <button type="button" class="btn btn-default pull-right" ng-click="pc.disableEditor()">Cancel</button>
     </p>
 <!--
     <p class = "container" ng-show="editorEnabled">
        <button type="submit" class="btn btn-default pull-right" ng-click="save()">Save Changes</button>
     </p> -->
-    <p class = "container" ng-show="editorEnabled">
+    <p class="container col-lg-5" ng-show="editorEnabled">
       <button type="submit" class="btn btn-default pull-right" ng-click="pc.save()">Save Changes</button>
     </p>
+  </div>
+    <div>
 
-
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="username">Username:</label>
-      <div class="col-sm-10">
-        <div ng-hide="editorEnabled" style="padding-top: 8px">
-          {{name}}
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="username">Username:</label>
+        <div class="col-sm-10">
+          <div style="padding-top: 8px">
+            {{name}}
+          </div>
         </div>
-        <div class = "container  col-xs-8" ng-show="editorEnabled">
-          <input type="text" class="form-control" ng-model="editableName" ng-show="editorEnabled"> <!--while editing this shows-->
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="personalWebsite">Personal Website:</label>
+        <div class="col-sm-10">
+          <div ng-hide="editorEnabled" style="padding-top: 8px">
+            {{personalWeb}}
+          </div>
+          <div class = "container col-xs-8" ng-show="editorEnabled">
+            <input type="text" class="form-control" ng-model="editablePersonalWeb" ng-show="editorEnabled">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="interestsList">Interests:</label>
+        <div class="col-sm-10">
+          <div ng-hide="editorEnabled" style="padding-top: 8px">
+            {{interestsList}}
+          </div>
+          <div class = "container col-xs-8" ng-show="editorEnabled">
+            <input type="text" class="form-control" ng-model="editableInterestsList" ng-show="editorEnabled">
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="personalWebsite">Personal Website:</label>
-      <div class="col-sm-10">
-        <div ng-hide="editorEnabled" style="padding-top: 8px">
-          {{personalWeb}}
-        </div>
-        <div class = "container col-xs-8" ng-show="editorEnabled">
-          <input type="text" class="form-control" ng-model="editablePersonalWeb" ng-show="editorEnabled">
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="interestsList">Interests:</label>
-      <div class="col-sm-10">
-        <div ng-hide="editorEnabled" style="padding-top: 8px">
-          {{interestsList}}
-        </div>
-        <div class = "container col-xs-8" ng-show="editorEnabled">
-          <input type="text" class="form-control" ng-model="editableInterestsList" ng-show="editorEnabled">
-        </div>
-      </div>
-    </div>
-
   </form>
 <!-- http://icelab.com.au/articles/click-to-edit-with-angularjs/ -->

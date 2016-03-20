@@ -21,14 +21,22 @@ function handleError(res, statusCode) {
 
 /**
  * Get list of users
- * restriction: 'admin'
  */
 export function index(req, res) {
-  User.findAsync({}, '-salt -password')
+  User.find({}, '-salt -password').populate('myFavourites')
+    .execAsync()
     .then(users => {
       res.status(200).json(users);
     })
     .catch(handleError(res));
+
+  //User.findAsync({}, '-salt -password')
+  //  .then(users => {
+  //  res.status(200).json(users);
+  //})
+  //.catch(handleError(res));
+
+
 }
 
 /**
@@ -188,15 +196,22 @@ export function addComicToMyFavourites(req, res, next) {
   var userId = String(req.body.id);
   var newMyComic = String(req.body.myComics);
 
-  User.findByIdAsync(userId)
-    .then(user => {
-    user.myFavourites.push(newMyComic);
-  return user.saveAsync()
-      .then(() => {
+  return User.updateAsync({_id: userId}, {$addToSet: {myFavourites: newMyComic}})
+    .then(() => {
       res.status(204).end();
 })
 .catch(validationError(res));
-});
+
+
+//  User.findByIdAsync(userId)
+//    .then(user => {
+//    user.myFavourites.push(newMyComic);
+//  return user.saveAsync()
+//      .then(() => {
+//      res.status(204).end();
+//})
+//.catch(validationError(res));
+//});
 }
 
 
@@ -207,7 +222,8 @@ export function addComicToMyFavourites(req, res, next) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  User.findOneAsync({ _id: userId }, '-salt -password')
+  User.findOne({ _id: userId }, '-salt -password').populate('myFavourites')//, populate: {path: 'contributors'}})
+    .execAsync()
     .then(user => { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();
@@ -215,6 +231,16 @@ export function me(req, res, next) {
       res.json(user);
     })
     .catch(err => next(err));
+
+//  User.findOneAsync({ _id: userId }, '-salt -password')
+//    .then(user => { // don't ever give out the password or salt
+//    if (!user) {
+//    return res.status(401).end();
+//  }
+//  res.json(user);
+//})
+//.catch(err => next(err));
+
 }
 
 /**

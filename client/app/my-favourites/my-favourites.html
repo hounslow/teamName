@@ -1,1 +1,23 @@
-<div>This is the my-favourites view.</div>
+<div id="headercreateacomic">
+  <h1 id="headercreateacomic">My Favourites</h1>
+</div>
+
+<div class="imgcreateacomic">
+  <ul style="list-style-type:none;">
+    <li ng-repeat="Comic in myFavourites" style="margin-bottom: 50px;">
+      <h2>{{ Comic.name }}</h2>
+      <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
+      <p ng-repeat="Strings in Comic.content">
+        <img src={{Strings}}  width="500" height="500" align="middle">
+      </p>
+<!--      <button class="btn btn-default btn-md" style="float:right;" ng-click="fc.addToFavourites(Comic)">Favourite</button>
+      <span class="alignLeft">By:</span>
+    <span class="alignRight"><b><a ng-repeat="contributor in Comic.contributors">
+      {{contributor.name}}
+    </a></b>
+    </span>  -->
+      <br>
+    </li>
+    <br>
+  </ul>
+</div>

@@ -11,9 +11,10 @@
       <img src={{Strings}}  width="500" height="500" align="middle">
     </p>
     <button ng-show="fc.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="fc.deleteComic(Comics)">Delete</button>
+    <button class="btn btn-default btn-md" style="float:right;" ng-click="fc.addToFavourites(Comics)">Favourite</button>
     <span class="alignLeft">By:</span>
-    <span class="alignRight"><b><a ng-repeat="c in Comics.contributors">
-      {{c.name}}
+    <span class="alignRight"><b><a ng-repeat="contributor in Comics.contributors">
+      {{contributor.name}}
     </a></b>
     </span>
     <br>

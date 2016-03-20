@@ -23,6 +23,8 @@
         "client/app/main/main.ts",
         "client/app/my-comics/my-comics.controller.ts",
         "client/app/my-comics/my-comics.ts",
+        "client/app/my-favourites/my-favourites.controller.ts",
+        "client/app/my-favourites/my-favourites.ts",
         "client/app/profile/profile.controller.ts",
         "client/app/profile/profile.ts",
         "client/app/register/register.controller.ts",

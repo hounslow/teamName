@@ -20,6 +20,9 @@
         <li ng-show="nav.isUser()" ng-class="{active: nav.isActive('/my-comics')}">
           <a ng-href="/my-comics">My Comics</a>
         </li>
+        <li ng-class="{active: nav.isActive('/my-favourites')}">
+          <a ng-href="/my-favourites">My Favourites</a>
+        </li>
         <li ng-class="{active: nav.isActive('/the-feed')}">
           <a ng-href="/the-feed">The Feed</a>
         </li>

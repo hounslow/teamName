@@ -5,6 +5,7 @@ angular.module('teamNameApp')
     $routeProvider
       .when('/my-favourites', {
         templateUrl: 'app/my-favourites/my-favourites.html',
-        controller: 'MyFavouritesCtrl'
+        controller: 'MyFavouritesCtrl',
+        controllerAs: 'mf'
       });
   });

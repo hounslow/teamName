@@ -10,12 +10,12 @@
       <p ng-repeat="Strings in Comic.content">
         <img src={{Strings}}  width="500" height="500" align="middle">
       </p>
-<!--      <button class="btn btn-default btn-md" style="float:right;" ng-click="fc.addToFavourites(Comic)">Favourite</button>
-      <span class="alignLeft">By:</span>
-    <span class="alignRight"><b><a ng-repeat="contributor in Comic.contributors">
-      {{contributor.name}}
-    </a></b>
-    </span>  -->
+     <button class="btn btn-default btn-md" style="float:right;" ng-click="mf.removeFromFavourites(Comic)">Remove from favourites</button>
+      <!--      <span class="alignLeft">By:</span>
+          <span class="alignRight"><b><a ng-repeat="contributor in Comic.contributors">
+            {{contributor.name}}
+          </a></b>
+          </span>  -->
       <br>
     </li>
     <br>

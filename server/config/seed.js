@@ -59,8 +59,8 @@ User.find({}).removeAsync()
     });
   });
 
-
-Comic.find({}).removeAsync()
-    .then(() => {
-      console.log('finished deleting feed');
-    });
+// Deletes pics from feed at start
+//Comic.find({}).removeAsync()
+//    .then(() => {
+//      console.log('finished deleting feed');
+//    });

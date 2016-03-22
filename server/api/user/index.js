@@ -18,5 +18,6 @@ router.post('/:id/my-comics', controller.addComicToMyComics);
 router.post('/:id/my-favourites', controller.addComicToMyFavourites);
 router.get('/:id', controller.show); //auth.isAuthenticated(),
 router.post('/', controller.create);
+router.delete('/:id/my-favourites/:comicId', controller.removeFromFavouritesTwo);
 
 export default router;

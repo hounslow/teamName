@@ -201,8 +201,6 @@ export function addComicToMyFavourites(req, res, next) {
       res.status(204).end();
 })
 .catch(validationError(res));
-
-
 //  User.findByIdAsync(userId)
 //    .then(user => {
 //    user.myFavourites.push(newMyComic);
@@ -214,7 +212,21 @@ export function addComicToMyFavourites(req, res, next) {
 //});
 }
 
-
+/**
+ * Remove comic from my favourites
+ */
+export function removeFromFavouritesTwo(req, res, next) {
+  console.log('got to remove comic from my favourites in users controller');
+  var userId = String(req.params.id);
+  console.log('laluserrr'+userId);
+  var toRemoveComicId = String(req.params.comicId);
+  console.log('lalalla'+toRemoveComicId);
+  return User.updateAsync({_id: userId}, {$pull: {myFavourites: toRemoveComicId}})
+      .then(() => {
+      res.status(204).end();
+})
+.catch(validationError(res));
+}
 
 /**
  * Get my info

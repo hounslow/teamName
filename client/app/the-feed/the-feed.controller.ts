@@ -6,6 +6,7 @@ class TheFeedCtrl {
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
+    this.$scope.showDescription = false;
     // Grab the initial set of available comics
     $http.get('/api/Comics').success(function(Comics) {
       $scope.Comics = Comics});
@@ -13,6 +14,13 @@ class TheFeedCtrl {
   deleteComic(Comic) {
       this.$http.delete('/api/Comics/' + Comic._id);
       window.location.href='/the-feed';
+  };
+
+  showDescription(comicId){
+    this.$scope.showDescription = true;
+  };
+  hideDescription(comicId){
+    this.$scope.showDescription = false;
   };
 
   addToFavourites(Comic) {

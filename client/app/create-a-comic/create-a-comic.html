@@ -28,15 +28,15 @@
   <br>
   <div id="buttonscreateacomic">
   Title for your comic:
-  <input type="text" name="title" ng-model="newTitle" title="Enter Title" ng-required="true"/>
+  <input type="text" name="title" ng-model="newTitle" title="Enter Title" ng-required="true"></input>
   </div>
   <div id="buttonscreateacomic">
     Description:
     <br>
-    <textarea  cols="40" rows="5" type="text" name="description" ng-model="description" title="Write a description of your comic" ng-required="true"/>
+    <textarea  cols="40" rows="5" type="text" name="description" ng-model="description" title="Write a description of your comic" ng-required="true"></textarea>
   </div>
   <p id="buttonscreateacomic">
-    <input type="file" id="files"  multiple="multiple" accept="image/*" />
+    <input type="file" id="files"  multiple="multiple" accept="image/*"></input>
   </p>
   <p id="buttonscreateacomic">
     <button type="submit" class="btn btn-default btn-md" ng-click="ccform.$valid && addComic()">Publish</button>

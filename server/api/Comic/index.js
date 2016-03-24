@@ -11,6 +11,8 @@ router.post('/', controller.create);
 //router.put('/:id', controller.update);
 //router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
+router.post('/:id/contributors', controller.addContributorToComicContributors); //contributor id needs to be sent in the request (note use Auth.getCurrentUser()._id which you send in the request
+
 
 module.exports = router;
 

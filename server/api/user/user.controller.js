@@ -23,7 +23,7 @@ function handleError(res, statusCode) {
  * Get list of users
  */
 export function index(req, res) {
-  User.find({}, '-salt -password').populate('myFavourites')
+  User.find({}, '-salt -password').populate('myFavourites myComics')
     .execAsync()
     .then(users => {
       res.status(200).json(users);
@@ -173,20 +173,31 @@ export function changeProfilePicture(req, res, next) {
  * Add comic to my comics
  */
 export function addComicToMyComics(req, res, next) {
-  console.log('got to add comic to my comics in users controller');
+  console.log('got to add comic to my favourites in users controller');
   var userId = String(req.body.id);
   var newMyComic = String(req.body.myComics);
 
-  User.findByIdAsync(userId)
-    .then(user => {
-    user.myComics.push(newMyComic);
-    return user.saveAsync()
+  return User.updateAsync({_id: userId}, {$addToSet: {myComics: newMyComic}})
       .then(() => {
       res.status(204).end();
 })
 .catch(validationError(res));
-});
 }
+
+//  console.log('got to add comic to my comics in users controller');
+//  var userId = String(req.body.id);
+//  var newMyComic = String(req.body.myComics);
+//
+//  User.findByIdAsync(userId)
+//    .then(user => {
+//    user.myComics.push(newMyComic);
+//    return user.saveAsync()
+//      .then(() => {
+//      res.status(204).end();
+//})
+//.catch(validationError(res));
+//});
+//}
 
 /**
  * Add comic to my favourites
@@ -211,6 +222,21 @@ export function addComicToMyFavourites(req, res, next) {
 //.catch(validationError(res));
 //});
 }
+/**
+ * Remove comic from my comics
+ */
+export function removeFromMyComics(req, res, next) {
+  console.log('got to remove comic from my comics in users controller');
+  var userId = String(req.params.id);
+  console.log('laluserrr'+userId);
+  var toRemoveComicId = String(req.params.comicId);
+  return User.updateAsync({_id: userId}, {$pull: {myComics: toRemoveComicId}})
+      .then(() => {
+      res.status(204).end();
+})
+.catch(validationError(res));
+}
+
 
 /**
  * Remove comic from my favourites
@@ -234,7 +260,7 @@ export function removeFromFavouritesTwo(req, res, next) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  User.findOne({ _id: userId }, '-salt -password').populate('myFavourites')//, populate: {path: 'contributors'}})
+  User.findOne({ _id: userId }, '-salt -password').populate('myFavourites myComics')//, populate: {path: 'contributors'}})
     .execAsync()
     .then(user => { // don't ever give out the password or salt
       if (!user) {

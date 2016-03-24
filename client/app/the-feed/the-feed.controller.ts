@@ -3,15 +3,17 @@
 class TheFeedCtrl {
   private comicsToShowDescription: string[];
 
-  constructor($scope, $http, Auth){
+  constructor($scope, $http, Auth, comicService){
     this.isContributor = Auth.isUser;
     this.Auth = Auth;
+    this.comicService = comicService;
     this.$scope = $scope;
     this.$http = $http;
     this.comicsToShowDescription = [];
     // Grab the initial set of available comics
-    $http.get('/api/Comics').success(function(Comics) {
-      $scope.Comics = Comics});
+    $scope.Comics = comicService.getComics().data;
+/*    $http.get('/api/Comics').success(function(Comics) {
+      $scope.Comics = Comics});*/
   }
   deleteComic(Comic) {
       this.$http.delete('/api/Comics/' + Comic._id);

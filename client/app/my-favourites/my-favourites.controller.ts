@@ -17,7 +17,7 @@ class MyFavouritesCtrl{
     });
   }
 
-  removeFromFavourites(comic: String){
+  removeFromFavourites(comic: string){
     console.log('comic id in my fav controller beforeeeeee '+comic._id);
     this.$http.delete('api/users/' + this.Auth.getCurrentUser()._id + '/my-favourites/'+comic._id)
       .success(function(){window.location.href='/my-favourites'});

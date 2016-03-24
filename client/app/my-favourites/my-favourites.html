@@ -10,7 +10,7 @@
       <p ng-repeat="Strings in Comic.content">
         <img src={{Strings}}  width="500" height="500" align="middle">
       </p>
-     <button class="btn btn-default btn-md" style="float:right;" ng-click="mf.removeFromFavourites(Comic)">Remove from favourites</button>
+     <button class="btn btn-default btn-md" style="float:right;" ng-click="mf.removeFromFavourites(Comic)"><span class="glyphicon glyphicon-remove"></span><span class="glyphicon glyphicon-heart"></span></button>
       <!--      <span class="alignLeft">By:</span>
           <span class="alignRight"><b><a ng-repeat="contributor in Comic.contributors">
             {{contributor.name}}

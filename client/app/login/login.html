@@ -2,6 +2,11 @@
   .navbar{
     display: none;
   }
+
+  body {
+    background-image: url("assets/images/bubbles.jpg");
+  }
+
 </style>
 
 <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
@@ -11,12 +16,12 @@
         <label for="username">E-mail</label>
         <input class="login" type="email" name="email" placeholder="E-mail" ng-model="vm.user.email" required></input>
       </li>
-  
+
       <li class= "login">
         <label for="password">Password</label>
         <input class="login" type="password" name="password" placeholder="Password" ng-model="vm.user.password" required></input>
       </li >
- 
+
       <div class="has-error">
         <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
            Please enter both email and password.
@@ -31,7 +36,7 @@
       <li class= "login">
         <input class= "login" type="submit" value="Log in"></input>
       </li>
-  
+
       <li class= "login">
         <input class= "login" type="button" value="Sign up" onclick="window.location.href='register'"></input>
       </li>

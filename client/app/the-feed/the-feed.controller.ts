@@ -1,12 +1,14 @@
 'use strict';
 
 class TheFeedCtrl {
+  private comicsToShowDescription: string[];
+
   constructor($scope, $http, Auth){
     this.isContributor = Auth.isUser;
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
-    this.$scope.showDescription = false;
+    this.comicsToShowDescription = [];
     // Grab the initial set of available comics
     $http.get('/api/Comics').success(function(Comics) {
       $scope.Comics = Comics});
@@ -15,12 +17,22 @@ class TheFeedCtrl {
       this.$http.delete('/api/Comics/' + Comic._id);
       window.location.href='/the-feed';
   };
-
-  showDescription(comicId){
-    this.$scope.showDescription = true;
+  addToShowDescription(comicId: string){
+    this.comicsToShowDescription.push(comicId);
   };
-  hideDescription(comicId){
-    this.$scope.showDescription = false;
+
+  showDescription(comicId: string):boolean{
+    console.log('this should be true '+ (-1 != this.comicsToShowDescription.indexOf(comicId)));
+    return (-1 != this.comicsToShowDescription.indexOf(comicId));
+  };
+
+  removeFromShowDescription(comicId: string){
+    console.log('zero element del'+ this.comicsToShowDescription[0]);
+    console.log('one element del'+ this.comicsToShowDescription[1]);
+    var indexOfDelete = this.comicsToShowDescription.indexOf(comicId);
+    this.comicsToShowDescription.splice(indexOfDelete, 1);
+    console.log('zero element after del'+ this.comicsToShowDescription[0]);
+    console.log('one element after del'+ this.comicsToShowDescription[1]);
   };
 
   addToFavourites(Comic) {

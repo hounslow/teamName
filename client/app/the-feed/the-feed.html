@@ -2,6 +2,8 @@
 	<h1 id="headercreateacomic">The Feed</h1>
 </div>
 
+<h3 style="text-align:center;" ng-show="noComics">There are no comics to view</h3>
+<h3 style="text-align:center;" ng-show="loadingComics">Loading Comics!</h3>
 <div class="imgcreateacomic">
 <ul style="list-style-type:none;">
   <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
@@ -14,11 +16,11 @@
     <button class="btn btn-default btn-md" style="float:right;" ng-click="fc.addToFavourites(Comics)"><span class="glyphicon glyphicon-heart"></span></button>
     <button class="btn btn-default btn-md" ng-hide="fc.showDescription(Comics._id)" style="float:right;" ng-click="fc.addToShowDescription(Comics._id)">Show Description</button>
     <button class="btn btn-default btn-md" ng-show="fc.showDescription(Comics._id)" style="float:right;" ng-click="fc.removeFromShowDescription(Comics._id)">Hide Description</button>
-    <span class="alignLeft">By:</span>
-    <span class="alignRight"><b><a ng-repeat="contributor in Comics.contributors">
+    <div class="container alignLeft">By:
+    <b><span ng-repeat="contributor in Comics.contributors">
       {{contributor.name}}
-    </a></b>
-    </span>
+    </span></b>
+    </div>
     <div style="width: 500; word-wrap: break-word; font-size: 20px;" ng-show="fc.showDescription(Comics._id)">
       {{Comics.description}}
     </div>

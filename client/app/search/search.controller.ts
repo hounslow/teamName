@@ -69,6 +69,7 @@ class SearchCtrl {
         if (typeof data[0] == 'undefined') {
           obj.$scope.gotResultsByUsername = false;
           obj.$scope.gotResultsByUsernameYes = false;
+          obj.$scope.searchingByUsername = false;
           return;
         }
         obj.$scope.allComics = data;

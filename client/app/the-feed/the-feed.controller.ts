@@ -8,10 +8,18 @@ class TheFeedCtrl {
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
+    $scope.noComics = false;
+    $scope.loadingComics = true;
     this.comicsToShowDescription = [];
     // Grab the initial set of available comics
     $http.get('/api/Comics').success(function(Comics) {
-      $scope.Comics = Comics});
+      $scope.Comics = Comics;
+      if (Comics[0] == undefined){
+        $scope.noComics = true;
+      }
+      $scope.loadingComics = false;
+    });
+
   }
   deleteComic(Comic) {
       this.$http.delete('/api/Comics/' + Comic._id);

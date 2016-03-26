@@ -1,8 +1,76 @@
+<div id="headercreateacomic">
+  <h1 id="headercreateacomic">Search</h1>
+</div>
+<div class = "container">
+  <form name="searchForm">
+    <input type="text" placeholder="Type in search word" ng-model="keywords" ng-required="true"></input>
+    <button type="submit" class="btn btn-default btn-md" ng-click="searchForm.$valid && sc.searchForComics()"><span class="glyphicon glyphicon-search"></span>Search</button>
+  </form>
+
+  <div ng-hide="gotResultsByTitle">No results by title were found :(</div>
+  <div ng-hide="gotResultsByUsername">No results by username were found :(</div>
+  <div ng-show="searchingByTitle">Searching by title!</div>
+  <div ng-show="searchingByUsername">Searching by username!</div>
+</div>
+
+<div ng-show="gotResultsByTitleYes" class="imgcreateacomic container">
+  Filtered by title
+  <ul style="list-style-type:none;">
+    <li ng-repeat="Comics in filteredComics" style="margin-bottom: 50px;">
+      <h2>{{ Comics.name }}</h2>
+      <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
+      <p ng-repeat="Strings in Comics.content">
+        <img src={{Strings}}  width="500" height="500" align="middle">
+      </p>
+      <button ng-show="sc.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="sc.deleteComic(Comics)">Delete</button>
+      <button class="btn btn-default btn-md" style="float:right;" ng-click="sc.addToFavourites(Comics)"><span class="glyphicon glyphicon-heart"></span></button>
+      <button class="btn btn-default btn-md" ng-hide="sc.showDescription(Comics._id)" style="float:right;" ng-click="sc.addToShowDescription(Comics._id)">Show Description</button>
+      <button class="btn btn-default btn-md" ng-show="sc.showDescription(Comics._id)" style="float:right;" ng-click="sc.removeFromShowDescription(Comics._id)">Hide Description</button>
+      <span class="alignLeft">By:</span>
+    <span class="alignRight"><b><p ng-repeat="contributor in Comics.contributors">
+      {{contributor.name}}
+    </p></b>
+    </span>
+      <div style="width: 500; word-wrap: break-word; font-size: 20px;" ng-show="sc.showDescription(Comics._id)">
+        {{Comics.description}}
+      </div>
+      <br>
+    </li>
+    <br>
+  </ul>
+</div>
+
+
+<div ng-show="gotResultsByUsernameYes" class="imgcreateacomic container">
+  Filtered by username
+  <ul style="list-style-type:none;">
+    <li ng-repeat="Comics in filteredByUsernameComics" style="margin-bottom: 50px;">
+      <h2>{{ Comics.name }}</h2>
+      <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
+      <p ng-repeat="Strings in Comics.content">
+        <img src={{Strings}}  width="500" height="500" align="middle">
+      </p>
+      <button ng-show="sc.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="sc.deleteComic(Comics)">Delete</button>
+      <button class="btn btn-default btn-md" style="float:right;" ng-click="sc.addToFavourites(Comics)"><span class="glyphicon glyphicon-heart"></span></button>
+      <button class="btn btn-default btn-md" ng-hide="sc.showDescription(Comics._id)" style="float:right;" ng-click="sc.addToShowDescription(Comics._id)">Show Description</button>
+      <button class="btn btn-default btn-md" ng-show="sc.showDescription(Comics._id)" style="float:right;" ng-click="sc.removeFromShowDescription(Comics._id)">Hide Description</button>
+      <span class="alignLeft">By:</span>
+    <span class="alignRight"><b><a ng-repeat="contributor in Comics.contributors">
+      {{contributor.name}}
+    </a></b>
+    </span>
+      <div style="width: 500; word-wrap: break-word; font-size: 20px;" ng-show="sc.showDescription(Comics._id)">
+        {{Comics.description}}
+      </div>
+      <br>
+    </li>
+    <br>
+  </ul>
+</div>
 
 
 
+<!--
 <div> Note, temporary for testing add contributor fucntionality </div>
-<p ng-repeat="Strings in pic.content">
-  <img src={{Strings}}  width="500" height="500" align="middle">
-</p>
 <button type="button" class="btn btn-default" ng-click="sc.testingAddContributor()">Addcontributor</button>
+-->

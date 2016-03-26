@@ -104,14 +104,35 @@ export function addContributorToComicContributors(req, res, next) {
 .catch(handleError(res));
 }
 
-
-/*exports.create = function(req, res) {
-  var comic = new Comic(req.body);
-  comic.save(function(err,comic){
-    if(err) {return handleError(res, err);}
-    return res.status(201).json(comic);
-  });
-};*/
+export function searchForComics(req, res, next){
+  var keywords = String(req.params.keywords);
+  console.log('in swerch with keywords '+keywords);
+  //Comic.find({}).populate('contributors','name')
+  //  .execAsync()
+  //  .then(function(result){
+  //    var allComics = json(result);
+  //    console.log('allComics');
+  //    return res.status(204).json(allComics)
+  //  })
+  //  .catch(handleError(res))
+  Comic.find({ "$text" : { "$search" : keywords } }).populate('contributors','name')
+    .execAsync()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+  //Comic.find({name: keywords}).populate('contributors','name')
+  //  .execAsync()
+  //  .then(respondWithResult(res))
+  //  .catch(handleError(res));
+}
+export function searchForComicsByUsername(req, res, next){
+  var keywords = String(req.params.keywords);
+  var arrayOfKeywords = keywords.split(" ");
+  console.log('in by username swerch with keywords '+keywords);
+  Comic.find().populate('contributors','name')
+    .execAsync()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
 
 // Updates an existing Comic in the DB
 export function update(req, res) {

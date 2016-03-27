@@ -66,7 +66,7 @@ export function index(req, res) {
   //Comic.findAsync()
   //  .then(respondWithResult(res))
   //  .catch(handleError(res));
-  Comic.find().populate('contributors') //populates contributors
+  Comic.find().populate('contributors', 'name') //populates only name field of contributor
     .execAsync()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -88,15 +88,51 @@ export function create(req, res) {
     .catch(handleError(res));
 }
 
+/**
+ * Add contributor to comic
+ */
+export function addContributorToComicContributors(req, res, next) {
+  console.log('got to add contributor to contributors in comic controller');
+  var comicId = String(req.params.id);   //gets the id of the comic from the http.post url
+  var newContributor = String(req.body.contributor);  //contributor id needs to be sent in the request (note use Auth.getCurrentUser()._id which you send in the request
+  console.log('comicId '+comicId);
+  console.log('contributor id '+newContributor);
+  return Comic.updateAsync({_id: comicId}, {$addToSet: {contributors: newContributor}})
+      .then(() => {
+      res.status(204).end();
+})
+.catch(handleError(res));
+}
 
-
-/*exports.create = function(req, res) {
-  var comic = new Comic(req.body);
-  comic.save(function(err,comic){
-    if(err) {return handleError(res, err);}
-    return res.status(201).json(comic);
-  });
-};*/
+export function searchForComics(req, res, next){
+  var keywords = String(req.params.keywords);
+  console.log('in swerch with keywords '+keywords);
+  //Comic.find({}).populate('contributors','name')
+  //  .execAsync()
+  //  .then(function(result){
+  //    var allComics = json(result);
+  //    console.log('allComics');
+  //    return res.status(204).json(allComics)
+  //  })
+  //  .catch(handleError(res))
+  Comic.find({ "$text" : { "$search" : keywords } }).populate('contributors','name')
+    .execAsync()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+  //Comic.find({name: keywords}).populate('contributors','name')
+  //  .execAsync()
+  //  .then(respondWithResult(res))
+  //  .catch(handleError(res));
+}
+export function searchForComicsByUsername(req, res, next){
+  var keywords = String(req.params.keywords);
+  var arrayOfKeywords = keywords.split(" ");
+  console.log('in by username swerch with keywords '+keywords);
+  Comic.find().populate('contributors','name')
+    .execAsync()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
 
 // Updates an existing Comic in the DB
 export function update(req, res) {

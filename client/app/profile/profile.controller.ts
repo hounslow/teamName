@@ -1,39 +1,4 @@
 'use strict';
-/*
-angular.module('teamNameApp')
-  .controller('ProfileCtrl', function ($scope, Auth, User, $http) {
-    $scope.name = Auth.getCurrentUser().name;
-    $scope.personalWeb = Auth.getCurrentUser().personalWebsite;
-    $scope.interestsList = Auth.getCurrentUser().interestsList;
-    $scope.editorEnabled = false;
-
-    $scope.enableEditor = function() {
-      $scope.editorEnabled = true;
-      $scope.editableName = $scope.name;
-      $scope.editablePersonalWeb = $scope.personalWeb;
-      $scope.editableInterestsList = $scope.interestsList;
-    };
-
-    $scope.disableEditor = function() {
-      $scope.editorEnabled = false;
-    };
-
-    $scope.save = function() {
-      $scope.personalWeb = $scope.editablePersonalWeb;
-      $scope.name = $scope.editableName;
-      $scope.interestsList = $scope.editableInterestsList;
-//      User.changeI
-      console.log('current user id is '+Auth.getCurrentUser()._id);
-      $http.put('api/users/'+Auth.getCurrentUser()._id+'/interests-list', {id: Auth.getCurrentUser()._id, interestsList: $scope.interestsList});
-      $http.put('api/users/'+Auth.getCurrentUser()._id+'/personal-website', {id: Auth.getCurrentUser()._id, personalWebsite: $scope.personalWeb});
-      $scope.disableEditor();
-//      Auth.changePassword('test','bbb');  //works to change password
-
-
-    };
-  });
-
-*/
 
 class ProfileCtrl {
   constructor($scope, Auth, $http){
@@ -50,11 +15,6 @@ class ProfileCtrl {
       $scope.editorEnabled = false;
       $scope.profilePicture = this.me.profilePicture;
     });
-    //$scope.name = Auth.getCurrentUser().name;
-    //$scope.personalWeb = Auth.getCurrentUser().personalWebsite;
-    //$scope.interestsList = Auth.getCurrentUser().interestsList;
-    //$scope.editorEnabled = false;
-    //$scope.profilePicture = Auth.getCurrentUser().profilePicture;
     console.log('in profile controller constructor');
   }
   enableEditor() {

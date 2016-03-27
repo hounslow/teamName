@@ -4,6 +4,7 @@ angular.module('teamNameApp', [
   'teamNameApp.auth',
   'teamNameApp.admin',
   'teamNameApp.constants',
+  'teamNameApp.comic',
   'ngCookies',
   'ngResource',
   'ngSanitize',

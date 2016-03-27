@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('teamNameApp')
+/*angular.module('teamNameApp')
   .service('comicService', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var objectValue = {
@@ -10,4 +10,25 @@ angular.module('teamNameApp')
     return {getComics: function() {$http.get('/api/Comics').success(function(Comics) {
       objectValue.data = Comics;
     })}}
-  });
+  });*/
+
+(function() {
+
+  function ComicService($http) {
+
+
+    var comic = {
+
+        getComics() {
+        return $http.get('/api/Comics')
+      }
+      };
+
+    return comic;
+
+  }
+
+  angular.module('teamNameApp.comic', [])
+    .service('comic', ComicService);
+
+})();

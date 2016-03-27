@@ -3,16 +3,25 @@
 class TheFeedCtrl {
   private comicsToShowDescription: string[];
 
-  constructor($scope, $http, Auth){
+  constructor($scope, $http, Auth, comic){
     this.isContributor = Auth.isUser;
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
+    this.comic = comic;
     $scope.noComics = false;
     $scope.loadingComics = true;
     this.comicsToShowDescription = [];
     // Grab the initial set of available comics
-    $http.get('/api/Comics').success(function(Comics) {
+/*    $http.get('/api/Comics').success(function(Comics) {
+      $scope.Comics = Comics;
+      if (Comics[0] == undefined){
+        $scope.noComics = true;
+      }
+      $scope.loadingComics = false;
+    });*/
+
+    comic.getComics().success(function(Comics) {
       $scope.Comics = Comics;
       if (Comics[0] == undefined){
         $scope.noComics = true;

@@ -12,6 +12,7 @@
     <p ng-repeat="Strings in Comics.content">
       <img src={{Strings}}  width="500" height="500" align="middle">
     </p>
+    <button ng-show="fc.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="fc.editComic(Comics)">Edit</button>
     <button ng-show="fc.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="fc.deleteComic(Comics)">Delete</button>
     <button class="btn btn-default btn-md" style="float:right;" ng-click="fc.addToFavourites(Comics)"><span class="glyphicon glyphicon-heart"></span></button>
     <button class="btn btn-default btn-md" ng-hide="fc.showDescription(Comics._id)" style="float:right;" ng-click="fc.addToShowDescription(Comics._id)">Show Description</button>

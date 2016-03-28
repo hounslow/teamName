@@ -44,7 +44,24 @@
   <p id="buttonscreateacomic">
     <input class="btn btn-default btn-md" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
+  <span><img src={{Comics.content[1]}} alt="Shows up when you hover" width="500" height="500" align="middle"></span>
 </form>
+
+<!--<ul style="list-style-type:none;">
+  <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
+    <h2>{{ Comics.name }}</h2>
+    &lt;!&ndash;   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> &ndash;&gt;
+    <p ng-repeat="Strings in Comics.content">
+      <img src={{Strings}}  width="500" height="500" align="middle">
+    </p>
+  </li>
+</ul>-->
+<div>
+  {{Comics.description}}
+  </div>
+
+
+
 <!--
 <br />
 <p id="dvPreview">

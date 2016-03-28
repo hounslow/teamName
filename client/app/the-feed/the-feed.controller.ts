@@ -13,15 +13,7 @@ class TheFeedCtrl {
     $scope.loadingComics = true;
     this.comicsToShowDescription = [];
     // Grab the initial set of available comics
-/*    $http.get('/api/Comics').success(function(Comics) {
-      $scope.Comics = Comics;
-      if (Comics[0] == undefined){
-        $scope.noComics = true;
-      }
-      $scope.loadingComics = false;
-    });*/
-
-    comic.getComics().success(function(Comics) {
+    $http.get('/api/Comics').success(function(Comics) {
       $scope.Comics = Comics;
       if (Comics[0] == undefined){
         $scope.noComics = true;
@@ -29,7 +21,25 @@ class TheFeedCtrl {
       $scope.loadingComics = false;
     });
 
+/*    comic.getComics().success(function(Comics) {
+      $scope.Comics = Comics;
+      if (Comics[0] == undefined){
+        $scope.noComics = true;
+      }
+      $scope.loadingComics = false;
+    });*/
+
   }
+
+  editComic(Comic){
+    //console.log(Comic._id);
+    var stringVal = "blenhwhke";
+    //this.$http.get('api/Comics/' + Comic._id).success(function(data){editObj = data});
+    this.comic.setComic(Comic._id);
+    this.comic.setString(stringVal);
+    //window.location.href='/create-a-comic';
+  }
+
   deleteComic(Comic) {
       this.$http.delete('/api/Comics/' + Comic._id);
       window.location.href='/the-feed';

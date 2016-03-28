@@ -1,8 +1,14 @@
 'use strict';
 
 angular.module('teamNameApp')
-  .controller('CreateAComicCtrl', function ($scope, $http, $window, Auth) {
+  .controller('CreateAComicCtrl', function ($scope, $http, $window, Auth, comic) {
     //$scope.message = 'i am not amused';
+    console.log(comic.getComic());
+    $http.get('api/Comics/' + comic.getComic()).success(function(data){$scope.Comics  = data});
+    //console.log($scope.Comics.name);
+    //var value = $scope.Comics.name;
+    $scope.StringVal = comic.getString();
+    console.log($scope.StringVal);
     $scope.addComic = function() {
       var files    = document.querySelector('input[type=file]').files;
       var name = $scope.newTitle;

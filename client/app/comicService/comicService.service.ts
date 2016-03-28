@@ -14,14 +14,14 @@
 
 (function() {
 
-  function ComicService($http) {
-
-
+  function ComicService() {
+    var comicObj = '';
+    var string = '';
     var comic = {
-
-        getComics() {
-        return $http.get('/api/Comics')
-      }
+      setString(value) {string = value},
+      setComic(comicV)  {comicObj = comicV},
+      getString() {return string},
+      getComic() {return comicObj}
       };
 
     return comic;

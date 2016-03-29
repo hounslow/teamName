@@ -173,9 +173,10 @@ export function changeProfilePicture(req, res, next) {
  * Add comic to my comics
  */
 export function addComicToMyComics(req, res, next) {
-  console.log('got to add comic to my favourites in users controller');
+  console.log('got to add comic to myComics in users controller');
   var userId = String(req.body.id);
   var newMyComic = String(req.body.myComics);
+  console.log(newMyComic);
 
   return User.updateAsync({_id: userId}, {$addToSet: {myComics: newMyComic}})
       .then(() => {

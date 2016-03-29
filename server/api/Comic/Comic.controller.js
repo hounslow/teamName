@@ -94,10 +94,11 @@ export function create(req, res) {
 export function addContributorToComicContributors(req, res, next) {
   console.log('got to add contributor to contributors in comic controller');
   var comicId = String(req.params.id);   //gets the id of the comic from the http.post url
-  var newContributor = String(req.body.contributor);  //contributor id needs to be sent in the request (note use Auth.getCurrentUser()._id which you send in the request
+  var state = String(req.body.notSaved);
+  var newContributor = String(req.body.contributors);  //contributor id needs to be sent in the request (note use Auth.getCurrentUser()._id which you send in the request
   console.log('comicId '+comicId);
   console.log('contributor id '+newContributor);
-  return Comic.updateAsync({_id: comicId}, {$addToSet: {contributors: newContributor}})
+  return Comic.updateAsync({_id: comicId}, {$addToSet: {contributors: newContributor}, $set: {notSaved: state}})
       .then(() => {
       res.status(204).end();
 })

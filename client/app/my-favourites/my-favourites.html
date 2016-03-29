@@ -4,7 +4,7 @@
 
 <div class="imgcreateacomic">
   <ul style="list-style-type:none;">
-    <li ng-repeat="Comic in myFavourites" style="margin-bottom: 50px;">
+    <li ng-show='Comic.notSaved' ng-repeat="Comic in myFavourites" style="margin-bottom: 50px;">
       <h2>{{ Comic.name }}</h2>
       <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
       <p ng-repeat="Strings in Comic.content">

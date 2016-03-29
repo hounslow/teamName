@@ -7,8 +7,7 @@ angular.module('teamNameApp')
     $http.get('api/Comics/' + comic.getComic()).success(function(data){$scope.Comics  = data});
     //console.log($scope.Comics.name);
     //var value = $scope.Comics.name;
-    $scope.StringVal = comic.getString();
-    console.log($scope.StringVal);
+    $scope.TestComic = comic.getComic();
     $scope.addComic = function() {
       var files    = document.querySelector('input[type=file]').files;
       var name = $scope.newTitle;
@@ -30,7 +29,7 @@ angular.module('teamNameApp')
     reader.onloadend = function(e){
       fileString[i] = e.target.result;
       if (i == (files.length - 1)){
-        $http.post('/api/Comics', {name: name , content: fileString, description: description, contributors: Auth.getCurrentUser()._id } )
+        $http.post('/api/Comics', {name: name , content: fileString, description: description, contributors: Auth.getCurrentUser()._id, notSaved: true } )
           .success(function(comic) {
             $http.post('api/users/' + Auth.getCurrentUser()._id + '/my-comics', {id: Auth.getCurrentUser()._id, myComics: comic._id});
             $window.location.href='/the-feed';

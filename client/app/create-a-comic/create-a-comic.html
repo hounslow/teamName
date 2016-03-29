@@ -44,7 +44,7 @@
   <p id="buttonscreateacomic">
     <input class="btn btn-default btn-md" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
-  <span><img src={{Comics.content[1]}} alt="Shows up when you hover" width="500" height="500" align="middle"></span>
+  <span><img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"></span>
 </form>
 
 <!--<ul style="list-style-type:none;">
@@ -56,6 +56,11 @@
     </p>
   </li>
 </ul>-->
+
+<div>
+  {{TestComic}}
+</div>
+
 <div>
   {{Comics.description}}
   </div>

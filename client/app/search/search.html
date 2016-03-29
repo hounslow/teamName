@@ -44,7 +44,7 @@
 <div ng-show="gotResultsByUsernameYes" class="imgcreateacomic container">
   <h4> Filtered by username </h4>
   <ul style="list-style-type:none;">
-    <li ng-repeat="Comics in filteredByUsernameComics" style="margin-bottom: 50px;">
+    <li ng-show='Comics.notSaved' ng-repeat="Comics in filteredByUsernameComics" style="margin-bottom: 50px;">
       <h2>{{ Comics.name }}</h2>
       <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
       <p ng-repeat="Strings in Comics.content">

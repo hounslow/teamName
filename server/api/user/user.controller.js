@@ -23,7 +23,12 @@ function handleError(res, statusCode) {
  * Get list of users
  */
 export function index(req, res) {
-  User.find({}, '-salt -password').populate('myFavourites myComics')
+  User.find({}, '-salt -password').populate({
+      path: 'myComics myFavourites',
+      populate: {
+        path: 'contributors',
+        model: 'User'
+      }})
     .execAsync()
     .then(users => {
       res.status(200).json(users);
@@ -260,7 +265,12 @@ export function removeFromFavouritesTwo(req, res, next) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  User.findOne({ _id: userId }, '-salt -password').populate('myFavourites myComics')//, populate: {path: 'contributors'}})
+  User.findOne({ _id: userId }, '-salt -password').populate({
+      path: 'myComics myFavourites',
+      populate: {
+        path: 'contributors',
+        model: 'User'
+      }})
     .execAsync()
     .then(user => { // don't ever give out the password or salt
       if (!user) {

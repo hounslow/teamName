@@ -25,6 +25,9 @@ class SearchCtrl {
   }
 
   searchForComics(){
+    if(this.$scope.searchingByTitle || this.$scope.searchingByUsername) {
+      return;
+    }
     this.$scope.gotResultsByTitle = true;
     this.$scope.gotResultsByTitleYes = false;
     this.$scope.searchingByTitle = true;

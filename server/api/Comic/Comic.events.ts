@@ -26,8 +26,7 @@ class ComicEvents {
 		for (var e in events) {
 		  var event = events[e];
 		  Comic.schema.post(e, emitEvent(event));
-		};
-		
+		}
 	}
 
 	emitEvent(event) {

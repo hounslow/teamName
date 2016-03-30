@@ -4,10 +4,12 @@ class MyFavouritesCtrl{
    private comicsToShowDescription: string[];
 
 
-  constructor(Auth, $location, $http, $scope) {
+  constructor(Auth, $location, $http, $scope, comic) {
+    this.isContributor = Auth.isUser;
     this.Auth = Auth;
     this.$location = $location;
     this.$http = $http;
+    this.comic = comic;
     this.comicsToShowDescription = [];
     $http.get('/api/users/me').then(response => {
       this.me = response.data;
@@ -16,13 +18,27 @@ class MyFavouritesCtrl{
 //      console.log('my favourites controller contributors '+this.me.myFavourites[0].contributors)
 //        console.log('my favourites controller' + this.me.myFavourites[0].name);
 //      }
+      function checkSaved(obj){
+        if (obj.notSaved == true){
+        return obj;}
+      }
+
       $scope.myFavourites = this.me.myFavourites;
+      $scope.newShit = $scope.myFavourites.filter(checkSaved);
     });
   }
 
   addToShowDescription(comicId: string){
     this.comicsToShowDescription.push(comicId);
   };
+
+  editComic(Comic){
+    this.comic.setComic(Comic._id);
+    console.log(this.Auth.getCurrentUser()._id);
+    this.$http.post('/api/Comics/' + Comic._id + '/contributors' ,{contributors: this.Auth.getCurrentUser()._id, notSaved: false});
+    this.$http.post('api/users/' + this.Auth.getCurrentUser()._id + '/my-comics', {id: this.Auth.getCurrentUser()._id, myComics: Comic._id});
+    //window.location.href='/create-a-comic';
+  }
 
   showDescription(comicId: string):boolean{
     console.log('this should be true '+ (-1 != this.comicsToShowDescription.indexOf(comicId)));

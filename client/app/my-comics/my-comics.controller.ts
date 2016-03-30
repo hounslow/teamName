@@ -3,11 +3,12 @@
 class MyComicsCtrl {
   private comicsToShowDescription: string[];
 
-  constructor($scope, $http, Auth){
+  constructor($scope, $http, Auth, comic){
     this.isContributor = Auth.isUser;
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
+    this.comic = comic;
     this.comicsToShowDescription = [];
     // Grab the initial set of available comics
     $http.get('/api/users/me').then(response => {
@@ -15,6 +16,15 @@ class MyComicsCtrl {
       $scope.Comics = this.me.myComics;
     });
   }
+
+  editComic(Comic){
+    this.comic.setComic(Comic._id);
+    console.log(this.Auth.getCurrentUser()._id);
+    this.$http.post('/api/Comics/' + Comic._id + '/contributors' ,{contributors: this.Auth.getCurrentUser()._id, notSaved: false});
+    this.$http.post('api/users/' + this.Auth.getCurrentUser()._id + '/my-comics', {id: this.Auth.getCurrentUser()._id, myComics: Comic._id});
+    //window.location.href='/create-a-comic';
+  }
+
 
   deleteComic(Comic) {
     this.$http.delete('/api/Comics/' + Comic._id);

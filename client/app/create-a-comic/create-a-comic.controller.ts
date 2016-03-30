@@ -9,7 +9,9 @@ angular.module('teamNameApp')
     //var value = $scope.Comics.name;
     $scope.newFileString = [];
     $scope.TestComic = comic.getComic();
-    $scope.pageNumber = 0;
+    $scope.pageNumber = [];
+
+
     $scope.addComic = function() {
       var files    = document.querySelector('input[type=file]').files;
       var name = $scope.newTitle;
@@ -41,20 +43,52 @@ angular.module('teamNameApp')
   })(i);};
 
     $scope.setPageNumber = function(index) {
-      $scope.pageNumber = index;
+      $scope.pageNumber.push(index);
       console.log(index);
     };
 
     $scope.deleteCell = function(){
       $scope.newFileString = $scope.Comics.content;
-      //console.log($scope.newFileString.length);
-      $scope.newFileString.splice($scope.pageNumber,1);
-      //console.log($scope.newFileString.length);
+/*      for (var i = 0; i < $scope.pageNumber.length; i++){
+        if ($scope.pageNumber[i] < $scope.pageNumber[i+1])
+        $scope.pageNumber[i+1] = $scope.pageNumber[i]-1;*/
+      $scope.newFileString.splice($scope.pageNumber[0],1);
+      $scope.pageNumber = [];
+    };
+
+    $scope.addCell = function(){
+      $scope.newFileString = $scope.Comics.content;
+      var file    = document.querySelector("#test").files[0];
+      var fileReader = new FileReader;
+      fileReader.onloadend = function(e){
+        $scope.newFileString.push(e.target.result);
+      };
+
+      if (file){
+      fileReader.readAsDataURL(file);}
+    };
+
+    $scope.save = function(){
+      $scope.newFileString = $scope.Comics.content;
+      $http.put('/api/Comics/' + $scope.TestComic , {content: $scope.newFileString, notSaved: false}).success(function(){
+        window.location.href='/the-feed';
+      })
+    };
+
+    $scope.swapCell = function(){
+      $scope.newFileString = $scope.Comics.content;
+      var temp = $scope.newFileString[$scope.pageNumber[0]];
+      $scope.newFileString[$scope.pageNumber[0]] = $scope.newFileString[$scope.pageNumber[1]];
+      $scope.newFileString[$scope.pageNumber[1]] = temp;
+      $scope.pageNumber = [];
     };
 
     $scope.PublishBitch = function(){
+      $scope.newFileString = $scope.Comics.content;
       console.log($scope.newFileString.length);
-      $http.put('/api/Comics/' + $scope.TestComic , {content: $scope.newFileString, notSaved: true});
+      $http.put('/api/Comics/' + $scope.TestComic , {content: $scope.newFileString, notSaved: true}).success(function(){
+        window.location.href='/the-feed';
+      })
     }
 });
 

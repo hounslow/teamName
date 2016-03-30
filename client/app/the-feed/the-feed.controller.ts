@@ -14,9 +14,16 @@ class TheFeedCtrl {
     this.comicsToShowDescription = [];
     // Grab the initial set of available comics
     $http.get('/api/Comics').success(function(Comics) {
-      $scope.Comics = Comics;
+      $scope.ComicsInit = Comics;
+      function checkSave(obj){
+        if (obj.notSaved == true){
+          return obj;
+        }
+      }
+
+      $scope.Comics = $scope.ComicsInit.filter(checkSave);
       //socket.syncUpdates('Comics', Comics);
-      if (Comics[0] == undefined){
+      if ($scope.Comics[0] == undefined){
         $scope.noComics = true;
       }
       $scope.loadingComics = false;
@@ -33,11 +40,12 @@ class TheFeedCtrl {
   }
 
   deleteComic(Comic) {
-    //if (Comic.notSaved == true){
+    if (Comic.notSaved == true){
       this.$http.delete('/api/Comics/' + Comic._id);
-      window.location.href='/the-feed';//}
-    //else {console.log('you done fucked up')}
+      window.location.href='/the-feed';}
+    else {console.log('you done fucked up')}
   };
+
   addToShowDescription(comicId: string){
     this.comicsToShowDescription.push(comicId);
   };

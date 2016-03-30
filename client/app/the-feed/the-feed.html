@@ -6,7 +6,7 @@
 <h3 style="text-align:center;" ng-show="loadingComics">Loading Comics!</h3>
 <div class="imgcreateacomic">
 <ul style="list-style-type:none;">
-  <li ng-show="Comics.notSaved" ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
+  <li  ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
     <h2>{{ Comics.name }}</h2>
  <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
     <p ng-repeat="Strings in Comics.content">

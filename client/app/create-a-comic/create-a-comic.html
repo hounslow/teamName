@@ -44,6 +44,9 @@
   <p id="buttonscreateacomic">
     <input class="btn btn-default btn-md" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
+  <div id="headercreateacomic">
+    <h1 id="headercreateacomic">Editing MothaFucka!</h1>
+  </div>
   <p id="comicImage">
   <ol style="list-style-type:none;" type="1">
     <li ng-repeat="Strings in Comics.content" style="margin-bottom: 50px;">
@@ -51,8 +54,12 @@
           <img src={{Strings}}  width="500" height="500" align="middle"></a>
     </li>
   </ol>
-  <button  class="btn btn-default btn-md" style="float:right;" ng-click="deleteCell()" >Delete Cell</button>
-  <button  class="btn btn-default btn-md" style="float:right;" ng-click="PublishBitch()" >PublishBitch</button>
+  <input type="file" id="test" accept="image/*"></input>
+  <button  class="btn btn-default btn-md" style="float:left;" ng-click="addCell()" >Add Cell</button>
+  <button  class="btn btn-default btn-md" style="float:left;" ng-click="swapCell()" >Swap</button>
+  <button  class="btn btn-default btn-md" style="float:left;" ng-click="deleteCell()" >Delete Cell</button>
+  <button  class="btn btn-default btn-md" style="float:left;" ng-click="PublishBitch()" >PublishBitch</button>
+  <button  class="btn btn-default btn-md" style="float:left;" ng-click="save()" >Save</button>
   </p>
 </form>
 

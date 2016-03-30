@@ -45,11 +45,14 @@
     <input class="btn btn-default btn-md" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
   <p id="comicImage">
-  <ul style="list-style-type:none;">
+  <ol style="list-style-type:none;" type="1">
     <li ng-repeat="Strings in Comics.content" style="margin-bottom: 50px;">
-        <img src={{Strings}}  width="500" height="500" align="middle">
+        <a ng-class="{ testClass: $index == pageNumber }" ng-click="setPageNumber($index)">
+          <img src={{Strings}}  width="500" height="500" align="middle"></a>
     </li>
-  </ul>
+  </ol>
+  <button  class="btn btn-default btn-md" style="float:right;" ng-click="deleteCell()" >Delete Cell</button>
+  <button  class="btn btn-default btn-md" style="float:right;" ng-click="PublishBitch()" >PublishBitch</button>
   </p>
 </form>
 

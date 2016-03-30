@@ -135,11 +135,33 @@ export function searchForComicsByUsername(req, res, next){
     .catch(handleError(res));
 }
 
+export function updateComic(req, res, next) {
+  console.log('update Comic function controller');
+  var comicId = String(req.params.id);
+  //var newContent = Array(req.body.content);
+  var newState = String(req.body.notSaved);
+  console.log(comicId);
+  return Comic.updateAsync({_id: comicId}, {$set: {content: req.body.content, notSaved: newState}})
+    .then(() => {
+      console.log(comicId);
+      res.status(204).end();
+    })
+    .catch(handleError(res));
+}
+
+
+
+
+
+
+
 // Updates an existing Comic in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
+  var test = req.body.content;
+  console.log(test.length);
   Comic.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))

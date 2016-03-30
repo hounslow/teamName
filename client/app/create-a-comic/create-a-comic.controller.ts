@@ -7,7 +7,9 @@ angular.module('teamNameApp')
     $http.get('api/Comics/' + comic.getComic()).success(function(data){$scope.Comics  = data});
     //console.log($scope.Comics.name);
     //var value = $scope.Comics.name;
+    $scope.newFileString = [];
     $scope.TestComic = comic.getComic();
+    $scope.pageNumber = 0;
     $scope.addComic = function() {
       var files    = document.querySelector('input[type=file]').files;
       var name = $scope.newTitle;
@@ -36,7 +38,24 @@ angular.module('teamNameApp')
       })}
     };
     reader.readAsDataURL(files[i]);
-  })(i);}
+  })(i);};
+
+    $scope.setPageNumber = function(index) {
+      $scope.pageNumber = index;
+      console.log(index);
+    };
+
+    $scope.deleteCell = function(){
+      $scope.newFileString = $scope.Comics.content;
+      //console.log($scope.newFileString.length);
+      $scope.newFileString.splice($scope.pageNumber,1);
+      //console.log($scope.newFileString.length);
+    };
+
+    $scope.PublishBitch = function(){
+      console.log($scope.newFileString.length);
+      $http.put('/api/Comics/' + $scope.TestComic , {content: $scope.newFileString, notSaved: true});
+    }
 });
 
 

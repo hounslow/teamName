@@ -109,7 +109,7 @@ class SearchCtrl {
 
   deleteComic(Comic) {
     this.$http.delete('/api/Comics/' + Comic._id);
-    window.location.href='/the-feed';
+    window.location.href='/search';
   };
   addToShowDescription(comicId: string){
     this.comicsToShowDescription.push(comicId);

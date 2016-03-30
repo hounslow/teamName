@@ -2,6 +2,9 @@
   <h1 id="headercreateacomic">My Comics</h1>
 </div>
 
+<h3 style="text-align:center;" ng-show="noComics">You have not contributed any comics</h3>
+<h3 style="text-align:center;" ng-show="loadingComics">Loading Comics!</h3>
+
 <div class="imgcreateacomic">
   <ul style="list-style-type:none;">
     <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">

@@ -8,15 +8,17 @@ class MyFavouritesCtrl{
     this.Auth = Auth;
     this.$location = $location;
     this.$http = $http;
+    $scope.noComics = false;
+    $scope.loadingComics = true;
     this.comicsToShowDescription = [];
     $http.get('/api/users/me').then(response => {
       this.me = response.data;
-//      if (this.me.myFavorites != null) {
-        console.log('meeee in my favourites controller' + this.me.name);
-//      console.log('my favourites controller contributors '+this.me.myFavourites[0].contributors)
-//        console.log('my favourites controller' + this.me.myFavourites[0].name);
-//      }
+      console.log('meeee in my favourites controller' + this.me.name);
       $scope.myFavourites = this.me.myFavourites;
+      if (this.me.myFavourites[0] == undefined){
+        $scope.noComics = true;
+      }
+      $scope.loadingComics = false;
     });
   }
 

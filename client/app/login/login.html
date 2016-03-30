@@ -19,11 +19,11 @@
 
       <li class= "login">
         <label for="password">Password</label>
-        <input class="login" type="password" name="password" placeholder="Password" ng-model="vm.user.password" required></input>
+        <input class="login" type="password" name="password" placeholder="Password" ng-model="vm.user.password" ng-required="true" required></input>
       </li >
 
       <div class="has-error">
-        <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
+        <p class="help-block" ng-show="(form.email.$error.required || form.password.$error.required) && vm.submitted">
            Please enter both email and password.
         </p>
         <p class="help-block" ng-show="form.email.$error.email && vm.submitted">

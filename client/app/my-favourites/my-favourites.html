@@ -2,6 +2,9 @@
   <h1 id="headercreateacomic">My Favourites</h1>
 </div>
 
+<h3 style="text-align:center;" ng-show="noComics">You don't have any favourites</h3>
+<h3 style="text-align:center;" ng-show="loadingComics">Loading Comics!</h3>
+
 <div class="imgcreateacomic">
   <ul style="list-style-type:none;">
     <li ng-repeat="Comic in myFavourites" style="margin-bottom: 50px;">

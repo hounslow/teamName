@@ -8,11 +8,17 @@ class MyComicsCtrl {
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
+    $scope.noComics = false;
+    $scope.loadingComics = true;
     this.comicsToShowDescription = [];
     // Grab the initial set of available comics
     $http.get('/api/users/me').then(response => {
       this.me = response.data;
       $scope.Comics = this.me.myComics;
+      if (this.me.myComics[0] == undefined){
+        $scope.noComics = true;
+      }
+      $scope.loadingComics = false;
     });
   }
 

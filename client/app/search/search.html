@@ -7,6 +7,7 @@
     <button type="submit" class="btn btn-default btn-md" ng-click="searchForm.$valid && sc.searchForComics()"><span class="glyphicon glyphicon-search"></span>Search</button>
   </form>
 
+  <h3 ng-show="noComicsExist">There are no comics to search through</h3>
   <h3 ng-hide="gotResultsByTitle">No results by title were found :(</h3>
   <h3 ng-hide="gotResultsByUsername">No results by username were found :(</h3>
   <h3 ng-show="searchingByTitle">Searching by title!</h3>
@@ -17,7 +18,7 @@
   <ul style="list-style-type:none;">
     <span ng-show="gotResultsByTitleYes" >
       <h3> Results of search by title </h3>
-      <li ng-repeat="Comics in filteredComics" style="margin-bottom: 50px;">
+      <li ng-repeat="Comics in filteredByTitleComics" style="margin-bottom: 50px;">
         <h2>{{ Comics.name }}</h2>
         <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
         <p ng-repeat="Strings in Comics.content">

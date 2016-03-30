@@ -3,6 +3,8 @@
 class SearchCtrl {
   private comicsToShowDescription: string[];
   private filteredByUsernameComics : string[];
+  private filteredByTitleComics : string[];
+  private allComics: string[];
 
   constructor($scope, Auth, $http){
     this.isContributor = Auth.isUser;
@@ -11,6 +13,7 @@ class SearchCtrl {
     this.$http = $http;
     this.comicsToShowDescription = [];
     this.filteredByUsernameComics = [];
+    this.filteredByTitleComics = [];
     $scope.keywords = "";
     $scope.gotResultsByTitle = true;
     $scope.gotResultsByUsername = true;
@@ -18,94 +21,130 @@ class SearchCtrl {
     $scope.gotResultsByUsernameYes = false;
     $scope.searchingByTitle = false;
     $scope.searchingByUsername = false;
-    //$http.get('/api/comics').then(response => {
-    //  this.allComics = response.data;
-    //  $scope.allComics = this.allComics;
-    //});
+    $scope.noComicsExist = false;
+    $http.get('/api/comics').then(response => {
+      this.allComics = response.data;
+      $scope.allComics = this.allComics;
+      if (typeof this.allComics[0] == 'undefined'){
+        $scope.noComicsExist = true;
+      }
+    });
   }
 
   searchForComics(){
-    if(this.$scope.searchingByTitle || this.$scope.searchingByUsername) {
+    if(this.$scope.searchingByTitle || this.$scope.searchingByUsername || this.$scope.noComicsExist) {
+      console.log("in search for comics reject");
+      console.log(this.$scope.searchingByTitle);
+      console.log(this.$scope.searchingByUsername);
+      console.log(this.$scope.noComicsExist);
       return;
     }
     this.$scope.gotResultsByTitle = true;
-    this.$scope.gotResultsByTitleYes = false;
     this.$scope.searchingByTitle = true;
-    this.$scope.testing = "";
-    this.$scope.filteredComics = [];
-    var obj = this;
+    this.$scope.gotResultsByTitleYes = false;
+    this.$scope.filteredByTitleComics = [];
+    this.filteredByTitleComics = [];
+    var arrayOfKeywords = this.$scope.keywords.split(" ");
 
-    this.$http.get('/api/comics/search/'+this.$scope.keywords, {searchWords: this.$scope.keywords})
-     .success(function (data){
-       if (typeof data[0] == 'undefined') {
-         obj.$scope.gotResultsByTitle = false;
-         obj.$scope.gotResultsByTitleYes = false;
-       } else {obj.$scope.gotResultsByTitleYes = true;}
-       obj.$scope.filteredComics = data;
-       obj.$scope.testing = data;
-       obj.$scope.searchingByTitle = false;
-     });
-    //this.$http.get('/api/comics/search-username/'+this.$scope.keywords, {searchWords: this.$scope.keywords})
-    //  .success(function (data){
-    //    if (typeof data[0] == 'undefined') {
-    //      obj.$scope.gotResults = false;
-    //    }
-    //    obj.$scope.filteredByUsernameComics = data;
-    //    obj.$scope.testing2 = data;
-    //    obj.$scope.searching = false;
-    //  });
+    for (var i = 0; i < this.allComics.length; i++ ){  //going through comics
+        for (var c= 0; c<arrayOfKeywords.length; c++){
+          if (this.allComics[i].name.toLowerCase().indexOf(arrayOfKeywords[c].toLowerCase()) > -1){
+            if (this.filteredByTitleComics.indexOf(this.$scope.allComics[i]) == -1) {  //don't allow for duplicates
+              this.filteredByTitleComics.push(this.allComics[i]);
+              this.$scope.gotResultsByTitleYes = true;
+              console.log('should be first');
+            }
+          }
+        }
+    }
+    if (typeof this.filteredByTitleComics[0] == 'undefined') {
+      this.$scope.gotResultsByTitle = false;
+      this.$scope.searchingByTitle = false;
+      this.searchForComicsByUsername();
+      return;
+    }
+    this.$scope.filteredByTitleComics = this.filteredByTitleComics;
+    this.$scope.searchingByTitle = false;
+    console.log('should be second');
+    //this.$http.get('/api/comics/search/'+this.$scope.keywords, {searchWords: this.$scope.keywords})  //would still work, back end still there
+    // .success(function (data){
+    //   if (typeof data[0] == 'undefined') {
+    //     obj.$scope.gotResultsByTitle = false;
+    //     obj.$scope.gotResultsByTitleYes = false;
+    //   } else {obj.$scope.gotResultsByTitleYes = true;}
+    //   obj.$scope.filteredComics = data;
+    //   obj.$scope.testing = data;
+    //   obj.$scope.searchingByTitle = false;
+    // });
     this.searchForComicsByUsername();
   }
 
   searchForComicsByUsername(){
+    console.log('should be third');
     this.$scope.gotResultsByUsername = true;
     this.$scope.searchingByUsername = true;
     this.$scope.gotResultsByUsernameYes = false;
     this.$scope.filteredByUsernameComics = [];
     this.filteredByUsernameComics = [];
-    var obj = this;
     var arrayOfKeywords = this.$scope.keywords.split(" ");
 
-    this.$http.get('/api/comics/search-username/'+this.$scope.keywords, {searchWords: this.$scope.keywords})
-      .success(function (data){
-        obj.$scope.testing2 = data;
-        if (typeof data[0] == 'undefined') {
-          obj.$scope.gotResultsByUsername = false;
-          obj.$scope.gotResultsByUsernameYes = false;
-          obj.$scope.searchingByUsername = false;
-          return;
-        }
-        obj.$scope.allComics = data;
-        var allComics: string[];
-        allComics = data;
-        for (var i = 0; i < allComics.length; i++ ){  //going through comics
-          var allContributorsNames: string[];
-          allContributorsNames = data[i].contributors;
-          for (var b = 0; b < allContributorsNames.length; b++){  //going through contributors of a single comic
-            for (var c= 0; c<arrayOfKeywords.length; c++){
-              if (data[i].contributors[b].name.toLowerCase().indexOf(arrayOfKeywords[c].toLowerCase()) > -1){
-                if (obj.filteredByUsernameComics.indexOf(data[i]) == -1) {  //don't allow for duplicates
-                  obj.filteredByUsernameComics.push(data[i]);
-                  obj.$scope.gotResultsByUsernameYes = true;
-                }
-              }
+    for (var i = 0; i < this.allComics.length; i++ ){  //going through comics
+      var allContributorsNames: string[];
+      allContributorsNames = this.allComics[i].contributors;
+      for (var b = 0; b < allContributorsNames.length; b++){  //going through contributors of a single comic
+        for (var c= 0; c<arrayOfKeywords.length; c++){
+          if (this.allComics[i].contributors[b].name.toLowerCase().indexOf(arrayOfKeywords[c].toLowerCase()) > -1){
+            if (this.filteredByUsernameComics.indexOf(this.$scope.allComics[i]) == -1) {  //don't allow for duplicates
+              this.filteredByUsernameComics.push(this.allComics[i]);
+              this.$scope.gotResultsByUsernameYes = true;
             }
           }
         }
-        if (typeof obj.filteredByUsernameComics[0] == 'undefined') {
-          obj.$scope.gotResultsByUsername = false;
-          obj.$scope.searchingByUsername = false;
-          return;
-        }
-        obj.$scope.filteredByUsernameComics = obj.filteredByUsernameComics;
-        obj.$scope.searchingByUsername = false;
+      }
+    }
+    if (typeof this.filteredByUsernameComics[0] == 'undefined') {
+      this.$scope.gotResultsByUsername = false;
+      this.$scope.searchingByUsername = false;
+      return;
+    }
+    this.$scope.filteredByUsernameComics = this.filteredByUsernameComics;
+    this.$scope.searchingByUsername = false;
 
-      });
+    //this.$http.get('/api/comics/search-username/'+this.$scope.keywords, {searchWords: this.$scope.keywords})
+    //  .success(function (data){
+    //    obj.$scope.testing2 = data;
+    //    if (typeof data[0] == 'undefined') {
+    //      obj.$scope.gotResultsByUsername = false;
+    //      obj.$scope.gotResultsByUsernameYes = false;
+    //      obj.$scope.searchingByUsername = false;
+    //      return;
+    //    }
+    //    obj.$scope.allComics = data;
+    //    var allComics: string[];
+    //    allComics = data;
+    //    for (var i = 0; i < allComics.length; i++ ){  //going through comics
+    //      var allContributorsNames: string[];
+    //      allContributorsNames = data[i].contributors;
+    //      for (var b = 0; b < allContributorsNames.length; b++){  //going through contributors of a single comic
+    //        for (var c= 0; c<arrayOfKeywords.length; c++){
+    //          if (data[i].contributors[b].name.toLowerCase().indexOf(arrayOfKeywords[c].toLowerCase()) > -1){
+    //            if (obj.filteredByUsernameComics.indexOf(data[i]) == -1) {  //don't allow for duplicates
+    //              obj.filteredByUsernameComics.push(data[i]);
+    //              obj.$scope.gotResultsByUsernameYes = true;
+    //            }
+    //          }
+    //        }
+    //      }
+    //    }
+    //    if (typeof obj.filteredByUsernameComics[0] == 'undefined') {
+    //      obj.$scope.gotResultsByUsername = false;
+    //      obj.$scope.searchingByUsername = false;
+    //      return;
+    //    }
+    //    obj.$scope.filteredByUsernameComics = obj.filteredByUsernameComics;
+    //    obj.$scope.searchingByUsername = false;
+    //  });
   }
-
-/*  testingAddContributor(){  //temporary for testing add contributor
-    this.$http.post('/api/comics/'+this.me.myFavourites[0]._id + '/contributors', {contributor: this.Auth.getCurrentUser()._id});
-  }*/
 
   deleteComic(Comic) {
     this.$http.delete('/api/Comics/' + Comic._id);

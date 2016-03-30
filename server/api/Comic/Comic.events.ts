@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-var Comic = require('./Comic.model');
+import Comic from './Comic.model';
 
 class ComicEvents {
 

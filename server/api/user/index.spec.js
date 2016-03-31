@@ -38,7 +38,7 @@ var userIndex = proxyquire('./index', {
   '../../auth/auth.service': authServiceStub
 });
 
-describe('User API Router:', function() {
+describe('user API Router:', function() {
 
   it('should return an express router instance', function() {
     userIndex.should.equal(routerStub);

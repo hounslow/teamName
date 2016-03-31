@@ -16,28 +16,34 @@
   <li class="menubar"><a href="#createacomic">Create a Comic</a></li>
   <li class="menubar"><a href="#logout">Log out</a></li>
 </ul>
--->   
+-->
 
 
-<form>
+
+
+<form name="ccform">
   <div id="headercreateacomic">
     <h1 id="headercreateacomic">Make that Comic!</h1>
   </div>
   <br>
+  <div id="buttonscreateacomic">
+  Title for your comic:
+  <input type="text" name="title" ng-model="newTitle" title="Enter Title" ng-required="true"></input>
+  </div>
+  <div id="buttonscreateacomic">
+    Description:
+    <br>
+    <textarea  cols="40" rows="5" type="text" name="description" ng-model="description" title="Write a description of your comic" ng-required="true"></textarea>
+  </div>
   <p id="buttonscreateacomic">
-    <input type="file" id="file" name="file" accept="image/*" />
+    <input type="file" id="files"  multiple="multiple" accept="image/*"></input>
   </p>
   <p id="buttonscreateacomic">
-    <button class="btn btn-default btn-md" ng-click="addComic()">Publish</button>
+    <button type="submit" class="btn btn-default btn-md" ng-click="ccform.$valid && addComic()">Publish</button>
   </p>
   <p id="buttonscreateacomic">
     <input class="btn btn-default btn-md" type="button"  onclick="window.location.href='/the-feed'" value="Cancel"></input>
   </p>
-  <!--
-  <p id="buttonscreateacomic">
-    <input class="createacomic" type="button"  onclick="myFunction()" value="Publish my masterpiece"></input>
-  </p>
-  -->
 </form>
 <!--
 <br />

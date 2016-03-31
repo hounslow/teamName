@@ -3,11 +3,11 @@
 angular.module('teamNameApp')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'app/login/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'vm'
-      })
+      //.when('/', {
+      //  templateUrl: 'app/login/login.html',
+      //  controller: 'LoginCtrl',
+      //  controllerAs: 'vm'
+      //})
       .when('/login', {
         templateUrl: 'app/login/login.html',
         controller: 'LoginCtrl',

@@ -170,6 +170,18 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
         .apply(Auth, [].concat.apply(['admin'], arguments));
     },
 
+     /**
+      * Check if a user is a user (contributor)
+      *   (synchronous|asynchronous)
+      *
+      * @param  {Function|*} callback - optional, function(is)
+      * @return {Bool|Promise}
+      */
+    isUser() {
+      return Auth.hasRole
+      .apply(Auth, [].concat.apply(['user'], arguments));
+    },
+
     /**
      * Get auth token
      *

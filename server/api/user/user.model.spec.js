@@ -6,14 +6,14 @@ var user;
 var genUser = function() {
   user = new User({
     provider: 'local',
-    name: 'Fake User',
+    name: 'Fake user',
     email: 'test@example.com',
     password: 'password'
   });
   return user;
 };
 console.log('in index ja in api user model');
-describe('User Model', function() {
+describe('user Model', function() {
   before(function() {
     // Clear users before testing
     return User.removeAsync();
@@ -61,7 +61,7 @@ describe('User Model', function() {
     });
 
     it('should remain the same hash unless the password is updated', function() {
-      user.name = 'Test User';
+      user.name = 'Test user';
       return user.saveAsync()
         .spread(function(u) {
           return u.authenticate('password');

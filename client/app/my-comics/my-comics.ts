@@ -6,6 +6,7 @@ angular.module('teamNameApp')
       .when('/my-comics', {
         templateUrl: 'app/my-comics/my-comics.html',
         controller: 'MyComicsCtrl',
-        authenticate: true
+        controllerAs: 'mc',
+        authenticate: 'user'
 	    });
   });

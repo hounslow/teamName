@@ -1,50 +1,31 @@
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="../create-a-comic/create-a-comic.css">
-</head>
--->
-<!--
-<body>
-<ul class="menubar">
-  <li class="menubar"><a href="#myprofile">My Profile</a></li>
-  <li class="menubar"><a href="#myfavourites">My Favourites</a></li>
-  <li class="menubar"><a href="#mycocmics">My Comics</a></li>
-  <li class="menubar"><a href="#thefeed">The Comic Feed</a></li>
-  <li class="menubar"><a href="#search">Search</a></li>
-  <li class="menubar"><a href="#createacomic">Create a Comic</a></li>
-  <li class="menubar"><a href="#logout">Log out</a></li>
-</ul>
--->
 <div id="headercreateacomic">
 	<h1 id="headercreateacomic">The Feed</h1>
 </div>
-<!--
-<div>
-  {{message}}
-</div>
--->
+
+<h3 style="text-align:center;" ng-show="noComics">There are no comics to view</h3>
+<h3 style="text-align:center;" ng-show="loadingComics">Loading Comics!</h3>
 <div class="imgcreateacomic">
 <ul style="list-style-type:none;">
   <li ng-repeat="Comics in Comics" style="margin-bottom: 50px;">
-    <header>{{ Comics.name }}</header>
-    <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle">
+    <h2>{{ Comics.name }}</h2>
+ <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
+    <p ng-repeat="Strings in Comics.content">
+      <img src={{Strings}}  width="500" height="500" align="middle">
+    </p>
+    <button ng-show="fc.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="fc.deleteComic(Comics)">Delete</button>
+    <button class="btn btn-default btn-md" style="float:right;" ng-click="fc.addToFavourites(Comics)"><span class="glyphicon glyphicon-heart"></span></button>
+    <button class="btn btn-default btn-md" ng-hide="fc.showDescription(Comics._id)" style="float:right;" ng-click="fc.addToShowDescription(Comics._id)">Show Description</button>
+    <button class="btn btn-default btn-md" ng-show="fc.showDescription(Comics._id)" style="float:right;" ng-click="fc.removeFromShowDescription(Comics._id)">Hide Description</button>
+    <div class="container alignLeft">By:
+    <b><span ng-repeat="contributor in Comics.contributors">
+      {{contributor.name}}
+    </span></b>
+    </div>
+    <div style="width: 500; word-wrap: break-word; font-size: 20px;" ng-show="fc.showDescription(Comics._id)">
+      {{Comics.description}}
+    </div>
+    <br>
   </li>
   <br>
 </ul>
 </div>
-<!--
-<div class="imgcreateacomic" ng-init="names=Comics">
-  <!-- add when titles needed  <div class="titlecreateacomic"><span><b>Title will go here </b> </div>
-  <img src="http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg" alt="Shows up when you hover" width="500" height="500">
-  <div class="imgcreateacomic" ng-repeat="x in names" >
-    <img ng-src="api/Comics/{{x}}.png" alt="">
-    <br>
-  </div>
-</div>
-
--->
-
-<!-- add when authors needed  <div class="titlecreateacomic">Authors will go here</div> -->
-

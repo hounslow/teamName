@@ -1,7 +1,7 @@
 body {
-  background: #C0C0C0;
+  background: #87CEFA;
 }
-
+/*#C0C0C0;*/
 ul.menubar {
     list-style-type: none;
     margin: 0;
@@ -67,6 +67,8 @@ div.imgcreateacomic img {
 
 #buttonscreateacomic{
     margin-left:60px;
+    font-size:15px;
+    font-weight: bold;
 }
 input.createacomic[type=file]{
     font-size:100%;

@@ -17,8 +17,11 @@
         <li ng-class="{active: nav.isActive('/profile')}">
           <a ng-href="/profile">My Profile</a>
         </li>
-        <li ng-class="{active: nav.isActive('/my-comics')}">
+        <li ng-show="nav.isUser()" ng-class="{active: nav.isActive('/my-comics')}">
           <a ng-href="/my-comics">My Comics</a>
+        </li>
+        <li ng-class="{active: nav.isActive('/my-favourites')}">
+          <a ng-href="/my-favourites">My Favourites</a>
         </li>
         <li ng-class="{active: nav.isActive('/the-feed')}">
           <a ng-href="/the-feed">The Feed</a>
@@ -26,7 +29,7 @@
         <li ng-class="{active: nav.isActive('/search')}">
           <a ng-href="/search">Search</a>
         </li>
-        <li ng-class="{active: nav.isActive('/create-a-comic')}">
+        <li ng-show="nav.isUser()" ng-class="{active: nav.isActive('/create-a-comic')}">
           <a ng-href="/create-a-comic">Create A Comic</a>
         </li>
         <li ng-show="nav.isLoggedIn()"><a href="/logout">Log out</a></li>

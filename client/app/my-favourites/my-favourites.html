@@ -1,0 +1,33 @@
+<div id="headercreateacomic">
+  <h1 id="headercreateacomic">My Favourites</h1>
+</div>
+
+<h3 style="text-align:center;" ng-show="noComics">You don't have any favourites</h3>
+<h3 style="text-align:center;" ng-show="loadingComics">Loading Comics!</h3>
+
+<div class="imgcreateacomic">
+  <ul style="list-style-type:none;">
+    <li ng-repeat="Comic in myFavourites" style="margin-bottom: 50px;">
+      <h2>{{ Comic.name }}</h2>
+      <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
+      <p ng-repeat="Strings in Comic.content">
+        <img src={{Strings}}  width="500" height="500" align="middle">
+      </p>
+      <button class="btn btn-default btn-md" style="float:right;" ng-click="mf.removeFromFavourites(Comic)"><span class="glyphicon glyphicon-remove"></span><span class="glyphicon glyphicon-heart"></span></button>
+      <button class="btn btn-default btn-md" ng-hide="mf.showDescription(Comic._id)" style="float:right;" ng-click="mf.addToShowDescription(Comic._id)">Show Description</button>
+      <button class="btn btn-default btn-md" ng-show="mf.showDescription(Comic._id)" style="float:right;" ng-click="mf.removeFromShowDescription(Comic._id)">Hide Description</button>
+      <div class="container alignLeft">By:
+        <b><span ng-repeat="contributor in Comic.contributors">
+          {{contributor.name}}
+        </span></b>
+      </div>
+      <div style="width: 500; word-wrap: break-word; font-size: 20px;" ng-show="mf.showDescription(Comic._id)">
+        {{Comic.description}}
+      </div>
+
+
+      <br>
+    </li>
+    <br>
+  </ul>
+</div>

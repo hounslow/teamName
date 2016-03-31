@@ -16,6 +16,7 @@ class SearchCtrl {
     this.filteredByTitleComics = [];
     $scope.keywords = "";
     $scope.gotResultsByTitle = true;
+    $scope.loading = true;
     $scope.gotResultsByUsername = true;
     $scope.gotResultsByTitleYes = false;
     $scope.gotResultsByUsernameYes = false;
@@ -28,6 +29,7 @@ class SearchCtrl {
       if (typeof this.allComics[0] == 'undefined'){
         $scope.noComicsExist = true;
       }
+      $scope.loading = false;
     });
   }
 

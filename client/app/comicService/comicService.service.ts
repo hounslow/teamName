@@ -17,7 +17,7 @@
   function ComicService() {
     var comicObj = '';
     var comic = {
-      setComic(comicV)  {comicObj = comicV},
+      setComic(comicV)  {comicObj = comicV;},
       getComic() {return comicObj}
       };
 

@@ -32,11 +32,11 @@ class TheFeedCtrl {
   }
 
   editComic(Comic){
-    this.comic.setComic(Comic._id);
     console.log(this.Auth.getCurrentUser()._id);
     this.$http.post('/api/Comics/' + Comic._id + '/contributors' ,{contributors: this.Auth.getCurrentUser()._id, notSaved: false});
     this.$http.post('api/users/' + this.Auth.getCurrentUser()._id + '/my-comics', {id: this.Auth.getCurrentUser()._id, myComics: Comic._id});
-    //window.location.href='/create-a-comic';
+    this.comic.setComic(Comic._id);
+    //window.location.href='/edit';
   }
 
   deleteComic(Comic) {

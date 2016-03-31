@@ -1,0 +1,12 @@
+/*MatthewHounslow*/
+p img {
+  display:none;
+}
+
+p:first-of-type img{
+  display: block;
+}
+
+li.show-all p img {
+  display: block;
+}

@@ -92,7 +92,7 @@ angular.module('teamNameApp')
       $scope.newFileString = $scope.Comics.content;
       var temp = $scope.newFileString[$scope.pageNumber[0]];
       if ($scope.pageNumber[0] > $scope.pageNumber[1]){
-        $scope.pageNumber[1] = $scope.pageNumber[1] + 1;
+        $scope.pageNumber[1] += 1;
       }
       $scope.newFileString.splice($scope.pageNumber[1],0, temp);
       $scope.newFileString.splice($scope.pageNumber[0],1);

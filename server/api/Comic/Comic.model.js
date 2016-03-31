@@ -14,7 +14,10 @@ var ComicSchema = new mongoose.Schema({
     description: {
       type: String
     },
-    notSaved: Boolean
+    notSaved: {
+      type: Boolean,
+      default: true
+    }
 });
 ComicSchema.index({description: 'text', name: 'text' });
 

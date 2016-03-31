@@ -3,7 +3,7 @@
 <ol style="list-style-type:none;" type="1">
   <li ng-repeat="Strings in Comics.content" style="margin-bottom: 50px;">
     <a id="image" ng-class="{ testClass: $index == pageNumber }" ng-click="ec.setPageNumber($index)">
-      <img src={{Strings}} lightbox width="500" height="500" align="middle"></a>
+      <img src={{Strings}}  width="500" height="500" align="middle"></a>
   </li>
 </ol>
 <input class="test" type="file"  accept="image/*">

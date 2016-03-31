@@ -1,0 +1,17 @@
+
+
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "rootDir": "./server",
+    "outDir": ".tmp"
+  },
+  "filesGlob": [
+    "server/api/{Comic,User}/*.ts"
+  ],
+  "files": [
+    "server/api/Comic/Comic.controller.ts",
+    "server/api/Comic/Comic.events.ts",
+    "server/api/Comic/Comic.model.ts"
+  ]
+}

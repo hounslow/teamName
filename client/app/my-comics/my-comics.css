@@ -1,6 +1,9 @@
 /*MatthewHounslow*/
 p img {
   display:none;
+  width: 500px;
+  height: 600px;
+}
 }
 
 p:first-of-type img{

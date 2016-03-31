@@ -13,7 +13,7 @@ class Lightbox implements ng.IDirective {
 
   link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: any) => {
     var blownUp = false;
-    var width = attrs.width, height = attrs.height;
+    var width = element.closest("li")[0].style.width, height = element.closest("li")[0].style.height;
 
     element.parent().on('click.lightbox', clickHandler);
     element.on('dblclick', dblClickHandler);
@@ -42,6 +42,8 @@ class Lightbox implements ng.IDirective {
     }
 
     function blowDown(){
+      console.log(width);
+      console.log(height);
       element.css("width", width);
       element.css("height", height);
     }

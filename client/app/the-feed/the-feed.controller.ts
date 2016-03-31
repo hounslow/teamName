@@ -3,12 +3,13 @@
 class TheFeedCtrl {
   private comicsToShowDescription: string[];
 
-  constructor($scope, $http, Auth, comic, socket){
+  constructor($scope, $http, Auth, comic, $location){
     this.isContributor = Auth.isUser;
     this.Auth = Auth;
     this.$scope = $scope;
     this.$http = $http;
     this.comic = comic;
+    this.$location = $location;
     $scope.noComics = false;
     $scope.loadingComics = true;
     this.comicsToShowDescription = [];
@@ -41,18 +42,18 @@ class TheFeedCtrl {
   };
 
   editComic(Comic){
-    console.log(this.Auth.getCurrentUser()._id);
+    //console.log(this.Auth.getCurrentUser()._id);
     this.$http.post('/api/Comics/' + Comic._id + '/contributors' ,{contributors: this.Auth.getCurrentUser()._id, notSaved: false});
     this.$http.post('api/users/' + this.Auth.getCurrentUser()._id + '/my-comics', {id: this.Auth.getCurrentUser()._id, myComics: Comic._id});
     this.comic.setComic(Comic._id);
-    //window.location.href='/edit';
+    this.$location.path('/edit');
   }
 
   deleteComic(Comic) {
-    if (Comic.notSaved == true){
+    //if (Comic.notSaved == true){
       this.$http.delete('/api/Comics/' + Comic._id);
-      window.location.href='/the-feed';}
-    else {console.log('you done fucked up')}
+      window.location.href='/the-feed';//}
+    //else {console.log('you done fucked up')}
   };
 
   addToShowDescription(comicId: string){

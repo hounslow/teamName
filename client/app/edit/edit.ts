@@ -6,6 +6,7 @@ angular.module('teamNameApp')
       .when('/edit', {
         templateUrl: 'app/edit/edit.html',
         controller: 'EditCtrl',
-        authenticate: 'user'
+        //authenticate: 'user',
+        controllerAs: 'ec'
       });
   });

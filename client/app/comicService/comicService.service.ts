@@ -21,6 +21,7 @@
       getComic() {return comicObj}
       };
 
+    console.log(comicObj);
     return comic;
 
   }

@@ -2,7 +2,7 @@
 
 <ol style="list-style-type:none;" type="1">
   <li ng-repeat="Strings in Comics.content" style="margin-bottom: 50px;">
-    <a ng-class="{ testClass: $index == pageNumber }" ng-click="ec.setPageNumber($index)">
+    <a id="image" ng-class="{ testClass: $index == pageNumber }" ng-click="ec.setPageNumber($index)">
       <img src={{Strings}}  width="500" height="500" align="middle"></a>
   </li>
 </ol>
@@ -13,6 +13,8 @@
 <button  class="btn btn-default btn-md" style="float:left;" ng-click="ec.deleteCell()" >Delete Cell</button>
 <button  class="btn btn-default btn-md" style="float:left;" ng-click="ec.publish()" >Publish</button>
 <button  class="btn btn-default btn-md" style="float:left;" ng-click="ec.save()" >Save</button>
+<button  class="btn btn-default btn-md" style="float:left;" ng-click="ec.cancel()" >Cancel</button>
+
 
 
 

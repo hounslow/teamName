@@ -6,10 +6,18 @@ import {Schema} from 'mongoose';
 
 var ComicSchema:mongoose.Schema = new mongoose.Schema({
     content: [String],
-    name: String,
+    name: {
+      type: String
+    },
     date: { type: Date, default: Date.now },
     contributors: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    description: String
+    description: {
+      type: String
+    },
+    notSaved: {
+      type: Boolean,
+      default: true
+    }
 });
 
 

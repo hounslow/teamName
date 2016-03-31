@@ -149,6 +149,20 @@ export function updateComic(req, res, next) {
     .catch(handleError(res));
 }
 
+export function updateComic2(req, res, next) {
+  console.log('update Comic function controller');
+  var comicId = String(req.params.id);
+  //var newContent = Array(req.body.content);
+  var newState = String(req.body.notSaved);
+  console.log(comicId);
+  return Comic.updateAsync({_id: comicId}, {$set: {notSaved: newState}})
+    .then(() => {
+      console.log(comicId);
+      res.status(204).end();
+    })
+    .catch(handleError(res));
+}
+
 
 
 

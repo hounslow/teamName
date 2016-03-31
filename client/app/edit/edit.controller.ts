@@ -23,6 +23,11 @@ class EditCtrl {
   console.log(index);
 };
 
+  setSelect(){
+
+  }
+
+
   deleteCell(){
   this.$scope.newFileString = this.$scope.Comics.content;
   this.$scope.newFileString.splice(this.$scope.pageNumber[0],1);
@@ -74,12 +79,18 @@ class EditCtrl {
   this.$scope.pageNumber = [];
 };
 
+  cancel(){
+    this.$http.put('/api/Comics/' + this.comic.getComic() + '/cancel' , {notSaved: true}).success(function(){
+      window.location.href='/the-feed';
+    });
+  }
+
   publish(){
   this.$scope.newFileString = this.$scope.Comics.content;
   console.log(this.$scope.newFileString.length);
   this.$http.put('/api/Comics/' + this.comic.getComic() , {content: this.$scope.newFileString, notSaved: true}).success(function(){
     window.location.href='/the-feed';
-  })
+  });
 }
 }
 

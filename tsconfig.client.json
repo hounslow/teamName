@@ -24,6 +24,7 @@
         "client/app/login/login.ts",
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
+        "client/app/my-comics/lightbox.directive.ts",
         "client/app/my-comics/my-comics.controller.ts",
         "client/app/my-comics/my-comics.ts",
         "client/app/my-favourites/my-favourites.controller.ts",

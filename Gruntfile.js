@@ -27,6 +27,12 @@ module.exports = function (grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+    typescript: {
+      base: {
+        src: ['server/api/**/*.ts']
+      }
+    },
+
     // Project settings
     pkg: grunt.file.readJSON('package.json'),
     yeoman: {
@@ -58,8 +64,8 @@ module.exports = function (grunt) {
     },
     watch: {
       ts: {
-        files: ['<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).ts'],
-        tasks: ['ts:client']
+        files: ['<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).ts', '<%= yeoman.server %>/api/**/!(*.spec|*.mock).ts'],
+        tasks: ['ts:client', 'ts:server']
       },
       ngconstant: {
         files: ['<%= yeoman.server %>/config/environment/shared.js'],
@@ -710,6 +716,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'env:all',
         'env:test',
+        'ts:server',
         'mochaTest:unit',
         'mochaTest:integration'
       ]);

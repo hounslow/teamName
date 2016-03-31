@@ -94,10 +94,11 @@ export function create(req, res) {
 export function addContributorToComicContributors(req, res, next) {
   console.log('got to add contributor to contributors in comic controller');
   var comicId = String(req.params.id);   //gets the id of the comic from the http.post url
-  var newContributor = String(req.body.contributor);  //contributor id needs to be sent in the request (note use Auth.getCurrentUser()._id which you send in the request
+  var state = String(req.body.notSaved);
+  var newContributor = String(req.body.contributors);  //contributor id needs to be sent in the request (note use Auth.getCurrentUser()._id which you send in the request
   console.log('comicId '+comicId);
   console.log('contributor id '+newContributor);
-  return Comic.updateAsync({_id: comicId}, {$addToSet: {contributors: newContributor}})
+  return Comic.updateAsync({_id: comicId}, {$addToSet: {contributors: newContributor}, $set: {notSaved: state}})
       .then(() => {
       res.status(204).end();
 })
@@ -134,11 +135,33 @@ export function searchForComicsByUsername(req, res, next){
     .catch(handleError(res));
 }
 
+export function updateComic(req, res, next) {
+  console.log('update Comic function controller');
+  var comicId = String(req.params.id);
+  //var newContent = Array(req.body.content);
+  var newState = String(req.body.notSaved);
+  console.log(comicId);
+  return Comic.updateAsync({_id: comicId}, {$set: {content: req.body.content, notSaved: newState}})
+    .then(() => {
+      console.log(comicId);
+      res.status(204).end();
+    })
+    .catch(handleError(res));
+}
+
+
+
+
+
+
+
 // Updates an existing Comic in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
+  var test = req.body.content;
+  console.log(test.length);
   Comic.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))

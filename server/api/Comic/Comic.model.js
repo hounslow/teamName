@@ -13,7 +13,8 @@ var ComicSchema = new mongoose.Schema({
     contributors: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     description: {
       type: String
-    }
+    },
+    notSaved: Boolean
 });
 ComicSchema.index({description: 'text', name: 'text' });
 

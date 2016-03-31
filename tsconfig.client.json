@@ -15,6 +15,7 @@
         "client/app/app.ts",
         "client/app/change-password/change-password.controller.ts",
         "client/app/change-password/change-password.ts",
+        "client/app/comicService/comicService.service.ts",
         "client/app/create-a-comic/create-a-comic.controller.ts",
         "client/app/create-a-comic/create-a-comic.ts",
         "client/app/login/login.controller.ts",

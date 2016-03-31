@@ -7,12 +7,13 @@
 
 <div class="imgcreateacomic">
   <ul style="list-style-type:none;">
-    <li ng-repeat="Comic in myFavourites" style="margin-bottom: 50px;">
+    <li ng-repeat="Comic in newShit" style="margin-bottom: 50px;">
       <h2>{{ Comic.name }}</h2>
       <!--   <img src={{Comics.content[0]}} alt="Shows up when you hover" width="500" height="500" align="middle"> -->
       <p ng-repeat="Strings in Comic.content">
         <img src={{Strings}}  width="500" height="500" align="middle">
       </p>
+      <button ng-show="mf.isContributor()" class="btn btn-default btn-md" style="float:right;" ng-click="mf.editComic(Comic)" >Edit</button>
       <button class="btn btn-default btn-md" style="float:right;" ng-click="mf.removeFromFavourites(Comic)"><span class="glyphicon glyphicon-remove"></span><span class="glyphicon glyphicon-heart"></span></button>
       <button class="btn btn-default btn-md" ng-hide="mf.showDescription(Comic._id)" style="float:right;" ng-click="mf.addToShowDescription(Comic._id)">Show Description</button>
       <button class="btn btn-default btn-md" ng-show="mf.showDescription(Comic._id)" style="float:right;" ng-click="mf.removeFromShowDescription(Comic._id)">Hide Description</button>

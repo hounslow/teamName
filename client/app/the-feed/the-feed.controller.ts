@@ -13,9 +13,15 @@ class TheFeedCtrl {
     $scope.noComics = false;
     $scope.loadingComics = true;
     this.comicsToShowDescription = [];
+    var thisInside = this;
     // Grab the initial set of available comics
     $http.get('/api/Comics').success(function(Comics) {
       $scope.ComicsInit = Comics;
+
+      if($scope.ComicsInit.every(thisInside.checkIfSaved)){
+        $scope.noComics = true;
+      }
+
       function checkSave(obj){
         if (obj.notSaved == true){
           return obj;
@@ -29,8 +35,11 @@ class TheFeedCtrl {
       }
       $scope.loadingComics = false;
     });
-
   }
+
+  checkIfSaved(comic){
+    return !comic.notSaved;
+  };
 
   editComic(Comic){
     //console.log(this.Auth.getCurrentUser()._id);

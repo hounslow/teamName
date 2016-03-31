@@ -18,12 +18,15 @@ class MyFavouritesCtrl{
       console.log('meeee in my favourites controller' + this.me.name);
       $scope.myFavourites = this.me.myFavourites;
 
+      if($scope.myFavourites.every(this.checkIfSaved)){
+        $scope.noComics = true;
+      }
+
       function checkSaved(obj){
         if (obj.notSaved == true){
           return obj;}
       }
 
-      $scope.myFavourites = this.me.myFavourites;
       $scope.newShit = $scope.myFavourites.filter(checkSaved);
 
       if (this.me.myFavourites[0] == undefined){
@@ -34,6 +37,10 @@ class MyFavouritesCtrl{
 
     });
   }
+  checkIfSaved(comic){
+    console.log('got to check if saved');
+    return !comic.notSaved;
+  };
 
   addToShowDescription(comicId: string){
     this.comicsToShowDescription.push(comicId);

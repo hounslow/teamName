@@ -36,7 +36,7 @@ class MyComicsCtrl {
 
   deleteComic(Comic) {
     this.$http.delete('/api/Comics/' + Comic._id);
-    window.location.href='/my-favourites';
+    window.location.href='/my-comics';
   };
   addToShowDescription(comicId: string){
     this.comicsToShowDescription.push(comicId);
